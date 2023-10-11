@@ -27,7 +27,7 @@
   3. Page untuk mencari buku (**Topa**)
      * Tombol sort (by categories, by harga)
 
-  4. Informasi Buku kalau bukunya dipencet (...)
+  4. Informasi Buku kalau bukunya dipencet (**Darryl**)
      * Button favorite
      * Button beli
      * Sinopsis
@@ -44,7 +44,7 @@
      * Biodata
      * Wallet
        
-  7. Untuk wishlist (**kevin**)
+  7. Untuk wishlist (**Kevin**)
      * List buku
      * cancel wishlist
        
