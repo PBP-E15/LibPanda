@@ -8,8 +8,10 @@
   4. Darryl Abysha Artapradana Subiyanto 	- 2206082846
   5. Kevin Yehezkiel Manurung 			      - 2206826974
 
-## Manfaat App
+## Tentang Aplikasi
+  LibPanda adalah aplikasi pencarian dan pembelian buku yang memungkinkan pengguna untuk dengan cepat mencari, membandingkan, dan membeli buku favorit mereka. Aplikasi ini menawarkan akses ke katalog buku yang luas sehingga membuat proses mencari dan memilih buku menjadi lebih mudah dan efisien. Dengan fitur pencarian canggih dan kemudahan dalam bertransaksi, LibPanda adalah aplikasi yang sangat berguna bagi para pecinta buku.
 
+## Manfaat Aplikasi
   Aplikasi untuk mencari dan membeli buku dapat memberikan berbagai manfaat kepada pengguna, termasuk:
   
   * Kemudahan Pencarian: Aplikasi ini memungkinkan pengguna untuk dengan mudah mencari buku berdasarkan nama buku, kategori dan harga tertentu. Ini menghemat waktu dan upaya dalam mencari buku yang diinginkan.
