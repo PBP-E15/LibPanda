@@ -93,7 +93,7 @@
 
     <div class="card-contents" id="biodata">
         <div class="biodata">
-            <button class="edit" onclick="editBiodata()">
+            <button class="edit" onclick="switchModeBiodata()">
                 Edit
             </button>
             <div class="biodata-contents" id="biodata-contents">
@@ -114,7 +114,7 @@
                 </div>
                 <div class="birthday">
                     <h5> Tanggal Lahir </h5>
-                    <input type="date" id="birthday" name="birthday" readOnly="readonly">
+                    <input type="date" id="birthday" name="birthday" readOnly="readonly" value="2004-05-04">
                 </div>
                 <div class="phone-number">
                     <h5> Nomor Telepon </h5>
@@ -122,15 +122,15 @@
                 </div>
             </div>
 
-            <form>
+            <form id="form-edit-biodata">
             <div class="biodata-contents-edit" id="biodata-contents-edit">
                 <div class="name">
                     <h5> Nama </h5>
-                    <input type="text" id="input-name" value="nama">
+                    <input type="text" id="input-name" name="name" value="nama">
                 </div>
                 <div class="email">
                     <h5> Email </h5>
-                    <input type="text" id="input-email" value="email">
+                    <input type="text" id="input-email"  name="email" value="email">
                 </div>
                 <div class="gender">
                     <h5> Jenis Kelamin </h5>
@@ -145,10 +145,10 @@
                 </div>
                 <div class="phone-number">
                     <h5> Nomor Telepon </h5>
-                    <input type="text" id="number-input" value="085157878087">
+                    <input type="text" id="number-input" name="phone_number" value="085157878087">
                 </div
                 <br>
-                <input type="submit" id="button-submit">
+                <button type=button id="button-submit" onclick="editBiodata(0)"> Submit </button>
             </div>
             </form>
         </div>
@@ -159,55 +159,198 @@
             <h5>Saldo Kamu:</h5>
             <h2>Rp saldo,00</h2>
             <br>
-            <button id="button-topup">
+            <button id="button-topup" data-bs-toggle="modal" data-bs-target="#topUpModal">
                 Tambah Saldo
             </button>
         </div>
     </div>
-    
 </div>
 
+<div class="modal fade" id="topUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Top Up Wallet</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-topup" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="balance" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="balance" name="balance"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment-method" class="col-form-label">Payment Method:</label>
+                        <select class="form-control" id="payment-method" name="payment-method">
+                            <option value="GoPay">GoPay</option>
+                            <option value="OVO">OVO</option>
+                            <option value="Dana">Dana</option>
+                            <option value="Pulsa">Pulsa</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-bs-dismiss="modal">Kembali</button>
+                <button type="button" id="button_topup" onclick="topup(0)" data-bs-dismiss="modal">Top Up</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     </div>
 <script>
 
-    async function editBiodata() {
-        var biodataEdit=document.getElementById("biodata-contents-edit");
-        var biodata=document.getElementById("biodata-contents");
+    async function getBiodata() {
+        return fetch("{% url 'user_profile:get_biodata_json' %}").then((res) => res.json())
+    }
+
+    async function getWallet() {
+        return fetch("{% url 'user_profile:get_wallet_json' %}").then((res) => res.json())
+    }
+
+    async function refreshBiodata() {
+        document.getElementById("biodata-contents").innerHTML = ""
+        const biodata = await getBiodata()
+        let htmlString = ''
+        biodata.forEach((data) => {
+        htmlString += `
+            <div class="name">
+                <h5> Nama </h5>
+                <p> ${data.fields.name} </p>
+            </div>
+            <div class="email">
+                <h5> Email </h5>
+                <p> ${data.fields.email} </p>
+            </div>
+        `
+        if (`${data.fields.gender}` == `male`) {
+            htmlString += `<div class="gender">
+                                <h5> Jenis Kelamin </h5>
+                                <input type="radio" id="male" name="gender" value="male" checked="true">
+                                <label for="male"> Laki-Laki </label>
+                                <input type="radio" id="female" name="gender" value="female" disabled="true">
+                                <label for="female"> Perempuan </label>
+                            </div>
+                            `
+        }
+        else {
+            htmlString += `<div class="gender">
+                                <h5> Jenis Kelamin </h5>
+                                <input type="radio" id="male" name="gender" value="male" disabled="true">
+                                <label for="male"> Laki-Laki </label>
+                                <input type="radio" id="female" name="gender" value="female" checked="true">
+                                <label for="female"> Perempuan </label>
+                            </div>
+                        `
+        }
+        htmlString += `
+            <div class="birthday">
+                <h5> Tanggal Lahir </h5>
+                <input type="date" id="birthday" name="birthday" readOnly="readonly" value = "${data.fields.birthday}">
+            </div>
+            <div class="phone-number">
+                <h5> Nomor Telepon </h5>
+                <p> ${data.fields.phone_number} </p>
+            </div>
+        `
+        })
+        document.getElementById("biodata-contents").innerHTML = htmlString
+    }
+
+    async function refreshWallet() {
+        document.getElementById("wallet").innerHTML = ""
+        const wallet = await getWallet()
+        let htmlString = ''
+        wallet.forEach((data) => {
+            htmlString += `
+            <div class="wallet">
+                <h5>Saldo Kamu:</h5>
+                <h2>Rp ${data.fields.balance},00</h2>
+                <br>
+                <button id="button-topup" data-bs-toggle="modal" data-bs-target="#topUpModal">
+                    Tambah Saldo
+                </button>
+            </div>
+        `
+        })
+        document.getElementById("wallet").innerHTML = htmlString
+    }
+
+    async function switchModeBiodata() {
+        var biodataEdit=document.getElementById("biodata-contents-edit")
+        var biodata=document.getElementById("biodata-contents")
 
         if (biodataEdit.style.display == "grid") {
-            biodataEdit.style.display = "none";
-            biodata.style.display = "grid";
+            biodataEdit.style.display = "none"
+            biodata.style.display = "grid"
 
         }
         else {
-            biodataEdit.style.display = "grid";
-            biodata.style.display = "none";
+            biodataEdit.style.display = "grid"
+            biodata.style.display = "none"
         }
-    };
+    }
 
     async function showWallet() {
-        var wallet=document.getElementById("wallet");
-        var biodata=document.getElementById("biodata");
+        var wallet=document.getElementById("wallet")
+        var biodata=document.getElementById("biodata")
 
-        wallet.style.display= "inline";
-        biodata.style.display= "none";
+        wallet.style.display= "inline"
+        biodata.style.display= "none"
 
-        document.getElementById("selection-wallet").style.color= "#0032d6";
-        document.getElementById("selection-biodata").style.color= "#000000";
-    };
+        document.getElementById("selection-wallet").style.color= "#0032d6"
+        document.getElementById("selection-biodata").style.color= "#000000"
+    }
 
     async function showBiodata() {
-        var wallet=document.getElementById("wallet");
-        var biodata=document.getElementById("biodata");
+        var wallet=document.getElementById("wallet")
+        var biodata=document.getElementById("biodata")
 
-        wallet.style.display= "none";
-        biodata.style.display= "inline";
+        wallet.style.display= "none"
+        biodata.style.display= "inline"
 
-        document.getElementById("selection-wallet").style.color= "#000000";
-        document.getElementById("selection-biodata").style.color= "#0032d6";
-    };
+        document.getElementById("selection-wallet").style.color= "#000000"
+        document.getElementById("selection-biodata").style.color= "#0032d6"
+    }
+    
+
+    function editBiodata(pk) {
+        var form = new FormData(document.querySelector('#form-edit-biodata'))
+        for (const [key, value] of form) {
+            console.log(`${key} : ${value}`)
+        }
+
+        var action = confirm("Apakah informasi yang Anda masukkan sudah benar?")
+        if (action) {
+            fetch(`/edit-biodata/${pk}/`, {
+                method: "POST",
+                body: new FormData(document.querySelector('#form-edit-biodata'))
+            }).then(refreshBiodata)
+            document.getElementById("form-edit-biodata").reset()
+
+            return false
+        }
+    }
+
+    function topup(pk) {
+        var form = new FormData(document.querySelector('#form-topup'))
+        for (const [key, value] of form) {
+            console.log(`${key} : ${value}`)
+        }
+        
+        fetch(`/topup-wallet/${pk}/`, {
+            method: "POST",
+            body: new FormData(document.querySelector('#form-topup'))
+        }).then(refreshWallet)
+
+        document.getElementById("form-topup").reset()
+        return false
+
+    }
+
 
 </script>
 {% endblock content %}
