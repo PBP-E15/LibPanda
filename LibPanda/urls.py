@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from main.views import delete_book
+
+app_name = 'wishlist'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/books", include("book.urls")),
+    path('delete/<int:id>', delete_book, name='delete_product'),
 ]
