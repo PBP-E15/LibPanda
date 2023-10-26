@@ -1,0 +1,1502 @@
+[
+  {
+    "pk": 1,
+    "model": "book.book",
+    "fields": {
+      "title": "The Echo of Greece",
+      "authors": "Edith Hamilton",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=q9UHkzzqw3QC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Tells of Greek life during the 4th century, the type of men it produced, and important events which took place",
+      "published_year": 1957,
+      "average_rating": 4.1,
+      "num_pages": 224,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 2,
+    "model": "book.book",
+    "fields": {
+      "title": "The Diary of Anne Frank",
+      "authors": "Anne Frank",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=tgnUAiIWBGAC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Diary of the adolescent Jewish girl who ultimately perished in the Nazi death camps.",
+      "published_year": 2003,
+      "average_rating": 4.13,
+      "num_pages": 851,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 3,
+    "model": "book.book",
+    "fields": {
+      "title": "Sailing the Wine-Dark Sea",
+      "authors": "Thomas Cahill",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=sS16vB0pjR0C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Examines the remarkable legacy of the ancient Greeks, from the origins of Greek culture to the development of Western literature, drama, poetry, and philosophy to the Greek influence on human science, mathematics, and logic.",
+      "published_year": 2004,
+      "average_rating": 3.77,
+      "num_pages": 352,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 4,
+    "model": "book.book",
+    "fields": {
+      "title": "The Collapse of the Third Republic",
+      "authors": "William Lawrence Shirer",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=IdyBPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "On June 17, 1940 William L. Shirer stood in the streets of Paris and watched the unending flow of gray German uniforms along its boulevards. In just six lovely weeks in the spring and summer of 1940 a single battle brought down in total military defeat one of the world's oldest, greatest, and most civilized powersâ€”the second mightiest empire on earth and the possessor of one of the finest military machines ever assembled. How did it happen? After nearly a decade of research in the massive archives left from World War II and after hundreds of conversations with the Third Republicâ€™s leaders, generals, diplomats, and ordinary citizens, Shirer presents the definitive answer in his stunning re-creation of why and how France fell before Hitler's armies in 1940. His book is also a devastating examination of the confusion, corruption, and cynicism that drained the strength and toughness of a democracy which Thomas Jefferson once called \"every man's second country.\" This book complements and completes the dramatic story of The Rise and Fall of the Third Reich and continues to rank as one of the most important works of history of our time.",
+      "published_year": 1994,
+      "average_rating": 4.2,
+      "num_pages": 1082,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 5,
+    "model": "book.book",
+    "fields": {
+      "title": "Plagues and peoples",
+      "authors": "William Hardy McNeill",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=VzRin_YlpCAC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A distinguished historian probes the critical impact of infectious diseases on the development of world civilizations",
+      "published_year": 1998,
+      "average_rating": 3.9,
+      "num_pages": 368,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 6,
+    "model": "book.book",
+    "fields": {
+      "title": "Night Draws Near",
+      "authors": "Anthony Shadid",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=foVhywPrz4EC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "An Arab-American journalist looks at the Iraq War from the perspective of ordinary Iraqi citizens confronted by the dislocations, hardships, tragedies, and harsh realities of the conflict.",
+      "published_year": 2006,
+      "average_rating": 4.11,
+      "num_pages": 507,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 7,
+    "model": "book.book",
+    "fields": {
+      "title": "Strangers from a Different Shore",
+      "authors": "Ronald Takaki",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=HcSSQgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "In an extraordinary blend of narrative history, personal recollection, & oral testimony, the author presents a sweeping history of Asian Americans. He writes of the Chinese who laid tracks for the transcontinental railroad, of plantation laborers in the canefields of Hawaii, of \"picture brides\" marrying strangers in the hope of becoming part of the American dream. He tells stories of Japanese Americans behind the barbed wire of U.S. internment camps during World War II, Hmong refugees tragically unable to adjust to Wisconsin's alien climate & culture, & Asian American students stigmatized by the stereotype of the \"model minority.\" This is a powerful & moving work that will resonate for all Americans, who together make up a nation of immigrants from other shores.",
+      "published_year": 1998,
+      "average_rating": 4.12,
+      "num_pages": 640,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 8,
+    "model": "book.book",
+    "fields": {
+      "title": "A Chosen Few",
+      "authors": "Mark Kurlansky",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=cRJHAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A POWERFUL, DEEPLY MOVING NARRATIVE OF HOPE REBORN IN THE SHADOW OF DESPAIR Fifty years after it was bombed to rubble, Berlin is once again a city in which Jews gather for the Passover seder. Paris and Antwerp have recently emerged as important new centers of Jewish culture. Small but proud Jewish communities are revitalizing the ancient centers of Budapest, Prague, and Amsterdam. These brave, determined Jewish men and women have chosen to settleâ€“or remainâ€“in Europe after the devastation of the Holocaust, but they have paid a price. Among the unexpected dangers, they have had to cope with an alarming resurgence of Nazism in Europe, the spread of Arab terrorism, and the impact of the Jewish state on European life. Delving into the intimate stories of European Jews from all walks of life, Kurlansky weaves together a vivid tapestry of individuals sustaining their traditions, and flourishing, in the shadow of history. An inspiring story of a tenacious people who have rebuilt their lives in the face of incomprehensible horror, A Chosen Few is a testament to cultural survival and a celebration of the deep bonds that endure between Jews and European civilization. â€œConsistently absorbing . . . A Chosen Few investigates the relatively uncharted territory of an encouraging phenomenon.â€ â€“Los Angeles Times â€œI can think of no book that portrays with such intelligence, historical understanding, and journalistic flair what life has been like for Jews determined to build lives in Europe.â€ â€“SUSAN MIRON Forward",
+      "published_year": 2002,
+      "average_rating": 3.87,
+      "num_pages": 456,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 9,
+    "model": "book.book",
+    "fields": {
+      "title": 1968,
+      "authors": "Mark Kurlansky",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=PgoWNH22yTMC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Provides a detailed look at 1968, a pivotal year in the history of the twentieth century, exploring the turbulent events, politics, culture, economics, and social changes that marked a volatile year.",
+      "published_year": 2005,
+      "average_rating": 3.78,
+      "num_pages": 480,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 10,
+    "model": "book.book",
+    "fields": {
+      "title": "The Guns of August",
+      "authors": "Barbara Wertheim Tuchman",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=ELck9kOIg4QC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A definitive Pulitzer Prize-winning recreation of the powderkeg that was Europe during the crucial first thirty days of World War I traces the actions of statesmen and patriots alike in Berlin, London, St. Petersburg, and Paris. Reprint.",
+      "published_year": 2004,
+      "average_rating": 4.18,
+      "num_pages": 606,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 11,
+    "model": "book.book",
+    "fields": {
+      "title": "The Discomfort Zone",
+      "authors": "Jonathan Franzen",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=Z2vOAwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The author describes growing up in a family of all boys in Webster Groves, Missouri, reflecting on such topics as the dynamics of a Christian youth fellowship, his role as the school prankster, his marriage, and the life lessons he has learned from birds.",
+      "published_year": 2006,
+      "average_rating": 3.39,
+      "num_pages": 195,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 12,
+    "model": "book.book",
+    "fields": {
+      "title": "Sophie's World",
+      "authors": "Jostein Gaarder",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=-o1MPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A page-turning novel that is also an exploration of the great philosophical concepts of Western thought, Sophie's World has fired the imagination of readers all over the world, with more than twenty million copies in print. One day fourteen-year-old Sophie Amundsen comes home from school to find in her mailbox two notes, with one question on each: \"Who are you?\" and \"Where does the world come from?\" From that irresistible beginning, Sophie becomes obsessed with questions that take her far beyond what she knows of her Norwegian village. Through those letters, she enrolls in a kind of correspondence course, covering Socrates to Sartre, with a mysterious philosopher, while receiving letters addressed to another girl. Who is Hilde? And why does her mail keep turning up? To unravel this riddle, Sophie must use the philosophy she is learning--but the truth turns out to be far more complicated than she could have imagined.",
+      "published_year": 2007,
+      "average_rating": 3.91,
+      "num_pages": 518,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 13,
+    "model": "book.book",
+    "fields": {
+      "title": "Mediterranean Winter",
+      "authors": "Robert D. Kaplan",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=MoQwPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Describes an intimate off-season journey along the Mediterranean that covers the area's history, literature, and heritage, describing the mythologies and succeeding medieval civilizations of ancient Greece and Rome while revealing what the past says about today's world. Reprint. 17,500 first printing.",
+      "published_year": 2005,
+      "average_rating": 3.91,
+      "num_pages": 272,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 14,
+    "model": "book.book",
+    "fields": {
+      "title": "Salonica, City of Ghosts",
+      "authors": "Mark Mazower",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=c8agAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A vivid narrative history captures the multicultural world of Salonica, from its heyday as a Byzantine port, through its role as a progressive center of the Ottoman Empire, to its occupation during World War II by the Nazis, revealing how its position as a center of progressive equality among diverse cultures and religions was gradually eroded, culminating in the Nazis' destruction of its Jewish inhabitants. Reprint. 15,000 first printing.",
+      "published_year": 2006,
+      "average_rating": 4.25,
+      "num_pages": 544,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 15,
+    "model": "book.book",
+    "fields": {
+      "title": "Paris 1919",
+      "authors": "Margaret MacMillan",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=5NYdwyI5acQC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "National Bestseller New York Times Editorsâ€™ Choice Winner of the PEN Hessell Tiltman Prize Winner of the Duff Cooper Prize Silver Medalist for the Arthur Ross Book Award of the Council on Foreign Relations Finalist for the Robert F. Kennedy Book Award For six months in 1919, after the end of â€œthe war to end all wars,â€ the Big Threeâ€”President Woodrow Wilson, British prime minister David Lloyd George, and French premier Georges Clemenceauâ€”met in Paris to shape a lasting peace. In this landmark work of narrative history, Margaret MacMillan gives a dramatic and intimate view of those fateful days, which saw new political entitiesâ€”Iraq, Yugoslavia, and Palestine, among themâ€”born out of the ruins of bankrupt empires, and the borders of the modern world redrawn.",
+      "published_year": 2002,
+      "average_rating": 4.07,
+      "num_pages": 570,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 16,
+    "model": "book.book",
+    "fields": {
+      "title": "The Survivor",
+      "authors": "John F. Harris",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=OBfYkABIj74C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A retrospective assessment of the Clinton presidency and its influence offers an illuminating analysis of the key personal, political, and policy decisions of the administration, assessing Bill Clinton's leadership style, his successes and failures, and the long-term implications of the Clinton presidency. Reprint. 40,000 first printing.",
+      "published_year": 2006,
+      "average_rating": 4.01,
+      "num_pages": 560,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 17,
+    "model": "book.book",
+    "fields": {
+      "title": "Trials of Tears",
+      "authors": "John Ehle",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=kNuRA8riMeoC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Recounts the many broken U.S. treaties with the Cherokees, describes how they were forced to leave their lands in Tennessee, Georgia, and North Carolina, and looks at the hardships they faced on the trail west.",
+      "published_year": 1989,
+      "average_rating": 4.15,
+      "num_pages": 424,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 18,
+    "model": "book.book",
+    "fields": {
+      "title": "How the Irish Saved Civilization",
+      "authors": "Thomas Cahill",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=IY1eugBuZ9EC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Bringing readers to the Ireland of St. Patrick and the Book of Kells, a historical examination of Ireland's role in the rise of medieval Europe cites the work of countless monks and scribes in the preservation of the West's written treasury. Reprint. Tour.",
+      "published_year": 1996,
+      "average_rating": 3.81,
+      "num_pages": 246,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 19,
+    "model": "book.book",
+    "fields": {
+      "title": "On the Origins of War and the Preservation of Peace",
+      "authors": "Donald Kagan",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=dVMsAQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Analyzes history to determine why there are wars, whether there are underlying laws that explain why one nation challenges another, and whether there are forces working for the preservation of peace",
+      "published_year": 1996,
+      "average_rating": 4.01,
+      "num_pages": 573,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 20,
+    "model": "book.book",
+    "fields": {
+      "title": "The Code Book",
+      "authors": "Simon Singh",
+      "categories": "History",
+      "thumbnail": "http://books.google.com/books/content?id=skt7TrLK5uYC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Includes a history of how codes have affected the world, from the World Wars to the death of Mary, Queen of Scots, and also looks at what the future holds for the field of cryptography.",
+      "published_year": 2000,
+      "average_rating": 4.31,
+      "num_pages": 412,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 21,
+    "model": "book.book",
+    "fields": {
+      "title": "The Art of Listening",
+      "authors": "Erich Fromm",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=Gi1-PwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Although Erich Fromm intended to publish his work as a practicing psychotherapist, these plans were never realized in his lifetime. This volume fulfills his wish. Not intended as a textbook about psychoanalytic therapy, these reflections provide welcome new information about Fromm the therapist and the way he dealt with the psychological suffering of his patients. As Fromm envisioned, each chapter is structured to capture the informality and intimacy of his psychoanalytic work so that readers get a new and different sense of Fromm's humanism, honesty and insight. These talks and seminars, given by Fromm between 1964 and his death in 1980, deal with the issues between analyst and analysand that go to the heart of the psychoanalytic process. For Fromm, the analyst is his or her own next patient, as the patient becomes his or her analyst.",
+      "published_year": 1998,
+      "average_rating": 4.09,
+      "num_pages": 204,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 22,
+    "model": "book.book",
+    "fields": {
+      "title": "The Presocratics",
+      "authors": "Philip Wheelwright",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=V45eMgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Library of Liberal Arts title.",
+      "published_year": 1966,
+      "average_rating": 4.04,
+      "num_pages": 352,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 23,
+    "model": "book.book",
+    "fields": {
+      "title": "A Source Book in Indian Philosophy",
+      "authors": "Sarvepalli Radhakrishnan, Sir",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=6VKtDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Features significant works from the Vedic and Epic periods, the Heterodox and Orthodox systems, and contemporary Indian thought",
+      "published_year": 1957,
+      "average_rating": 4.11,
+      "num_pages": 720,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 24,
+    "model": "book.book",
+    "fields": {
+      "title": "The Will to Believe",
+      "authors": "William James",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=8qRGDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Intellect, will, belief, chance, and free will are among the topics touched upon in two works by the American psychologist",
+      "published_year": 1956,
+      "average_rating": 4.06,
+      "num_pages": 448,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 25,
+    "model": "book.book",
+    "fields": {
+      "title": "The World as Will and Representation",
+      "authors": "Arthur Schopenhauer",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=KM6XiJqLhucC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "The German philosopher explains his thoughts about intellectual perception and abstract representation and critically analyzes Kant's ideas and teachings. Bibliogs",
+      "published_year": 1958,
+      "average_rating": 4.18,
+      "num_pages": 534,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 26,
+    "model": "book.book",
+    "fields": {
+      "title": "The Birth of Tragedy",
+      "authors": "Friedrich Wilhelm Nietzsche",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=5pzdCgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Explores the origins of Greek tragedy and the elements through which it achieved greatness, which include the opposing characteristics of Dionysian irrationality and Apollonian restraint.",
+      "published_year": 1995,
+      "average_rating": 3.98,
+      "num_pages": 92,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 27,
+    "model": "book.book",
+    "fields": {
+      "title": "Discourse on the Origin of Inequality",
+      "authors": "Jean-Jacques Rousseau",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=UNooAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A strikingly original inquiry into politics and human nature, the Discourse presents a theoretical view of people in a pre-social condition and the ensuing effects of civilization. The author develops a theory of evolution that prefigures Darwinism and encompasses aspects of ethics, sociology, and epistemology. One of the most influential works of the Enlightenment.",
+      "published_year": 2004,
+      "average_rating": 3.83,
+      "num_pages": 73,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 28,
+    "model": "book.book",
+    "fields": {
+      "title": "Moral Luck",
+      "authors": "Bernard Williams",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=wMGW2Ehldp8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A new volume of philosophical essays by Bernard Williams. The book is a successor to Problems of the Self, but whereas that volume dealt mainly with questions of personal identity, Moral Luck centres on questions of moral philosophy and the theory of rational action. That whole area has of course been strikingly reinvigorated over the last deacde, and philosophers have both broadened and deepened their concerns in a way that now makes much earlier moral and political philosophy look sterile and trivial. Moral Luck contains a number of essays that have contributed influentially to this development. Among the recurring themes are the moral and philosophical limitations of utilitarianism, the notion of integrity, relativism, and problems of moral conflict and rational choice. The work presented here is marked by a high degree of imagination and acuity, and also conveys a strong sense of psychological reality. The volume will be a stimulating source of ideas and arguments for all philosophers and a wide range of other readers.",
+      "published_year": 1981,
+      "average_rating": 4.1,
+      "num_pages": 188,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 29,
+    "model": "book.book",
+    "fields": {
+      "title": "Nietzsche: Daybreak",
+      "authors": "Friedrich Nietzsche",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=FBFNTQlSa-8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A new edition of this important work of Nietzsche's 'mature' philosophy.",
+      "published_year": 1997,
+      "average_rating": 4.17,
+      "num_pages": 292,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 30,
+    "model": "book.book",
+    "fields": {
+      "title": "The Cambridge Companion to Schopenhauer",
+      "authors": "Christopher Janaway",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=PnUF-UjhX_oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A collection of specially-commissioned essays analysing Schopenhauer's philosophy.",
+      "published_year": 1999,
+      "average_rating": 3.89,
+      "num_pages": 494,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 31,
+    "model": "book.book",
+    "fields": {
+      "title": "Practical Philosophy",
+      "authors": "Immanuel Kant",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=0hCsbUjFiBwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "This 1997 book was the first English translation of all Kant's writings on moral and political philosophy in a single volume.",
+      "published_year": 1999,
+      "average_rating": 4.09,
+      "num_pages": 704,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 32,
+    "model": "book.book",
+    "fields": {
+      "title": "Introduction to Phenomenology",
+      "authors": "Robert Sokolowski",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=v8lFXWE3g1YC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Introductory volume, presenting the major philosophical doctrines of phenomenology.",
+      "published_year": 2000,
+      "average_rating": 3.96,
+      "num_pages": 248,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 33,
+    "model": "book.book",
+    "fields": {
+      "title": "From Socrates to Sartre",
+      "authors": "T. Z. Lavine",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=SJXdTo3s54YC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Surveys the essential features, schools, systems, and developments in Western philosophy",
+      "published_year": 1984,
+      "average_rating": 3.93,
+      "num_pages": 426,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 34,
+    "model": "book.book",
+    "fields": {
+      "title": "The Origin of Consciousness in the Breakdown of the Bicameral Mind",
+      "authors": "Julian Jaynes",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=6Q0kSEh_beUC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "At the heart of this classic, seminal book is Julian Jaynes's still-controversial thesis that human consciousness did not begin far back in animal evolution but instead is a learned process that came about only three thousand years ago and is still developing. The implications of this revolutionary scientific paradigm extend into virtually every aspect of our psychology, our history and culture, our religion -- and indeed our future.",
+      "published_year": 2000,
+      "average_rating": 4.24,
+      "num_pages": 491,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 35,
+    "model": "book.book",
+    "fields": {
+      "title": "On Certainty",
+      "authors": "Ludwig Wittgenstein",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=ZGHG6WkVF5EC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Written over the last 18 months of his life and inspired by his interest in G. E. Moore's defence of common sense, this much discussed volume collects Wittgenstein's reflections on knowledge and certainty, on what it is to know a proposition for sure.",
+      "published_year": 1991,
+      "average_rating": 4.16,
+      "num_pages": 114,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 36,
+    "model": "book.book",
+    "fields": {
+      "title": "The Ethics of Authenticity",
+      "authors": "Charles Taylor",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=f11Q-RNvmSEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Everywhere we hear of decline, of a world that was better before the influence of modernity. While some lament Western culture's slide into relativism and nihilism and others celebrate the trend as a liberating sort of progress, Taylor calls on us to face the moral and political crises of our time, and to make the most of modernity's challenges.",
+      "published_year": 1992,
+      "average_rating": 3.9,
+      "num_pages": 152,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 37,
+    "model": "book.book",
+    "fields": {
+      "title": "Sources of the Self",
+      "authors": "Charles Taylor",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=qoG8asWZRGoC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Discusses contemporary notions of the self, and examines their origins, development, and effects",
+      "published_year": 1989,
+      "average_rating": 4.19,
+      "num_pages": 624,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 38,
+    "model": "book.book",
+    "fields": {
+      "title": "The Rebel",
+      "authors": "Albert Camus",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=q6L0Ria0P0wC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The author traces the ways in which the theories of philosophers such as Rousseau, Hegel and Marx have been misused.",
+      "published_year": 1991,
+      "average_rating": 4.14,
+      "num_pages": 320,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 39,
+    "model": "book.book",
+    "fields": {
+      "title": "Basic Writings of Nietzsche",
+      "authors": "Friedrich Wilhelm Nietzsche",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=n5CcS5VUJWoC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Six works selected from Nietzsche's writings, including \"The Birth of Tragedy,\" \"Beyond Good and Evil,\" and \"On the Genealogy of Morals\" reflect the philosopher's critique of Western morality and insights into Christianity and art.",
+      "published_year": 2000,
+      "average_rating": 4.11,
+      "num_pages": 862,
+      "price": 170000
+    }
+  },
+  {
+    "pk": 40,
+    "model": "book.book",
+    "fields": {
+      "title": "The Denial of Death",
+      "authors": "Ernest Becker",
+      "categories": "Philosophy",
+      "thumbnail": "http://books.google.com/books/content?id=wP9zAgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Drawing from religion and the human sciences, particularly psychology after Freud, the author attempts to demonstrate that the fear of death is man's central concern",
+      "published_year": 1997,
+      "average_rating": 4.17,
+      "num_pages": 336,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 41,
+    "model": "book.book",
+    "fields": {
+      "title": "Jamie's Kitchen",
+      "authors": "Jamie Oliver",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=WG3SNQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The No 1 bestseller I love this book. It's the very first thing I ever wrote, and I never thought the person worst at English in my school would end up writing a book. It's largely made up of recipes scribbled on the back of order forms and beer mats, collected together in a black bin liner that my wife almost threw away twice - it's a miracle this book ever came to be! Because of this book, a lot of blokes were henpecked into doing a bit of cooking. Good job too! The salad and pasta recipes are real winners, but the one people still talk about all the time is my perfect roast chicken, with its herb butter stuffed right under the skin of the bird. I think one of the best things about the recipes in The Naked Chef is that the ingredients are totally accessible. It's the key element to my cooking: simple, quick recipes that can be made by everyone. Happy cooking. Love, Jamie O xxx 'Simply brilliant cooking, and Jamie's recipes are a joy' Nigel Slater 'When teenagers start asking for Jamie Oliver's cook books as a present, you know the tide has turned' Daily Telegraph",
+      "published_year": 2004,
+      "average_rating": 3.89,
+      "num_pages": 336,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 42,
+    "model": "book.book",
+    "fields": {
+      "title": "Everyday Pasta",
+      "authors": "Giada De Laurentiis",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=oMiU2rsyyWYC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Collects Italian cookery recipes that range from classic favorites to innovative new dishes and are accompanied by simple instructions for making fresh pasta and a selection of side dishes.",
+      "published_year": 2007,
+      "average_rating": 4.09,
+      "num_pages": 240,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 43,
+    "model": "book.book",
+    "fields": {
+      "title": "Shakespeare's Kitchen",
+      "authors": "Francine Segan",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=ecwAAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A noted food historian brings to life the classic foods of William Shakepeare's world in a series of updated, easy-to-prepare recipes, drawn from sixteenth- and seventeenth-century cookbooks, for a variety of tasty dishes that include Grilled Tuna with Carrots and Sweet Onions, Fish Bisque with Chestnuts and Artichokes, and Red Snapper with Caviar, among others. 35,000 first printing.",
+      "published_year": 2003,
+      "average_rating": 3.99,
+      "num_pages": 288,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 44,
+    "model": "book.book",
+    "fields": {
+      "title": "Essentials of Classic Italian Cooking",
+      "authors": "Marcella Hazan",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=TKFCulve1Z0C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "With more than 100 illustrations by Karin Kretschman.",
+      "published_year": 1992,
+      "average_rating": 4.17,
+      "num_pages": 704,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 45,
+    "model": "book.book",
+    "fields": {
+      "title": "I Like You",
+      "authors": "Amy Sedaris",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=n_nAlgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Offers a guide to the art of entertaining, furnishing recipes, helpful advice, and offbeat tips on how to host parties with extraordinary flair, covering such topics as unique dishes to serve alcoholics and arts and crafts ideas.",
+      "published_year": 2006,
+      "average_rating": 3.87,
+      "num_pages": 304,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 46,
+    "model": "book.book",
+    "fields": {
+      "title": "Curries Without Worries",
+      "authors": "Sudha Koul",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=G4qUHAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A thorough but accessible guide to Indian cuisine explains spices and seasonings and offers more than sixty-five simple, easy-to-prepare recipes for vegetarian and non-vegetarian curries, roasts, kebabs, and more. Reprint.",
+      "published_year": 1996,
+      "average_rating": 3.98,
+      "num_pages": 160,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 47,
+    "model": "book.book",
+    "fields": {
+      "title": "The Barefoot Contessa Cookbook",
+      "authors": "Ina Garten",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=5eIVAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Presents a collection of recipes for appetizers, entrees, desserts, and accompaniments",
+      "published_year": 1999,
+      "average_rating": 4.15,
+      "num_pages": 256,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 48,
+    "model": "book.book",
+    "fields": {
+      "title": "In the Kitchen with Rosie",
+      "authors": "Rosie Daley",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=GR41sSVe84gC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "With 50 recipes and 8 pages of full-color photographs by Micheal McLaughlin.",
+      "published_year": 1994,
+      "average_rating": 3.03,
+      "num_pages": 142,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 49,
+    "model": "book.book",
+    "fields": {
+      "title": "Every Night Italian",
+      "authors": "Giuliano Hazan",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=GkQA_gwlRhsC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Reveals the secret to preparing quick, flavorful Italian cuisine in recipes for appetizers, antipasto, main entrees, salads, and desserts",
+      "published_year": 2000,
+      "average_rating": 3.75,
+      "num_pages": 256,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 50,
+    "model": "book.book",
+    "fields": {
+      "title": "The Bon Appetit Cookbook",
+      "authors": "Barbara Fairchild",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=7VE-AQAAIAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "You can always tell a Bon App?tit recipe: It's a sophisticated twist on a beloved classic, and it's easy to make...our goal is to give you the cumulative expertise of Bon App?tit, with more than 1,200 recipes that will be delicious, first time out.\"?Barbara Fairchild First launched in 1956, Bon App?tit is America?s favorite and most widely read food and entertaining magazine, with a circulation of 1.3 million. Now, for the first time, The Bon App?tit Cookbook brings together more than 1,200 of the magazine?s all-time best-loved recipes for every meal and occasion. The book is accessible and user-friendly -- just like the magazine -- and includes clear explanations and exclusive tips from the Bon App?tit test kitchen, along with 59 detailed illustrations of ingredients and techniques. The recipes have been skillfully selected to represent the very best of the magazine?s sophisticated, foolproof style: easy-to-make dishes that incorporate a variety of regional and international influences -- recipes that are delicious the first time out. From Cajun-Grilled Shrimp to Artichoke and Mushroom Lasagna to Hot and Sticky Apricot-Glazed Chicken to Molasses Chewies with Brown Sugar Glaze, there are dishes that will tempt every palate. Complete with a gorgeous 32-page color insert and a simple yet elegant design throughout, The Bon App?tit Cookbook is a must for those who truly love to make and enjoy great food",
+      "published_year": 2006,
+      "average_rating": 4.06,
+      "num_pages": 816,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 51,
+    "model": "book.book",
+    "fields": {
+      "title": "The Minimalist Cooks at Home",
+      "authors": "Mark Bittman",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=F0Z6PQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "In a revised cookbook, the author of the award-winning How to Cook Everything presents dozens of delectable and accessible recipes, all of which utilize a few choice ingredients and simple preparation, for a wide range of tasty but sophisticated dishes, including 10-Minute Stir-Fried Chicken with Nuts, The Minimalist's Choucroute, and Paella, Fast and Easy.",
+      "published_year": 2002,
+      "average_rating": 3.91,
+      "num_pages": 240,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 52,
+    "model": "book.book",
+    "fields": {
+      "title": "Soups",
+      "authors": "Norman Kolpas",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=65dG-7BCymkC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Offers a variety of recipes for both hot and cold soups featuring vegetables, fruit, poultry, meat, or seafood, and includes tips on kitchen equipment, making basic stocks, and adding flavorful garnishes",
+      "published_year": 1993,
+      "average_rating": 3.93,
+      "num_pages": 108,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 53,
+    "model": "book.book",
+    "fields": {
+      "title": "Pies & Tarts",
+      "authors": "John Phillip Carroll",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=_S5_wyMY0iMC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Discusses pie making techniques and equipment and gathers pie and tart recipes that feature fruit, chocolate, pumpkin, and coconut",
+      "published_year": 1992,
+      "average_rating": 3.76,
+      "num_pages": 108,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 54,
+    "model": "book.book",
+    "fields": {
+      "title": "Ruby Ann's Down Home Trailer Park Cookbook",
+      "authors": "Ruby Ann Boxcar",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=bVf9SQKUumgC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Showcases the eccentric residents of the fictional High Chaparral Trailer Park of Pangburn, Arkansas, a community filled with sex, murder, topless dancing, secrets, and adultery, as they dish the dirt on their neighbors and provide such cost-effective recipes as Spam Rolls, Mayonnaises Cake, All Day Crock Pot Delight, and Honky Tonkin' Husband's Bread. Original.",
+      "published_year": 2002,
+      "average_rating": 4.09,
+      "num_pages": 240,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 55,
+    "model": "book.book",
+    "fields": {
+      "title": "Wookiee Cookies",
+      "authors": "Robin Davis",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=xmKf7BnQiqMC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A cookbook with a Star Wars theme includes such recipes as crazy cantina chili, Boba Fett-uccine, and C-3PO pancakes.",
+      "published_year": 1998,
+      "average_rating": 3.92,
+      "num_pages": 132,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 56,
+    "model": "book.book",
+    "fields": {
+      "title": "King Arthur Flour Whole Grain Baking",
+      "authors": null,
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=nXLcPAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A guide to whole grain baking explains how to use a variety of whole grains to create flavorful, sweet, and savory breads, cakes, cookies, pastries, and other baked goods, and features more than four hundred foolproof recipes.",
+      "published_year": 2006,
+      "average_rating": 4.13,
+      "num_pages": 544,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 57,
+    "model": "book.book",
+    "fields": {
+      "title": "Lidia's Italy",
+      "authors": "Tanya Bastianich Manuali",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=YwNwDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The popular TV chef offers a gastronomic tour of her native Italy, exploring the regional culinary traditions that have shaped her cooking, in a collection of 140 tempting recipes based on the cuisine of Rome, Sicily, Tuscany, and beyond.",
+      "published_year": 2007,
+      "average_rating": 4.21,
+      "num_pages": 384,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 58,
+    "model": "book.book",
+    "fields": {
+      "title": "Eat This Book",
+      "authors": "Tyler Florence",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=nF2PcyCJb0UC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Collects more than 150 recipes, ranging from appetizers to desserts, that emphasize bold, flavorful, and colorful foods that do not require a lot of time or effort to create.",
+      "published_year": 2005,
+      "average_rating": 3.92,
+      "num_pages": 287,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 59,
+    "model": "book.book",
+    "fields": {
+      "title": "Everyday Italian",
+      "authors": "Giada De Laurentiis",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=OVscTbz-Bq4C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Presents techniques of Italian home cookery, including more than one hundred recipes and advice on creating dishes for everyday meals and special occasions.",
+      "published_year": 2005,
+      "average_rating": 3.95,
+      "num_pages": 256,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 60,
+    "model": "book.book",
+    "fields": {
+      "title": "Paul Kirk's Championship Barbecue Sauces",
+      "authors": "Paul Kirk",
+      "categories": "Cooking",
+      "thumbnail": "http://books.google.com/books/content?id=5bri6MkeZuYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "The author offers up 175 recipes that impart bold zesty flavor to every cut of meat!",
+      "published_year": 1997,
+      "average_rating": 3.9,
+      "num_pages": 272,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 61,
+    "model": "book.book",
+    "fields": {
+      "title": "Inferno",
+      "authors": "Alex Irvine;Bob Kane",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=Jlaj2VfPofcC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "As a mad arsonist known as an Enfer scheme terrorizes the inhabitants of Gotham City, a fire at Arkham Asylum is engineered to provide an escape opportunity for its most infamous inmate, the Joker, who comes up with a scheme to launch the ultimate crime wave, disguised as the Caped Crusader himself. Original.",
+      "published_year": 2006,
+      "average_rating": 3.6,
+      "num_pages": 339,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 62,
+    "model": "book.book",
+    "fields": {
+      "title": "Black Hole",
+      "authors": "Charles Burns",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=dtuEDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Seattle teenagers of the 1970s are suddenly faced with a devastating, disfiguring, and incurable plague that spreads only through sexual contact.",
+      "published_year": 2005,
+      "average_rating": 3.83,
+      "num_pages": 368,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 63,
+    "model": "book.book",
+    "fields": {
+      "title": "Good-bye, Chunky Rice",
+      "authors": "Craig Thompson",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=zD2FDwAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Chunky Rice, a small green turtle, embarks on an ocean voyage, where he meets a shady skipper and conjoined twins, Ruth and Livonia, but he also leaves behind his mouse deer girlfriend Dandel, who sends him letters in a bottle. Reprint. 20,000 first printing.",
+      "published_year": 2006,
+      "average_rating": 3.8,
+      "num_pages": 125,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 64,
+    "model": "book.book",
+    "fields": {
+      "title": "Will Eisner's New York",
+      "authors": "Will Eisner",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=RdOf4x1MKz4C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A quartet of graphic works explores the lives and landscapes of the diverse inhabitants of the urban jungle of the Big Apple.",
+      "published_year": 2006,
+      "average_rating": 4.36,
+      "num_pages": 421,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 65,
+    "model": "book.book",
+    "fields": {
+      "title": "Calvin and Hobbes: Sunday Pages 1985-1995",
+      "authors": "Bill Watterson",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=3-7lJJFjDnAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Compiles a selection of Sunday cartoons selected and commented upon by the author.",
+      "published_year": 2001,
+      "average_rating": 4.71,
+      "num_pages": 96,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 66,
+    "model": "book.book",
+    "fields": {
+      "title": "The Complete Calvin and Hobbes",
+      "authors": "Bill Watterson",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=wmjG5g4Yx7gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Brings together every \"Calvin and Hobbes\" cartoon that has ever appeared in syndication, along with stories and poems from classic collections.",
+      "published_year": 2005,
+      "average_rating": 4.82,
+      "num_pages": 1456,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 67,
+    "model": "book.book",
+    "fields": {
+      "title": "The Best of Ray Bradbury",
+      "authors": "Ray Bradbury",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=6K-_AAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Collects top adaptations of the popular science-fiction author's works, in a fan's compendium that includes \"Come Into My Cellar,\" \"The Golden Apples of the Sun,\" and \"A Sound of Thunder.\" Original.",
+      "published_year": 2003,
+      "average_rating": 4.07,
+      "num_pages": 162,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 68,
+    "model": "book.book",
+    "fields": {
+      "title": "The Marvel Comics Encyclopedia",
+      "authors": "DK Publishing, Inc",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=PFllPwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Introduces all of Marvel's greatest heroes and villains, with full details about their powers and careers.",
+      "published_year": 2006,
+      "average_rating": 4.36,
+      "num_pages": 352,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 69,
+    "model": "book.book",
+    "fields": {
+      "title": "The Punisher",
+      "authors": "Garth Ennis;Jeff Youngquist;John McCrea",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=XD2wPQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The most deadly man in the Marvel Universe--The Punisher--might finally meet his match as the Man Without Fear, Daredevil, the Amazing Spider-Man, and the X-Men's Wolverine join forces to finally bring Frank Castle's killing spree to an end.",
+      "published_year": 2004,
+      "average_rating": 4.03,
+      "num_pages": 144,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 70,
+    "model": "book.book",
+    "fields": {
+      "title": "New X-Men Omnibus",
+      "authors": "Grant Morrison;Frank Quitely",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=7yJ3wgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Sixteen million mutants dead... and that was just the beginning! In one bold stroke, writer Grant Morrison (The Invisibles, JLA, Fantastic Four: 1234) propelled the X-Men into the 21st century - masterminding a challenging new direction for Marvel's mutant heroes that began with the destruction of Genosha and never let up. Regarded as the most innovative thinker of the current comic-book renaissance, Morrison proceeded to turn the mutant-hero genre on its ear. Gone were the gaudy spandex costumes - replaced by slick, black leather and an attitude to match. Now, his entire Eisner Award-nominated run on New X-Men is collected in one deluxe hardcover! Collects New X-Men #114-154 and Annual 2001",
+      "published_year": 2006,
+      "average_rating": 4.22,
+      "num_pages": 1096,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 71,
+    "model": "book.book",
+    "fields": {
+      "title": "Astonishing X-Men - Volume 1",
+      "authors": "Joss Whedon",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=IVdiDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Cyclops and Emma Frost want to reunite the X-Men in order to astonish the world, but as the demand for a \"mutant cure\" escalates, they find some unexpected allies and adversaries.",
+      "published_year": 2004,
+      "average_rating": 4.17,
+      "num_pages": 152,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 72,
+    "model": "book.book",
+    "fields": {
+      "title": "Homecoming",
+      "authors": "Richard K. Morgan;Bill Sienkiewicz;Goran Parlov",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=2wDmAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The deadliest agent in the Marvel Universe has finally gotten out of the spy game, and she's not asking for much, just a life of her own. When a sudden assassination attempt provides a harsh reality check, the former Soviet agent tracks a string of international killings that will lead her back to a Russia she can barely recognize. Collects Black Widow #1-6.",
+      "published_year": 2005,
+      "average_rating": 3.81,
+      "num_pages": 144,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 73,
+    "model": "book.book",
+    "fields": {
+      "title": "Toast",
+      "authors": "Charles Stross",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=LZznAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Short story collection containing such gems as \"Antibodies,\" \"Bear Trap,\" \"Extracts from the Club Diary,\" \"A Colder War,\" \"TOAST: A con report,\" \"A Boy and His God,\" \"Ship of Fools,\" \"Dechlorinating the Moderator,\" \"Yellow Snow\", \"Big Brother Iron\", \"Lobsters\".",
+      "published_year": 2005,
+      "average_rating": 3.8,
+      "num_pages": 247,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 74,
+    "model": "book.book",
+    "fields": {
+      "title": "Superheroes and Philosophy",
+      "authors": "Thomas V. Morris;Matt Morris;William Irwin",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=EaWMBwS83l8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "A collection of essays by various authors that explore how superheroes deal with a variety of philosophical issues.",
+      "published_year": 2005,
+      "average_rating": 3.87,
+      "num_pages": 300,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 75,
+    "model": "book.book",
+    "fields": {
+      "title": "The Essential Calvin And Hobbes",
+      "authors": "Bill Watterson",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=JuDInK3YtyMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "The Essential Calvin and Hobbes is an over-size anthology-type book including an original 16-page story and color Sunday cartoons.",
+      "published_year": 1988,
+      "average_rating": 4.64,
+      "num_pages": 256,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 76,
+    "model": "book.book",
+    "fields": {
+      "title": "Rent Girl",
+      "authors": "Michelle Tea",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=xI_9wAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The story of a young lesbian's advetures in and out of the sex industry on both the East and West Coasts of America.",
+      "published_year": 2004,
+      "average_rating": 3.79,
+      "num_pages": 239,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 77,
+    "model": "book.book",
+    "fields": {
+      "title": "The Wood Boy",
+      "authors": "Raymond E. Feist;Sean J. Jordan;Tad Williams",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=gytTAAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Provides two coming of age tales that are adapted from short stories.",
+      "published_year": 2005,
+      "average_rating": 3.63,
+      "num_pages": 144,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 78,
+    "model": "book.book",
+    "fields": {
+      "title": "The Invisibles, the Invisible Kingdom",
+      "authors": "Grant Morrison",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=x5r4PgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Imagine if every paranoid fantasy, every conspiracy theory, every alleged cover-up and government deception, every tabloid story you've ever heard ...were true. Discover a world where paranoia is a survival skill and the only hope for mankind is a group of unconventional occultist freedom fighters-The Invisibles.",
+      "published_year": 2002,
+      "average_rating": 4.19,
+      "num_pages": 288,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 79,
+    "model": "book.book",
+    "fields": {
+      "title": "On the Road to Perdition",
+      "authors": "Max Allan Collins;Jose Luis Garcia-Lopez",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=VqrUX4kZZE8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Renegade mob hitman Michael O'Sullivan--the \"Angel of Death\"--and his older son Michael Jr. rob rural banks to strike back at the Capone gang in hopes of forcing them to surrender Connor Looney, the man responsible for killing the rest of the family.",
+      "published_year": 2003,
+      "average_rating": 3.54,
+      "num_pages": 96,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 80,
+    "model": "book.book",
+    "fields": {
+      "title": "Superman",
+      "authors": "Mark Waid;Leinil Francis Yu",
+      "categories": "Comics & Graphic Novels",
+      "thumbnail": "http://books.google.com/books/content?id=L8Z6QgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Reweaves the Superman legend incorporating his established history, from escape as an infant from the doomed planet Krypton to arrival as reporter Clark Kent at the Daily Planet.",
+      "published_year": 2004,
+      "average_rating": 4.13,
+      "num_pages": 287,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 81,
+    "model": "book.book",
+    "fields": {
+      "title": "The Lord of the Rings",
+      "authors": "John Ronald Reuel Tolkien",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=LwO-vgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Since it was first published in 1954, 'The Lord of the Rings' has been a book people have treasured. Steeped in unrivalled magic and otherworldliness, its sweeping fantasy has touched the hearts of young and old alike. Well over 100 million copies of its many editions have been sold around the world, and occasional collectorsâ€™ editions become prized and valuable items of publishing. With the epic trilogy now being released on film, images of the characters and landscapes have become eagerly sought after. Much of the look of the movies is based on Alan Leeâ€™s paintings, giving this Centenary edition of Tolkienâ€™s great work new relevance for the ever-growing number of fans.",
+      "published_year": 2002,
+      "average_rating": 4.49,
+      "num_pages": 1200,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 82,
+    "model": "book.book",
+    "fields": {
+      "title": "Taken at the Flood",
+      "authors": "Agatha Christie",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=3gWlxIFlMEwC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A Few Weeks After Marrying An Attractive Young Widow, Gordon Cloade Is Tragically Killed By A Bomb Blast In The London Blitz. Overnight, The Former Mrs Underhay Finds Herself In Sole Possession Of The Cloade Family Fortune. Shortly Afterwards, Hercule Poirot Receives A Visit From The Dead Man S Sister-In-Law Who Claims She Has Been Warned By Spirits That Mrs Underhay S First Husband Is Still Alive. Poirot Has His Suspicions When He Is Asked To Find A Missing Person Guided Only By The Spirit World. Yet What Mystifies Poirot Most Is The Woman S True Motive For Approaching Him&",
+      "published_year": 2002,
+      "average_rating": 3.71,
+      "num_pages": 352,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 83,
+    "model": "book.book",
+    "fields": {
+      "title": "The Love of the Last Tycoon",
+      "authors": "F. Scott Fitzgerald",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=3EDbEHca_k8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "Depicts the inner-workings of the Hollywood movie industry and its impact on the fabric of American life.",
+      "published_year": 1994,
+      "average_rating": 3.65,
+      "num_pages": 169,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 84,
+    "model": "book.book",
+    "fields": {
+      "title": "Star Wars, Episode I",
+      "authors": "George Lucas",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=fE3XAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The complete screenplay for the latest \"Star Wars\" motion picture, which tells the story of Darth Vader's youth, includes reproductions of storyboards from the director's studio",
+      "published_year": 1999,
+      "average_rating": 3.92,
+      "num_pages": 150,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 85,
+    "model": "book.book",
+    "fields": {
+      "title": "Judy Moody Saves the World!",
+      "authors": "Megan McDonald",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=xDIRB5yF6jEC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "When Judy Moody gets serious about protecting the environment, her little brother Stink thinks she is overdoing it, but she manages to inspire her third grade class to undertake an award-winning, environment-saving project. Reprint.",
+      "published_year": 2004,
+      "average_rating": 4.03,
+      "num_pages": 160,
+      "price": 70000
+    }
+  },
+  {
+    "pk": 86,
+    "model": "book.book",
+    "fields": {
+      "title": "The Voyage of the Dawn Treader",
+      "authors": "Clive Staples Lewis",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=fDD3CfYb70cC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The \"Dawn Treader\" is the first ship Narnia has seen in centuries. King Caspian has built it for his voyage to find the seven lords, good men whom his evil uncle Mizaz banished when he usurped the throne. The journey takes Edmund, Lucy, and their cousin Eustace to the Eastern Islands, beyond the Silver Sea, toward Aslan's country at the End of the World. Illustrations.",
+      "published_year": 1970,
+      "average_rating": 4.09,
+      "num_pages": 216,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 87,
+    "model": "book.book",
+    "fields": {
+      "title": "The Last of the Really Great Whangdoodles",
+      "authors": "Julie Andrews Edwards",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=D-iftWFTCcgC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The Whangdoodle was once the wisest, the kindest, and the most extraordinary creature in the world. Then he disappeared and created a wonderful land for himself and all the other remarkable animals -- the ten-legged Sidewinders, the little furry Flukes, the friendly Whiffle Bird, and the treacherous, \"oily\" Prock. It was an almost perfect place where the last of the really great Whangdoodles could rule his kingdom with \"peace, love and a sense of fun\"-- apart from and forgotten by people. But not completely forgotten. Professor Savant believed in the Whangdoodle. And when he told the three Potter children of his search for the spectacular creature, Lindy, Tom, and Ben were eager to reach Whangdoodleland. With the Professor's help, they discovered the secret way. But waiting for them was the scheming Prock, who would use almost any means to keep them away from his beloved king. Only by skill and determination were the four travelers able to discover the last of the really great Whangdoodles and grant him his heart's desire. Julie Andrews Edwards, star of stage and screen, has written a unique and beloved story that has become a modern classic. The Last of the Really Great Whangdoodles is sure to continue to delight readers everywhere. This edition includes a new foreword by the author.",
+      "published_year": 1996,
+      "average_rating": 4.25,
+      "num_pages": 209,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 88,
+    "model": "book.book",
+    "fields": {
+      "title": "Today I Feel Silly & Other Moods That Make My Day",
+      "authors": "Jamie Lee Curtis",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=s_2GIF_c0T8C&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Today I feel silly. Mom says it's the heat. I put rouge on the cat and gloves on my feet. I ate noodles for breakfast and pancakes at night. I dressed like a star and was quite a sight. Today I am sad, my mood's heavy and gray. There's a frown on my face and it's been there all day. My best friend and I had a really big fight. She said that I tattled and I know that she's right. Silly, cranky, excited, or sad--everyone has moods that can change each day. Jamie Lee Curtis's zany and touching verse, paired with Laura Cornell's whimsical and original illustrations, helps kids explore, identify, and, even have fun with their ever-changing moods. Here's another inspired picture book from the bestselling author-illustrator team of Tell Me Again About the Night I Was Born and When I Was Little: A Four-Year-Old's Memoir of Her Youth.",
+      "published_year": 1998,
+      "average_rating": 4.15,
+      "num_pages": 40,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 89,
+    "model": "book.book",
+    "fields": {
+      "title": "The Missing Piece Meets the Big O",
+      "authors": "Shel Silverstein",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=-m4gwgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The missing piece sat alone waiting for someone to come along and take it somewhere.... The different ones it encounters - and what it discovers in its helplessness - are portrayed with simplicity and compassion in the words and drawings of Shel Silverstein.",
+      "published_year": 1981,
+      "average_rating": 4.33,
+      "num_pages": 104,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 90,
+    "model": "book.book",
+    "fields": {
+      "title": "Lafcadio, the Lion Who Shot Back",
+      "authors": "Shel Silverstein",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=lmeJRAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "You don't have to shoot me,\" says the young lion. \"I will be your rug and I will lie in front of your fireplace and I won't move a muscle and you can sit on me and toast all the marshmallows you want. I love marshmallows.\" But the hunter will not listen to reason, so what is there for a young lion to do? After eating up the hunter, Lafcadio takes the gun home and practices and practices until he becomes the world's greatest sharp-shooter. Now dressed in starched collars and fancy suits, and enjoying all the marshmallows he wants, Lafcadio is pampered and admired wherever he goes. But is a famous, successful, and admired lion a happy lion? Or is he a lion at all? Told and drawn with wit and gusto, Shel Silverstein's modern fable speaks not only to children but to us all",
+      "published_year": 1963,
+      "average_rating": 4.15,
+      "num_pages": 112,
+      "price": 100000
+    }
+  },
+  {
+    "pk": 91,
+    "model": "book.book",
+    "fields": {
+      "title": "Star Wars, Episode I",
+      "authors": "George Lucas",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=fE3XAQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The complete screenplay for the latest \"Star Wars\" motion picture, which tells the story of Darth Vader's youth, includes reproductions of storyboards from the director's studio",
+      "published_year": 1999,
+      "average_rating": 3.92,
+      "num_pages": 150,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 92,
+    "model": "book.book",
+    "fields": {
+      "title": "Cloudy With a Chance of Meatballs",
+      "authors": "Judi Barrett",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=fQU6UrNfe4MC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The beloved, bestselling tale of edible weather is brought to life! If food dropped like rain from the sky, wouldn't it be marvelous! Or would it? It could, after all, be messy. And you'd have no choice. What if you didn't like what fell? Or what if too much came? Have you ever thought of what it might be like to be squashed flat by a pancake?",
+      "published_year": 1982,
+      "average_rating": 4.16,
+      "num_pages": 32,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 93,
+    "model": "book.book",
+    "fields": {
+      "title": "Harry Potter and the Goblet of Fire",
+      "authors": "J. K. Rowling",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=5eSxngEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "The summer holidays are dragging on and Harry Potter can't wait for the start of the school year. It is his fourth year at Hogwarts School of Witchcraft and Wizardry and there are spells to be learnt and (unluckily) Potions and Divination lessons to be attended. But Harry can't know that the atmosphere is darkening around him, and his worst enemy is preparing a fate that it seems will be inescapable . . . With characteristic wit, fast-paced humour and marvellous emotional depth, J.K. Rowling has proved herself yet again to be a master story-teller.",
+      "published_year": 2000,
+      "average_rating": 4.55,
+      "num_pages": 636,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 94,
+    "model": "book.book",
+    "fields": {
+      "title": "Gossip Girl 7",
+      "authors": "Cecily von Ziegesar",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=rN8qWqIJSwAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+      "description": "The further adventures of New York's busiest private-school vixens.",
+      "published_year": 2005,
+      "average_rating": 3.62,
+      "num_pages": 240,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 95,
+    "model": "book.book",
+    "fields": {
+      "title": "The Maiden",
+      "authors": "Cynthia Harrod-Eagles",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=o37aGwAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "1720: political intrigue besets the kingdom as the Stuarts try to claim the throne occupied by the Hanoverians and the Morlands have to use all their wiles to keep their fortunes intact. Jeremy Morland, sole heir to his father's will, has no option but to marry to cold-hearted Lady Mary to secure Hanoverian protection and safeguard his inheritance. Then the rebellion of '45 and the bloody massacre at Culloden thrust his daughter Jemima into the spotlight as the saviour of the family. Independent, single-minded, and a rare beauty, Jemima is a capable caretaker of the Morland heritage. Although Morland Place and its lands suffer from the excesses of her dissolute husband, Jemima's quiet courage earns her an abiding love and loyalty.",
+      "published_year": 1985,
+      "average_rating": 4.27,
+      "num_pages": 413,
+      "price": 125000
+    }
+  },
+  {
+    "pk": 96,
+    "model": "book.book",
+    "fields": {
+      "title": "The Tangled Thread",
+      "authors": "Cynthia Harrod-Eagles",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=tyqLOQAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "In the Morland Dynasty Series, the majestic sweep of English history is richly and movingly portrayed through the fictional lives of the Morland family. The 22 volumes that comprise this elegantly produced series offer entertainment of the most compelling kind.",
+      "published_year": 1987,
+      "average_rating": 4.31,
+      "num_pages": 474,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 97,
+    "model": "book.book",
+    "fields": {
+      "title": "Exile's Valor",
+      "authors": "Mercedes Lackey",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=ID7QjgEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "A former captain in the Army of Karse, Herald Alberich must protect King Sendar's daughter, Selenay, the new queen of Valdemar, from the devious members of the Valdemaran Council who unleash a campaign to strip her of her power. Reprint.",
+      "published_year": 2004,
+      "average_rating": 4.18,
+      "num_pages": 438,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 98,
+    "model": "book.book",
+    "fields": {
+      "title": "Stone of Farewell",
+      "authors": "Tad Williams",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=BVZVPgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "Battered remnants of the human army flee the evil forces of Ineluki the Storm King, desperately seeking a mysterious sanctuary called the Stone of Farewell and a solution to their dire peril. Reprint.",
+      "published_year": 2005,
+      "average_rating": 4.1,
+      "num_pages": 608,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 99,
+    "model": "book.book",
+    "fields": {
+      "title": "Black Sun Rising",
+      "authors": "C. S. Friedman",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=22VxNgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "On the distant world of Erna, four people--Priest, Adept, Sorcerer, and Apprentice--are drawn together to battle the forces of evil, led by the demonic fae, a soul-destroying force that preys on the human mind. Reprint.",
+      "published_year": 2005,
+      "average_rating": 3.93,
+      "num_pages": 496,
+      "price": 150000
+    }
+  },
+  {
+    "pk": 100,
+    "model": "book.book",
+    "fields": {
+      "title": "Judy Moody Saves the World!",
+      "authors": "Megan McDonald",
+      "categories": "Fiction",
+      "thumbnail": "http://books.google.com/books/content?id=xDIRB5yF6jEC&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+      "description": "When Judy Moody gets serious about protecting the environment, her little brother Stink thinks she is overdoing it, but she manages to inspire her third grade class to undertake an award-winning, environment-saving project. Reprint.",
+      "published_year": 2004,
+      "average_rating": 4.03,
+      "num_pages": 160,
+      "price": 150000
+    }
+  }
+]
