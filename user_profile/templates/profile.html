@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    .flex-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 25vh;
+        margin-right: 15vw;
+        margin-left: 15vw;
+    }
+
+    .card-menu {
+        box-shadow: 4px 2px 16px #f2f2f2;
+        border-radius: 12px;
+        border-width: 0.2rem;
+        padding-left: 4vw;
+        padding-top: 2rem;
+        padding-right: 12vw;
+        padding-bottom: 2rem;
+    }
+
+    .card-biodata {
+        box-shadow: 4px 2px 16px #f2f2f2;
+        border-radius: 12px;
+        border-width: 0.2rem;
+        padding-left: 3rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-right: 2rem;
+        width: 100vw;
+    }
+
+    .biodata {
+        display: grid;
+        grid-template-columns: auto 8vw;
+
+    }
+    
+    .edit {
+        grid-column: 2;
+    }
+
+    .biodata-contents {
+        grid-column: 1;
+        display: grid;
+        grid-row-gap: 1.6rem;
+    }
+
+    .menu {
+        display: grid;
+        row-gap: 1.5rem;
+
+    }
+
+    .exit {
+        padding-top: 1.5rem;
+    }
+
+</style>
+
+<div class="flex-container">
+    <div class="card-menu">
+        <div class="menu">
+            <h4>
+                <a>
+                    Biodata
+                </a>
+            </h4>
+            <h4>
+                <a>
+                    Wallet
+                </a>
+            </h4>
+            <h4 class="exit">
+                <a>
+                    Keluar
+                </a>
+            </h4>
+        </div>
+    </div>
+
+    <div class="card-biodata">
+        <div class="biodata">
+            <button class="edit">
+                Edit
+            </button>
+            <div class="biodata-contents-edit">
+                <div class="name">
+                    <h6> Nama </h6>
+                    <p> nama </p>
+                </div>
+                <div class="email">
+                    <h6> Email </h6>
+                    <p> email </p>
+                </div>
+                <div class="gender">
+                    <h6> Jenis Kelamin </h6>
+                    <input type="radio" id="male" name="gender" value="male" checked="true">
+                    <label for="male"> Laki-Laki </label>
+                    <input type="radio" id="female" name="gender" value="female" disabled="true">
+                    <label for="female"> Perempuan </label>
+                </div>
+                <div class="birthday">
+                    <h6> Tanggal Lahir </h6>
+                    <input type="date" id="birthday" name="birthday" readOnly="readonly">
+                </div>
+                <div class="phone-number">
+                    <h6> Nomor Telepon </h6>
+                    <p> 085157878087 </p>
+                </div>
+            </div>
+
+            <div class="biodata-contents-edit" style ="display: none">
+                <div class="name">
+                    <h6> Nama </h6>
+                    <input type="text" id="input-name" value="nama">
+                </div>
+                <div class="email">
+                    <h6> Email </h6>
+                    <input type="text" id="input-email" value="email">
+                </div>
+                <div class="gender">
+                    <h6> Jenis Kelamin </h6>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male"> Laki-Laki </label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female"> Perempuan </label>
+                </div>
+                <div class="birthday">
+                    <h6> Tanggal Lahir </h6>
+                    <input type="date" id="birthday-input" name="birthday">
+                </div>
+                <div class="phone-number">
+                    <h6> Nomor Telepon </h6>
+                    <input type="text" id="number-input" value="nomor">
+                </div>
+                <input type="submit">
+        </div>
+    </div>
+    
+</div>
+<script>
+
+
+</script>
+{% endblock content %}
