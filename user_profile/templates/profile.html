@@ -24,7 +24,7 @@
         padding-bottom: 2rem;
     }
 
-    .card-biodata {
+    .card-contents {
         box-shadow: 4px 2px 16px #f2f2f2;
         border-radius: 12px;
         border-width: 0.2rem;
@@ -48,6 +48,12 @@
     .biodata-contents {
         grid-column: 1;
         display: grid;
+        grid-row-gap: 1.2rem;
+    }
+
+    .biodata-contents-edit {
+        grid-column: 1;
+        display: none;
         grid-row-gap: 1.6rem;
     }
 
@@ -61,18 +67,19 @@
         padding-top: 1.5rem;
     }
 
+    
 </style>
 
 <div class="flex-container">
     <div class="card-menu">
         <div class="menu">
             <h4>
-                <a>
+                <a id="selection-biodata" onclick="showBiodata()" style="color: #0032d6">
                     Biodata
                 </a>
             </h4>
             <h4>
-                <a>
+                <a id="selection-wallet" onclick="showWallet()">
                     Wallet
                 </a>
             </h4>
@@ -84,68 +91,123 @@
         </div>
     </div>
 
-    <div class="card-biodata">
+    <div class="card-contents" id="biodata">
         <div class="biodata">
-            <button class="edit">
+            <button class="edit" onclick="editBiodata()">
                 Edit
             </button>
-            <div class="biodata-contents-edit">
+            <div class="biodata-contents" id="biodata-contents">
                 <div class="name">
-                    <h6> Nama </h6>
+                    <h5> Nama </h5>
                     <p> nama </p>
                 </div>
                 <div class="email">
-                    <h6> Email </h6>
+                    <h5> Email </h5>
                     <p> email </p>
                 </div>
                 <div class="gender">
-                    <h6> Jenis Kelamin </h6>
+                    <h5> Jenis Kelamin </h5>
                     <input type="radio" id="male" name="gender" value="male" checked="true">
                     <label for="male"> Laki-Laki </label>
                     <input type="radio" id="female" name="gender" value="female" disabled="true">
                     <label for="female"> Perempuan </label>
                 </div>
                 <div class="birthday">
-                    <h6> Tanggal Lahir </h6>
+                    <h5> Tanggal Lahir </h5>
                     <input type="date" id="birthday" name="birthday" readOnly="readonly">
                 </div>
                 <div class="phone-number">
-                    <h6> Nomor Telepon </h6>
+                    <h5> Nomor Telepon </h5>
                     <p> 085157878087 </p>
                 </div>
             </div>
 
-            <div class="biodata-contents-edit" style ="display: none">
+            <form>
+            <div class="biodata-contents-edit" id="biodata-contents-edit">
                 <div class="name">
-                    <h6> Nama </h6>
+                    <h5> Nama </h5>
                     <input type="text" id="input-name" value="nama">
                 </div>
                 <div class="email">
-                    <h6> Email </h6>
+                    <h5> Email </h5>
                     <input type="text" id="input-email" value="email">
                 </div>
                 <div class="gender">
-                    <h6> Jenis Kelamin </h6>
+                    <h5> Jenis Kelamin </h5>
                     <input type="radio" id="male" name="gender" value="male">
                     <label for="male"> Laki-Laki </label>
                     <input type="radio" id="female" name="gender" value="female">
                     <label for="female"> Perempuan </label>
                 </div>
                 <div class="birthday">
-                    <h6> Tanggal Lahir </h6>
+                    <h5> Tanggal Lahir </h5>
                     <input type="date" id="birthday-input" name="birthday">
                 </div>
                 <div class="phone-number">
-                    <h6> Nomor Telepon </h6>
-                    <input type="text" id="number-input" value="nomor">
-                </div>
-                <input type="submit">
+                    <h5> Nomor Telepon </h5>
+                    <input type="text" id="number-input" value="085157878087">
+                </div
+                <br>
+                <input type="submit" id="button-submit">
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card-contents" id="wallet" style="display: none">
+        <div class="wallet">
+            <h5>Saldo Kamu:</h5>
+            <h2>Rp saldo,00</h2>
+            <br>
+            <button id="button-topup">
+                Tambah Saldo
+            </button>
         </div>
     </div>
     
 </div>
+
+
+
+    </div>
 <script>
 
+    async function editBiodata() {
+        var biodataEdit=document.getElementById("biodata-contents-edit");
+        var biodata=document.getElementById("biodata-contents");
+
+        if (biodataEdit.style.display == "grid") {
+            biodataEdit.style.display = "none";
+            biodata.style.display = "grid";
+
+        }
+        else {
+            biodataEdit.style.display = "grid";
+            biodata.style.display = "none";
+        }
+    };
+
+    async function showWallet() {
+        var wallet=document.getElementById("wallet");
+        var biodata=document.getElementById("biodata");
+
+        wallet.style.display= "inline";
+        biodata.style.display= "none";
+
+        document.getElementById("selection-wallet").style.color= "#0032d6";
+        document.getElementById("selection-biodata").style.color= "#000000";
+    };
+
+    async function showBiodata() {
+        var wallet=document.getElementById("wallet");
+        var biodata=document.getElementById("biodata");
+
+        wallet.style.display= "none";
+        biodata.style.display= "inline";
+
+        document.getElementById("selection-wallet").style.color= "#000000";
+        document.getElementById("selection-biodata").style.color= "#0032d6";
+    };
 
 </script>
 {% endblock content %}
