@@ -20,6 +20,7 @@ from FormRequest.views import form_request, data, delete
 from main.views import login_user, logout_user, register
 
 urlpatterns = [
+    path('', include('main.urls')),
     path('admin/', admin.site.urls),
     path("api/books", include("book.urls")),
     path('', include("user_profile.urls")),

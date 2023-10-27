@@ -401,7 +401,7 @@
                 body: new FormData(document.querySelector('#form-edit-biodata'))
             }).then(refreshBiodata)
             document.getElementById("form-edit-biodata").reset()
-
+            switchModeBiodata()
             return false
         }
     }

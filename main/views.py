@@ -6,7 +6,8 @@ import datetime
 from django.http import HttpResponseRedirect 
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
-
+from book.models import Book
+from random import sample
 
 # Create your views here.
 def register(request):
@@ -29,7 +30,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse("user_profile:show_profile")) 
+            response = HttpResponseRedirect(reverse("main:show_main"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
         else:
@@ -42,3 +43,20 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('login'))
     response.delete_cookie('last_login')
     return response
+
+# Create your views here.
+def show_main(request):
+    # Get all books
+    books = Book.objects.all()
+
+    # Randomly shuffle the books
+    shuffled_books = sample(list(books), len(books))
+
+    for book in shuffled_books:
+        book.formatted_price = "Rp {:,.0f}".format(book.price)
+
+    context = {
+        'books': shuffled_books
+    }
+
+    return render(request, "main.html", context)
