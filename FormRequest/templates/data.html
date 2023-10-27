@@ -1,91 +1,153 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Data</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h2>Data Form:</h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Judul Buku</th>
-      <th scope="col">Pengarang</th>
-      <th scope="col">Kategori</th>
-      <th scope="col">Tahun Terbit</th>
-      <th scope="col"></th>
-    </tr>
-  </thead>
-  <tbody id="formData"></tbody>
-</table>
+{% block meta %}
+    <title>Data</title>
+{% endblock meta %}
+
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif&display=swap" rel="stylesheet">
+
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        background: #f2f2f2;
+        height: 100%;
+    }
+    .custom-padding {
+        padding-right: 10px;
+    }
+    .playfair {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+    }
+    .noto-serif {
+        font-family: 'Noto Serif', serif;
+    }
+    .name-class {
+        margin-right: 10px;
+    }
+    .background-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .card {
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #f2f2f2;
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1rem;
+        color: #555;
+    }
+
+    th {
+        text-align: center;
+    }
+</style>
+
+
+<div class="container mt-5 background-container">
+    <h1 class="playfair mb-3">LibPanda</h1>
+
+    <table class="table table-striped table-bordered mt-3">
+        <thead>
+            <tr>
+                <th scope="col">Judul Buku</th>
+                <th scope="col" class="col-3">Penulis</th>
+                <th scope="col" class="col-2">Kategori</th>
+                <th scope="col" class="col-2">Tahun Terbit</th>
+                <th scope="col" class="col-1"></th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider" id="formData"></tbody>
+    </table>
+
+</div>
 
 <script>
-// Fungsi untuk menampilkan data buku
-function displayBooks() {
-  // Ambil data buku dari localStorage
-  var books = JSON.parse(localStorage.getItem("books")) || [];
-
-  // Dapatkan elemen tbody
-  var formData = document.getElementById("formData");
-
-  // Bersihkan tabel sebelum menampilkan data
-  formData.innerHTML = '';
-
-  // Loop melalui setiap buku dan tambahkan ke tabel
-  for (var i = 0; i < books.length; i++) {
-    var row = document.createElement("tr");
-    
-    var titleCell = document.createElement("td");
-    titleCell.textContent = books[i].title;
-    row.appendChild(titleCell);
-    
-    var authorCell = document.createElement("td");
-    authorCell.textContent = books[i].author;
-    row.appendChild(authorCell);
-    
-    var categoryCell = document.createElement("td");
-    categoryCell.textContent = books[i].category;
-    row.appendChild(categoryCell);
-    
-    var yearCell = document.createElement("td");
-    yearCell.textContent = books[i].year;
-    row.appendChild(yearCell);
-
-    // Tambahkan tombol hapus
-    var deleteCell = document.createElement("td");
-    var deleteButton = document.createElement("button");
-    deleteButton.textContent = "Hapus";
-    
-    // Gunakan factory function untuk membuat fungsi onclick
-    deleteButton.onclick = makeOnClickFunction(i);
-
-    deleteCell.appendChild(deleteButton);
-    row.appendChild(deleteCell);
-    
-    formData.appendChild(row);
-  }
-}
-
-// Factory function untuk membuat fungsi onclick
-function makeOnClickFunction(index) {
-  return function() {
+  // Fungsi untuk menampilkan data buku
+  function displayBooks() {
     // Ambil data buku dari localStorage
     var books = JSON.parse(localStorage.getItem("books")) || [];
+  
+    // Dapatkan elemen tbody
+    var formData = document.getElementById("formData");
+  
+    // Bersihkan tabel sebelum menampilkan data
+    formData.innerHTML = '';
+  
+    // Loop melalui setiap buku dan tambahkan ke tabel
+    for (var i = 0; i < books.length; i++) {
+      var row = document.createElement("tr");
+      
+      var titleCell = document.createElement("td");
+      titleCell.textContent = books[i].title;
+      row.appendChild(titleCell);
+      
+      var authorCell = document.createElement("td");
+      authorCell.textContent = books[i].author;
+      row.appendChild(authorCell);
+      
+      var categoryCell = document.createElement("td");
+      categoryCell.textContent = books[i].category;
+      row.appendChild(categoryCell);
+      
+      var yearCell = document.createElement("td");
+      yearCell.textContent = books[i].year;
+      row.appendChild(yearCell);
+  
+      // Tambahkan tombol hapus
+      var deleteCell = document.createElement("td");
+      var deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.className = "btn btn-danger btn-sm"; // Menambahkan kelas Bootstrap
 
-    // Hapus buku dari array
-    books.splice(index, 1);
-
-    // Simpan array buku ke localStorage
-    localStorage.setItem("books", JSON.stringify(books));
-
-    // Tampilkan ulang buku
-    displayBooks();
-  };
-}
-
-// Tampilkan buku saat halaman dimuat
-displayBooks();
-</script>
-
-</body>
-</html>
+      
+      // Gunakan factory function untuk membuat fungsi onclick
+      deleteButton.onclick = makeOnClickFunction(i);
+  
+      deleteCell.appendChild(deleteButton);
+      row.appendChild(deleteCell);
+      
+      formData.appendChild(row);
+    }
+  }
+  
+  // Factory function untuk membuat fungsi onclick
+  function makeOnClickFunction(index) {
+    return function() {
+      // Ambil data buku dari localStorage
+      var books = JSON.parse(localStorage.getItem("books")) || [];
+  
+      // Hapus buku dari array
+      books.splice(index, 1);
+  
+      // Simpan array buku ke localStorage
+      localStorage.setItem("books", JSON.stringify(books));
+  
+      // Tampilkan ulang buku
+      displayBooks();
+    };
+  }
+  
+  // Tampilkan buku saat halaman dimuat
+  displayBooks();
+  </script>
+  
+  </body>
+  {% endblock content %}

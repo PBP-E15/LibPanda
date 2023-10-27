@@ -1,34 +1,79 @@
-<!DOCTYPE html>
-<html>
-<head>
+{% extends 'base.html' %}
+
+{% block meta %}
     <title>Form Request Buku Baru</title>
-</head>
-<body>
+{% endblock meta %}
 
-<h2>Form Request Buku Baru</h2>
+{% block content %}
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        background: #f2f2f2;
+        height: 100%;
+    }
+    .brand {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 20px;
+        margin-bottom: 30px;
+    }
+    .background-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .centered-text {
+        text-align: center;
+    }
+    .playfair {
+        font-family: 'Playfair Display', serif;
+        font-weight: bold; 
+    }
+</style>
 
-<form id="bookForm">
-  Judul Buku:
-  <input type="text" id="title" name="title" required placeholder="Judul Buku">
-  <br><br>
-  Penulis:
-  <input type="text" id="author" name="author" required placeholder="Penulis Buku">
-  <br><br>
-  Kategori:
-  <select id="category" name="category" required>
-    <option value="">Pilih Kategori Buku</option>
-    <option value="Fiksi">Fiksi</option>
-    <option value="Sejarah">Sejarah</option>
-    <option value="Komik & Novel Grafis">Komik & Novel Grafis</option>
-    <option value="Makanan & Minuman">Makanan & Minuman</option>
-    <option value="Filosofi">Filosofi</option>
-  </select>
-  <br><br>
-  Tahun Terbit:
-  <input type="number" id="year" name="year" style="width:125px" required placeholder="Tahun Terbit Buku">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
+<div class="container mt-4">
+    <div class="row justify-content-center align-items-top min-vh-100">
+        <div class="col-md-6">
+            <div class="background-container">
+                <h2 class="centered-text">Form Request Buku Baru</h2>
+                
+                <form id="bookForm">
+                    <label class=mb-2>Judul Buku:</label>
+                    <input type="text" id="title" name="title" required placeholder="Judul Buku" class="form-control">
+                    <br>
+                    <label class=mb-2>Penulis:</label>
+                    <input type="text" id="author" name="author" required placeholder="Penulis Buku" class="form-control">
+                    <br>
+                    <label class=mb-2>Kategori:</label>
+                    <select id="category" name="category" required class="form-select">
+                        <option value="">Pilih Kategori Buku</option>
+                        <option value="Fiksi">Fiksi</option>
+                        <option value="Sejarah">Sejarah</option>
+                        <option value="Komik & Novel Grafis">Komik & Novel Grafis</option>
+                        <option value="Makanan & Minuman">Makanan & Minuman</option>
+                        <option value="Filosofi">Filosofi</option>
+                    </select>
+                    <br>
+                    <label class=mb-2>Tahun Terbit:</label>
+                    <input type="number" id="year" name="year" required placeholder="Tahun Terbit Buku" class="form-control">
+                    <br><br>
+                    <div class="form-group mb-3 d-grid gap-2">
+                        <button class="btn btn-primary login_btn" type="submit">
+                             Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
 document.getElementById("bookForm").addEventListener("submit", function(event){
@@ -55,8 +100,9 @@ document.getElementById("bookForm").addEventListener("submit", function(event){
   
   // Bersihkan form
   document.getElementById("bookForm").reset();
+
+  // Tampilkan pop-up
+  alert('Submit berhasil!');
 });
 </script>
-
-</body>
-</html>
+{% endblock content %}
