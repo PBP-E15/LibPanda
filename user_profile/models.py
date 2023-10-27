@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Biodata(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     gender = models.CharField(max_length=255)
@@ -10,6 +10,6 @@ class Biodata(models.Model):
     phone_number = models.CharField(max_length=255)
 
 class Wallet(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     balance = models.IntegerField()
     
