@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/books", include("book.urls")),
     path('', include("user_profile.urls")),
+    path('',include("search_page.urls")),
     path('form-request', form_request, name='form_request'),
     path('data', data, name='data'),
     path('register/', register, name='register'), 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'book',
     'user_profile',
     'FormRequest',
+    'search_page',
 ]
 
 MIDDLEWARE = [
