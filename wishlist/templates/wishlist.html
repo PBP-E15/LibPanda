@@ -1,6 +1,23 @@
-
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
-<p>{{ class }}<p>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+</head>
+<body>
+    <h1>Wishlist</h1>
+    <div class="wishlist">
+        {% for item in wishlist_items %}
+        <div class="card">
+            <img src="{{ item.book.thumbnail }}" alt="{{ item.book.title }}">
+            <h2>{{ item.book.title }}</h2>
+            <p>Penulis: {{ item.book.authors }}</p>
+            <p>Kategori: {{ item.book.categories }}</p>
+            <p>Tahun terbit: {{ item.book.published_Year }}</p>
+            <p>Rating: {{ item.book.average_rating }}</p>
+            <p>Harga: {{ item.book.price }}</p>
+            <a href="{% url 'remove_from_wishlist' item.id %}">Hapus dari Wishlist</a>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
