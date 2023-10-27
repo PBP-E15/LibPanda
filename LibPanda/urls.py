@@ -16,16 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from FormRequest.views import form_request, data, delete
+from FormRequest.views import request_book
 from main.views import login_user, logout_user, register
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("api/books", include("book.urls")),
-    path('form-request', form_request, name='form_request'),
-    path('data', data, name='data'),
     path('register/', register, name='register'), 
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),  
-    path('delete/', delete, name='delete'),   
+    path('request-book/', request_book, name='request_book'),
 ]

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-    <title>Form Request Buku Baru</title>
+    <title>Request Buku</title>
 {% endblock meta %}
 
 {% block content %}
@@ -42,67 +42,16 @@
     <div class="row justify-content-center align-items-top min-vh-100">
         <div class="col-md-6">
             <div class="background-container">
-                <h2 class="centered-text">Form Request Buku Baru</h2>
-                
-                <form id="bookForm">
-                    <label class=mb-2>Judul Buku:</label>
-                    <input type="text" id="title" name="title" required placeholder="Judul Buku" class="form-control">
-                    <br>
-                    <label class=mb-2>Penulis:</label>
-                    <input type="text" id="author" name="author" required placeholder="Penulis Buku" class="form-control">
-                    <br>
-                    <label class=mb-2>Kategori:</label>
-                    <select id="category" name="category" required class="form-select">
-                        <option value="">Pilih Kategori Buku</option>
-                        <option value="Fiksi">Fiksi</option>
-                        <option value="Sejarah">Sejarah</option>
-                        <option value="Komik & Novel Grafis">Komik & Novel Grafis</option>
-                        <option value="Makanan & Minuman">Makanan & Minuman</option>
-                        <option value="Filosofi">Filosofi</option>
-                    </select>
-                    <br>
-                    <label class=mb-2>Tahun Terbit:</label>
-                    <input type="number" id="year" name="year" required placeholder="Tahun Terbit Buku" class="form-control">
-                    <br><br>
-                    <div class="form-group mb-3 d-grid gap-2">
-                        <button class="btn btn-primary login_btn" type="submit">
-                             Submit
-                        </button>
-                    </div>
+                <h2 class="centered-text">Request Buku</h2>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button class="btn btn-primary login_btn" type="submit">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-document.getElementById("bookForm").addEventListener("submit", function(event){
-  event.preventDefault()
-  
-  var title = document.getElementById("title").value;
-  var author = document.getElementById("author").value;
-  var category = document.getElementById("category").value;
-  var year = document.getElementById("year").value;
-  
-  // Ambil data buku dari localStorage
-  var books = JSON.parse(localStorage.getItem("books")) || [];
-  
-  // Tambahkan buku baru ke array
-  books.push({
-    title: title,
-    author: author,
-    category: category,
-    year: year
-  });
-  
-  // Simpan array buku ke localStorage
-  localStorage.setItem("books", JSON.stringify(books));
-  
-  // Bersihkan form
-  document.getElementById("bookForm").reset();
 
-  // Tampilkan pop-up
-  alert('Submit berhasil!');
-});
-</script>
 {% endblock content %}
