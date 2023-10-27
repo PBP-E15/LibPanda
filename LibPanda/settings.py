@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'main',
     'book',
     'user_profile',
+    'FormRequest',
 ]
 
 MIDDLEWARE = [

@@ -14,14 +14,21 @@ from user_profile.models import Biodata, Wallet
 
 # @login_required(login_url='/login')
 def show_profile(request):
-    # biodata = Biodata.objects.filter(user=request.user)
-    # wallet = Wallet.objects.filter(user=request.user)
-    #
-    context = {
-    #     'name': request.user.username,
-    #     'biodata' : biodata,
-    #     'wallet' : wallet,
-    }
+    try:
+        biodata = Biodata.objects.filter(user=request.user)
+        wallet = Wallet.objects.filter(user=request.user)
+
+        context = {
+            'name': request.user.username,
+            'biodata' : biodata,
+            'wallet' : wallet,
+        }
+    except:
+
+
+        context = {
+    
+        }
 
     return render(request, "profile.html", context)
 

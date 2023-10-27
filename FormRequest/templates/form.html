@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Request Buku Baru</title>
+</head>
+<body>
+
+<h2>Form Request Buku Baru</h2>
+
+<form id="bookForm">
+  Judul Buku:
+  <input type="text" id="title" name="title" required placeholder="Judul Buku">
+  <br><br>
+  Penulis:
+  <input type="text" id="author" name="author" required placeholder="Penulis Buku">
+  <br><br>
+  Kategori:
+  <select id="category" name="category" required>
+    <option value="">Pilih Kategori Buku</option>
+    <option value="Fiksi">Fiksi</option>
+    <option value="Sejarah">Sejarah</option>
+    <option value="Komik & Novel Grafis">Komik & Novel Grafis</option>
+    <option value="Makanan & Minuman">Makanan & Minuman</option>
+    <option value="Filosofi">Filosofi</option>
+  </select>
+  <br><br>
+  Tahun Terbit:
+  <input type="number" id="year" name="year" style="width:125px" required placeholder="Tahun Terbit Buku">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<script>
+document.getElementById("bookForm").addEventListener("submit", function(event){
+  event.preventDefault()
+  
+  var title = document.getElementById("title").value;
+  var author = document.getElementById("author").value;
+  var category = document.getElementById("category").value;
+  var year = document.getElementById("year").value;
+  
+  // Ambil data buku dari localStorage
+  var books = JSON.parse(localStorage.getItem("books")) || [];
+  
+  // Tambahkan buku baru ke array
+  books.push({
+    title: title,
+    author: author,
+    category: category,
+    year: year
+  });
+  
+  // Simpan array buku ke localStorage
+  localStorage.setItem("books", JSON.stringify(books));
+  
+  // Bersihkan form
+  document.getElementById("bookForm").reset();
+});
+</script>
+
+</body>
+</html>
