@@ -60,26 +60,37 @@
 <script>
 $(document).ready(function() {
     $("#submit-btn").click(function() {
-        var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
-        $.ajax({
-            type: "POST",
-            data: {
-                csrfmiddlewaretoken: csrfToken,
-                title: $("#id_title").val(),
-                author: $("#id_author").val(),
-                category: $("#id_category").val(),
-                year: $("#id_year").val()
-            },
-            success: function(response) {
-                showMessage("<p class='text-success'>Buku berhasil disimpan.</p>", 3000); // Tampilkan pesan selama 3 detik
-                resetForm("book-form");
-            },
-            error: function() {
-                showMessage("<p class='text-danger'>Terjadi kesalahan saat mengirim data.</p>", 3000); // Tampilkan pesan selama 3 detik
-            }
-        });
+        var title = $("#id_title").val();
+        var author = $("#id_author").val();
+        var category = $("#id_category").val();
+        var year = $("#id_year").val();
+
+        if (title && author && category && year) {
+            // Semua field telah diisi, maka lakukan pengiriman data
+            var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
+            $.ajax({
+                type: "POST",
+                data: {
+                    csrfmiddlewaretoken: csrfToken,
+                    title: title,
+                    author: author,
+                    category: category,
+                    year: year
+                },
+                success: function(response) {
+                    showMessage("<p class='text-success'>Buku berhasil disimpan.</p>", 3000);
+                    resetForm("book-form");
+                },
+                error: function() {
+                    showMessage("<p class='text-danger'>Terjadi kesalahan saat mengirim data.</p>", 3000);
+                }
+            });
+        } else {
+            showMessage("<p class='text-danger'>Mohon isi semua field terlebih dahulu.</p>", 3000);
+        }
     });
 });
+
 
 function resetForm(formId) {
     var form = document.getElementById(formId);
