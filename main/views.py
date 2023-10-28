@@ -9,6 +9,7 @@ import datetime
 from django.http import HttpResponseRedirect 
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+
 # Create your views here.
 def show_main(request):
     # Get all books
