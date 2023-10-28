@@ -5,17 +5,10 @@
 {% endblock meta %}
 
 {% block content %}
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
     body {
         background: #f2f2f2;
         height: 100%;
-    }
-    .brand {
-        font-size: 20px;
-        font-weight: bold;
-        margin-top: 20px;
-        margin-bottom: 30px;
     }
     .background-container {
         background-color: #ffffff;
@@ -32,21 +25,23 @@
     .centered-text {
         text-align: center;
     }
-    .playfair {
-        font-family: 'Playfair Display', serif;
-        font-weight: bold; 
+    .form-control {
+        width: 100%;
+    }
+    button {
+        margin-top: 15px;
     }
 </style>
 
 <div class="container mt-4">
-    <div class="row justify-content-center align-items-top min-vh-100">
+    <div class="row justify-content-center align-items-top center-container">
         <div class="col-md-6">
             <div class="background-container">
-                <h2 class="centered-text">Request Buku</h2>
+                <h2 class="centered-text mb-4">Request Buku</h2>
                 <form method="post" id="book-form">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <div class="form-group mb-4 d-grid gap-2">
+                    <div class="mb-4 d-grid gap-2">
                         <button class="btn btn-primary login_btn" type="button" id="submit-btn">Submit</button>
                     </div>
                 </form>
@@ -66,7 +61,6 @@ $(document).ready(function() {
         var year = $("#id_year").val();
 
         if (title && author && category && year) {
-            // Semua field telah diisi, maka lakukan pengiriman data
             var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
             $.ajax({
                 type: "POST",
@@ -86,7 +80,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-            showMessage("<p class='text-danger'>Mohon isi semua field terlebih dahulu.</p>", 3000);
+            showMessage("<p class='text-danger'>Harap lengkapi semua informasi yang diperlukan.</p>", 3000);
         }
     });
 });
