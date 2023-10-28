@@ -43,15 +43,61 @@
         <div class="col-md-6">
             <div class="background-container">
                 <h2 class="centered-text">Request Buku</h2>
-                <form method="post">
+                <form method="post" id="book-form">
                     {% csrf_token %}
                     {{ form.as_p }}
-                    <button class="btn btn-primary login_btn" type="submit">Submit</button>
+                    <div class="form-group mb-4 d-grid gap-2">
+                        <button class="btn btn-primary login_btn" type="button" id="submit-btn">Submit</button>
+                    </div>
                 </form>
+                <div id="message"></div>
             </div>
         </div>
     </div>
 </div>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#submit-btn").click(function() {
+        var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
+        $.ajax({
+            type: "POST",
+            data: {
+                csrfmiddlewaretoken: csrfToken,
+                title: $("#id_title").val(),
+                author: $("#id_author").val(),
+                category: $("#id_category").val(),
+                year: $("#id_year").val()
+            },
+            success: function(response) {
+                $("#message").html("<p class='text-success'>Buku berhasil disimpan.</p>");
+                resetForm("book-form"); 
+            },
+            error: function() {
+                $("#message").html("<p class='text-danger'>Terjadi kesalahan saat mengirim data.</p>");
+            }
+        });
+    });
+});
 
+function resetForm(formId) {
+    var form = document.getElementById(formId);
+    if (form) {
+        form.reset();
+    } else {
+        console.log("Form not found with id: " + formId);
+    }
+}
+
+    
+function resetForm(formId) {
+    var form = document.getElementById(formId);
+    if (form) {
+        form.reset();
+    } else {
+        console.log("Form not found with id: " + formId);
+    }
+}
+</script>
 {% endblock content %}
