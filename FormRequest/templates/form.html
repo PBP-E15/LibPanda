@@ -71,11 +71,11 @@ $(document).ready(function() {
                 year: $("#id_year").val()
             },
             success: function(response) {
-                $("#message").html("<p class='text-success'>Buku berhasil disimpan.</p>");
-                resetForm("book-form"); 
+                showMessage("<p class='text-success'>Buku berhasil disimpan.</p>", 3000); // Tampilkan pesan selama 3 detik
+                resetForm("book-form");
             },
             error: function() {
-                $("#message").html("<p class='text-danger'>Terjadi kesalahan saat mengirim data.</p>");
+                showMessage("<p class='text-danger'>Terjadi kesalahan saat mengirim data.</p>", 3000); // Tampilkan pesan selama 3 detik
             }
         });
     });
@@ -90,14 +90,11 @@ function resetForm(formId) {
     }
 }
 
-    
-function resetForm(formId) {
-    var form = document.getElementById(formId);
-    if (form) {
-        form.reset();
-    } else {
-        console.log("Form not found with id: " + formId);
-    }
+function showMessage(message, duration) {
+    $("#message").html(message);
+    setTimeout(function() {
+        $("#message").empty();
+    }, duration);
 }
 </script>
 {% endblock content %}
