@@ -3,36 +3,32 @@ from .models import Book
 
 class BookForm(forms.ModelForm):
     CATEGORY_CHOICES = (
-        ('', 'Pilih kategori'),  
-        ('Fiksi', 'Fiksi'),
-        ('Sejarah', 'Sejarah'),
-        ('Makanan & Minuman', 'Makanan & Minuman'),
-        ('Komik & Novel Grafis', 'Komik & Novel Grafis'),
-        ('Filosofi', 'Filosofi'),
+        ('', 'Choose Category'),  
+        ('Fiction', 'Fiction'),
+        ('History', 'History'),
+        ('Cooking', 'Cooking'),
+        ('Graphic Novels', 'Graphic Novels'),
+        ('Philosophy', 'Philosophy'),
     )
 
     title = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'id': 'id_title', 'placeholder': 'Masukkan judul buku', 'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'id': 'id_title', 'placeholder': 'Enter the title of the book', 'class': 'form-control'}),
         required=True,
-        label='Judul Buku'  
     )
     author = forms.CharField(
         max_length=100,
-        widget=forms.TextInput(attrs={'id': 'id_author', 'placeholder': 'Masukkan nama penulis', 'class': 'form-control'}),
+        widget=forms.TextInput(attrs={'id': 'id_author', 'placeholder': 'Enter the author of the book', 'class': 'form-control'}),
         required=True,
-        label='Penulis' 
     )
     category = forms.ChoiceField(
         choices=CATEGORY_CHOICES,
-        widget=forms.Select(attrs={'id': 'id_category', 'placeholder': 'Pilih kategori', 'class': 'form-control'}),
-        required=True,
-        label='Kategori'  
+        widget=forms.Select(attrs={'id': 'id_category', 'placeholder': 'Choose Category', 'class': 'form-control'}),
+        required=True, 
     )
     year = forms.IntegerField(
-        widget=forms.NumberInput(attrs={'id': 'id_year', 'placeholder': 'Masukkan tahun terbit', 'class': 'form-control'}),
-        required=True,
-        label='Tahun Terbit'  
+        widget=forms.NumberInput(attrs={'id': 'id_year', 'placeholder': 'Enter the year the book was published', 'class': 'form-control'}),
+        required=True, 
     )
 
     class Meta:

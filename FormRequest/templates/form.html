@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-    <title>Request Buku</title>
+    <title>Book Request</title>
 {% endblock meta %}
 
 {% block content %}
@@ -33,11 +33,58 @@
     }
 </style>
 
-<div class="container mt-4">
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="https://i.ibb.co/brcxb2J/1698425247234.png" alt="Bootstrap" width="40" height="40">
+        </a>
+        <a class="navbar-brand nav-link" href="/" mb-0 h1><b>LibPanda</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <form class="d-flex ml-auto" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Book">
+                <button class="btn btn-outline-success" type="submit">
+                    <img src="https://cdn.icon-icons.com/icons2/2469/PNG/512/magnifier_magnifying_glass_icon_149435.png" alt="Bootstrap" width="25" height="25">
+                </button>
+            </form>
+            <div class="navbar-nav ml-auto col d-flex justify-content-end custom-padding">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/request-book">Request</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Wishlist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                                <style>svg{fill:#000000}</style>
+                                <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Hi, {{ name }}
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Profile</a></li>
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
     <div class="row justify-content-center align-items-top center-container">
         <div class="col-md-6">
             <div class="background-container">
-                <h2 class="centered-text mb-4">Request Buku</h2>
+                <h2 class="centered-text mb-4">Book Request</h2>
                 <form method="post" id="book-form">
                     {% csrf_token %}
                     {{ form.as_p }}
@@ -72,15 +119,15 @@ $(document).ready(function() {
                     year: year
                 },
                 success: function(response) {
-                    showMessage("<p class='text-success'>Buku berhasil disimpan.</p>", 3000);
+                    showMessage("<p class='text-success'>The book has been successfully saved</p>", 3000);
                     resetForm("book-form");
                 },
                 error: function() {
-                    showMessage("<p class='text-danger'>Terjadi kesalahan saat mengirim data.</p>", 3000);
+                    showMessage("<p class='text-danger'>An error occurred</p>", 3000);
                 }
             });
         } else {
-            showMessage("<p class='text-danger'>Harap lengkapi semua informasi yang diperlukan.</p>", 3000);
+            showMessage("<p class='text-danger'>Please fill out all required fields</p>", 3000);
         }
     });
 });
