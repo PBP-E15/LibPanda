@@ -346,7 +346,6 @@
         for (const [key, value] of form) {
             console.log(`${key} : ${value}`)
         }
-        console.log(pk)
 
         var action = confirm("Apakah informasi yang Anda masukkan sudah benar?")
         if (action) {
@@ -354,8 +353,10 @@
                 method: "POST",
                 body: new FormData(document.querySelector('#form-edit-biodata'))
             }).then(refreshBiodata)
+            // document.getElementById("navbar-name").innerHTML=form.get("name")
             document.getElementById("form-edit-biodata").reset()
             switchModeBiodata()
+
             return false
         }
     }

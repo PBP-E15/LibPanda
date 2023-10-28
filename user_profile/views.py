@@ -51,7 +51,7 @@ def show_profile(request):
 @csrf_exempt
 def edit_biodata(request, id):
     if request.method == 'POST':
-        biodata = Biodata.objects.get(pk=41)
+        biodata = Biodata.objects.get(pk=id)
     
         biodata.name = request.POST.get("name")
         biodata.email = request.POST.get("email")

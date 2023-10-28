@@ -41,7 +41,6 @@ def get_books_price_sorted_json(request):
 
         books[j + 1] = key
 
-
     return HttpResponse(serializers.serialize('json', books))
 
 
