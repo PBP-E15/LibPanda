@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages 
 import datetime
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect 
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
@@ -40,7 +41,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse('login'))
+    response = HttpResponseRedirect(reverse("main:show_main"))
     response.delete_cookie('last_login')
     return response
 
@@ -48,7 +49,7 @@ def logout_user(request):
 def show_main(request):
     # Get all books
     books = Book.objects.all()
-
+    
     # Randomly shuffle the books
     shuffled_books = sample(list(books), len(books))
 
@@ -56,7 +57,10 @@ def show_main(request):
         book.formatted_price = "Rp {:,.0f}".format(book.price)
 
     context = {
-        'books': shuffled_books
+        'books': shuffled_books,
+        'name' : request.user.username,
+        'user' : request.user
     }
 
     return render(request, "main.html", context)
+

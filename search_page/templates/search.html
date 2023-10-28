@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% block content %}
 
 <style>
@@ -14,7 +13,7 @@
         align-items: flex-start;
         justify-content: center;
         gap: 1rem;
-        margin-top: 25vh;
+        margin-top: 8vh;
         margin-right: 4vw;
         margin-left: 4vw;
         box-shadow: 4px 2px 16px #f2f2f2;
@@ -44,34 +43,27 @@
             <h2 class="table-title" style="grid-column: 2">Nama</h2>
             <div id="sort-categories">
                 <form id="sort-categories-form">
-                    <select id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sortCategories(this.value, document.getElementById('sort-price-select').value)">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sort(this.value, document.getElementById('sort-price-select').value, '')">
 
                     </select>
                 </form>
             </div>
             <div id="sort-price">
                 <form id="sort-price-form">
-                    <select id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sortPrices(this.value, document.getElementById('sort-categories-select').value)">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sort(document.getElementById('sort-categories-select').value, this.value, '')">
                         <option value='harga'>Harga</option>
                         <option value='harga-terendah'>Harga Terendah</option>
                         <option value='harga-tertinggi'>Harga Tertinggi</option>
                     </select>
                 </form>
             </div>
-
-            {% for book in books %}
-                <img class="table-img" src="{{book.thumbnail}}"/>
-                <h4 class="table-contents">{{book.title}}</h4>
-                <h4 class="table-contents">{{book.categories}}</h4>
-                <h4 class="table-contents">Rp {{book.price}},00</h4>
-            {% endfor %}
+        
     </div>
 </div>
 <script>
     async function getBooks() {
         return fetch("{% url 'search_page:get_books_json' %}").then((res) => res.json())
     }
-
     async function refreshCategories(choice) {
         var select = document.getElementById("sort-categories-select")
         const books = await getBooks()
@@ -97,11 +89,27 @@
         }
     }
     refreshCategories(null)
-
-    async function sortCategories(categories, price) {
-        console.log(price)
+    
+    async function formatSearchBar() {
+        var searchBar = document.getElementById("navbarSupportedContent")
+        let htmlString = `
+                 <div class="navbar-nav centered-text">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Book" id="search-bar">
+                    <button class="btn btn-outline-success" id="button-search" onclick="sort(document.getElementById('sort-categories-select').value, document.getElementById('sort-price-select').value, document.getElementById('search-bar').value)">
+                        <img src="https://cdn.icon-icons.com/icons2/2469/PNG/512/magnifier_magnifying_glass_icon_149435.png" alt="Bootstrap" width="25" height="25">
+                    </button>
+                  </div>
+        `
+        searchBar.innerHTML=htmlString
+    }
+    formatSearchBar()
+    async function sort(categories, price, search) {
         var tableBooks = document.getElementById("table-books")
         var books = await getBooks()
+        var pattern = new RegExp(search.toLowerCase())
+
+        let String = new Intl.NumberFormat("en-US");
+        let finalPrice = String.format();
 
         if (price == 'harga-tertinggi') {
             books = await getBooksPriceSorted()
@@ -116,14 +124,14 @@
                         <h2 class="table-title" style="grid-column: 2">Nama</h2>
                         <div id="sort-categories">
                             <form id="sort-categories-form">
-                                <select id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sortCategories(this.value, document.getElementById('sort-price-select').value)">
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sort(this.value, document.getElementById('sort-price-select').value, document.getElementById('search-bar').value)">
 
                                 </select>
                             </form>
                         </div>
                         <div id="sort-price">
                             <form id="sort-price-form">
-                                <select id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sortPrices(this.value, document.getElementById('sort-categories-select').value)">
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sort(document.getElementById('sort-categories-select').value, this.value, document.getElementById('search-bar').value)">
                                     <option value='harga'>Harga</option>
                                     <option value='harga-terendah'>Harga Terendah</option>
                                     <option value='harga-tertinggi'>Harga Tertinggi</option>
@@ -132,70 +140,14 @@
                         </div>`
 
         books.forEach((book) => {
-            if (`${book.fields.categories}` == categories) {
-                htmlString += `
-                    <img class="table-img" src="${book.fields.thumbnail}"/>
-                    <h4 class="table-contents">${book.fields.title}</h4>
-                    <h4 class="table-contents">${book.fields.categories}</h4>
-                    <h4 class="table-contents">Rp ${book.fields.price},00</h4>
-                `
-            }
-            else if (categories == "Semua Kategori") {
-                htmlString += `
-                    <img class="table-img" src="${book.fields.thumbnail}"/>
-                    <h4 class="table-contents">${book.fields.title}</h4>
-                    <h4 class="table-contents">${book.fields.categories}</h4>
-                    <h4 class="table-contents">Rp ${book.fields.price},00</h4>
-                `
-            }
-        })
-        tableBooks.innerHTML=htmlString
-        document.getElementById("sort-price-select").value=price
-        refreshCategories(categories)
-    }
-
-    async function getBooksPriceSorted() {
-        return fetch("{% url 'search_page:get_books_price_sorted_json' %}").then((res) => res.json())
-    }
-
-    async function sortPrices(price, categories) {
-        var tableBooks = document.getElementById("table-books")
-        
-        var books = await getBooksPriceSorted()
-        if (price == 'harga-tertinggi') {
-            books.reverse()
-        }
-        else if (price == 'harga') {
-            books = await getBooks()
-        }
-
-        let htmlString =`
-                        <h2 style="grid-column: 1"> </h2>
-                        <h2 class="table-title" style="grid-column: 2">Nama</h2>
-                        <div id="sort-categories">
-                            <form id="sort-categories-form">
-                                <select id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sortCategories(this.value, document.getElementById('sort-price-select').value)">
-
-                                </select>
-                            </form>
-                        </div>
-                        <div id="sort-price">
-                            <form id="sort-price-form">
-                                <select id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sortPrices(this.value, document.getElementById('sort-categories-select').value)">
-                                    <option value='harga'>Harga</option>
-                                    <option value='harga-terendah'>Harga Terendah</option>
-                                    <option value='harga-tertinggi'>Harga Tertinggi</option>
-                                </select>
-                            </form>
-                        </div>`
-
-            books.forEach((book) => {
+            if (pattern.test(book.fields.title.toLowerCase())) {
+                finalPrice = String.format(`${book.fields.price}`);
                 if (`${book.fields.categories}` == categories) {
                     htmlString += `
                     <img class="table-img" src="${book.fields.thumbnail}"/>
                     <h4 class="table-contents">${book.fields.title}</h4>
                     <h4 class="table-contents">${book.fields.categories}</h4>
-                    <h4 class="table-contents">Rp ${book.fields.price},00</h4>
+                    <h4 class="table-contents">Rp ${finalPrice}</h4>
                 `
                 }
                 else if (categories == "Semua Kategori") {
@@ -203,16 +155,20 @@
                     <img class="table-img" src="${book.fields.thumbnail}"/>
                     <h4 class="table-contents">${book.fields.title}</h4>
                     <h4 class="table-contents">${book.fields.categories}</h4>
-                    <h4 class="table-contents">Rp ${book.fields.price},00</h4>
+                    <h4 class="table-contents">Rp ${finalPrice}</h4>
                 `
                 }
-            })
-
+            }
+        })
         tableBooks.innerHTML=htmlString
-        refreshCategories(categories)
         document.getElementById("sort-price-select").value=price
+        refreshCategories(categories)
     }
+    sort("Semua Kategori", "harga", "a")
 
+    async function getBooksPriceSorted() {
+        return fetch("{% url 'search_page:get_books_price_sorted_json' %}").then((res) => res.json())
+    }
 
 </script>
 {% endblock content %}

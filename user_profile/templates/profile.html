@@ -14,7 +14,7 @@
         align-items: flex-start;
         justify-content: center;
         gap: 1rem;
-        margin-top: 25vh;
+        margin-top: 10vh;
         margin-right: 15vw;
         margin-left: 15vw;
     }
@@ -46,7 +46,7 @@
 
     }
     
-    .edit {
+    #edit {
         grid-column: 2;
     }
 
@@ -90,7 +90,7 @@
             </h4>
             <h4 class="exit">
                 <a href="{% url 'logout' %}">
-                    Keluar
+                    Logout
                 </a>
             </h4>
         </div>
@@ -98,76 +98,23 @@
 
     <div class="card-contents" id="biodata">
         <div class="biodata">
-            <button class="edit" onclick="switchModeBiodata()">
+            <button id="edit" class="btn btn-primary btn" onclick="switchModeBiodata()">
                 Edit
             </button>
             <div class="biodata-contents" id="biodata-contents">
-<!--                <div class="name">-->
-<!--                    <h5> Nama </h5>-->
-<!--                    <p> {{biodata.name}} </p>-->
-<!--                </div>-->
-<!--                <div class="email">-->
-<!--                    <h5> Email </h5>-->
-<!--                    <p> {{biodata.email}} </p>-->
-<!--                </div>-->
-<!--                <div class="gender">-->
-<!--                    <h5> Jenis Kelamin </h5>-->
-<!--                    <input type="radio" id="male" name="gender" value="male" checked="true">-->
-<!--                    <label for="male"> Laki-Laki </label>-->
-<!--                    <input type="radio" id="female" name="gender" value="female" disabled="true">-->
-<!--                    <label for="female"> Perempuan </label>-->
-<!--                </div>-->
-<!--                <div class="birthday">-->
-<!--                    <h5> Tanggal Lahir </h5>-->
-<!--                    <input type="date" id="birthday" name="birthday" readOnly="readonly" value="2004-05-04">-->
-<!--                </div>-->
-<!--                <div class="phone-number">-->
-<!--                    <h5> Nomor Telepon </h5>-->
-<!--                    <p> 085157878087 </p>-->
-<!--                </div>-->
+
             </div>
 
             <form id="form-edit-biodata">
             <div class="biodata-contents-edit" id="biodata-contents-edit">
-<!--                <div class="name">-->
-<!--                    <h5> Nama </h5>-->
-<!--                    <input type="text" id="input-name" name="name" value='{{biodata.name}}'>-->
-<!--                </div>-->
-<!--                <div class="email">-->
-<!--                    <h5> Email </h5>-->
-<!--                    <input type="text" id="input-email"  name="email" value="{{biodata.email}}">-->
-<!--                </div>-->
-<!--                <div class="gender">-->
-<!--                    <h5> Jenis Kelamin </h5>-->
-<!--                    <input type="radio" id="male" name="gender" value="male">-->
-<!--                    <label for="male"> Laki-Laki </label>-->
-<!--                    <input type="radio" id="female" name="gender" value="female">-->
-<!--                    <label for="female"> Perempuan </label>-->
-<!--                </div>-->
-<!--                <div class="birthday">-->
-<!--                    <h5> Tanggal Lahir </h5>-->
-<!--                    <input type="date" id="birthday-input" name="birthday" value="{{biodata.birthday}}">-->
-<!--                </div>-->
-<!--                <div class="phone-number">-->
-<!--                    <h5> Nomor Telepon </h5>-->
-<!--                    <input type="text" id="number-input" name="phone_number" value="{{biodata.phone_number}}">-->
-<!--                </div-->
-<!--                <br>-->
-<!--                <button type=button id="button-submit" onclick="editBiodata({{biodata.id}})"> Submit </button>-->
+
             </div>
             </form>
         </div>
     </div>
 
     <div class="card-contents" id="wallet" style="display: none">
-        <div class="wallet">
-            <h5>Saldo Kamu:</h5>
-            <h2>Rp {{wallet.balance}},00</h2>
-            <br>
-            <button id="button-topup" data-bs-toggle="modal" data-bs-target="#topUpModal">
-                Tambah Saldo
-            </button>
-        </div>
+        
     </div>
 </div>
 
@@ -197,8 +144,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" data-bs-dismiss="modal">Kembali</button>
-                <button type="button" id="button_topup" onclick="topup({{wallet.id}})" data-bs-dismiss="modal">Top Up</button>
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Kembali</button>
+                <button type="button" class="btn btn-primary btn-sm" id="button_topup" onclick="topup({{wallet.id}})" data-bs-dismiss="modal">Top Up</button>
             </div>
         </div>
     </div>
@@ -246,58 +193,62 @@
             `
 
             if (`${data.fields.gender}` == `male`) {
+
                 htmlString += `<div class="gender">
-                                <h5> Jenis Kelamin </h5>
-                                <input type="radio" id="male" name="gender" value="male" checked="true">
-                                <label for="male"> Laki-Laki </label>
-                                <input type="radio" id="female" name="gender" value="female" disabled="true">
-                                <label for="female"> Perempuan </label>
-                            </div>
+                                    <h5> Jenis Kelamin </h5>
+                                    <input type="radio" id="male" name="gender" value="male" checked="true">
+                                    <label for="male"> Laki-Laki </label>
+                                    <input type="radio" id="female" name="gender" value="female" disabled="true">
+                                    <label for="female"> Perempuan </label>
+                                </div>
                             `
 
                 htmlStringEdit += `<div class="gender">
-                                <h5> Jenis Kelamin </h5>
-                                <input type="radio" id="male" name="gender" value="male" checked="true">
-                                <label for="male"> Laki-Laki </label>
-                                <input type="radio" id="female" name="gender" value="female">
-                                <label for="female"> Perempuan </label>
-                            </div>
+                                        <h5> Jenis Kelamin </h5>
+                                        <input type="radio" id="male" name="gender" value="male" checked="true">
+                                        <label for="male"> Laki-Laki </label>
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female"> Perempuan </label>
+                                    </div>
                             `
             } else if (`${data.fields.gender}` == `female`) {
+
                 htmlString += `<div class="gender">
-                                <h5> Jenis Kelamin </h5>
-                                <input type="radio" id="male" name="gender" value="male" disabled="true">
-                                <label for="male"> Laki-Laki </label>
-                                <input type="radio" id="female" name="gender" value="female" checked="true">
-                                <label for="female"> Perempuan </label>
-                            </div>
+                                    <h5> Jenis Kelamin </h5>
+                                    <input type="radio" id="male" name="gender" value="male" disabled="true">
+                                    <label for="male"> Laki-Laki </label>
+                                    <input type="radio" id="female" name="gender" value="female" checked="true">
+                                    <label for="female"> Perempuan </label>
+                                </div>
                         `
                 htmlStringEdit += `<div class="gender">
-                                <h5> Jenis Kelamin </h5>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male"> Laki-Laki </label>
-                                <input type="radio" id="female" name="gender" value="female" checked="true">
-                                <label for="female"> Perempuan </label>
-                            </div>
+                                        <h5> Jenis Kelamin </h5>
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        <label for="male"> Laki-Laki </label>
+                                        <input type="radio" id="female" name="gender" value="female" checked="true">
+                                        <label for="female"> Perempuan </label>
+                                    </div>
                         `
             } else {
+
                 htmlString += `<div class="gender">
-                                <h5> Jenis Kelamin </h5>
-                                <input type="radio" id="male" name="gender" value="male" disabled="true">
-                                <label for="male"> Laki-Laki </label>
-                                <input type="radio" id="female" name="gender" value="female" disabled="true">
-                                <label for="female"> Perempuan </label>
-                            </div>
+                                    <h5> Jenis Kelamin </h5>
+                                    <input type="radio" id="male" name="gender" value="male" disabled="true">
+                                    <label for="male"> Laki-Laki </label>
+                                    <input type="radio" id="female" name="gender" value="female" disabled="true">
+                                    <label for="female"> Perempuan </label>
+                                </div>
                         `
                 htmlStringEdit += `<div class="gender">
-                                <h5> Jenis Kelamin </h5>
-                                <input type="radio" id="male" name="gender" value="male">
-                                <label for="male"> Laki-Laki </label>
-                                <input type="radio" id="female" name="gender" value="female">
-                                <label for="female"> Perempuan </label>
-                            </div>
+                                        <h5> Jenis Kelamin </h5>
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        <label for="male"> Laki-Laki </label>
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female"> Perempuan </label>
+                                    </div>
                         `
             }
+
             htmlString += `
             <div class="birthday">
                 <h5> Tanggal Lahir </h5>
@@ -319,9 +270,8 @@
                 <input type="text" id="number-input" name="phone_number" value="${data.fields.phone_number}">
             </div
             <br>
-            <button type=button id="button-submit" onclick="editBiodata(${data.pk})"> Submit </button>
+            <button class="btn btn-outline-primary" type="button" id="button-submit" onclick="editBiodata(${data.pk})"> Submit </button>
             `
-
         })
         document.getElementById("biodata-contents").innerHTML = htmlString
         document.getElementById("biodata-contents-edit").innerHTML = htmlStringEdit
@@ -331,14 +281,17 @@
     async function refreshWallet() {
         document.getElementById("wallet").innerHTML = ""
         const wallet = await getWallet()
+        let String = new Intl.NumberFormat("en-US");
+        let finalPrice = String.format();
         let htmlString = ''
         wallet.forEach((data) => {
+            finalPrice = String.format(`${data.fields.balance}`);
             htmlString += `
             <div class="wallet">
                 <h5>Saldo Kamu:</h5>
-                <h2>Rp ${data.fields.balance},00</h2>
+                <h2>Rp ${finalPrice}</h2>
                 <br>
-                <button id="button-topup" data-bs-toggle="modal" data-bs-target="#topUpModal">
+                <button id="button-topup" class="btn btn-primary btn" data-bs-toggle="modal" data-bs-target="#topUpModal">
                     Tambah Saldo
                 </button>
             </div>
@@ -346,6 +299,7 @@
         })
         document.getElementById("wallet").innerHTML = htmlString
     }
+    refreshWallet()
 
     async function switchModeBiodata() {
         var biodataEdit=document.getElementById("biodata-contents-edit")

@@ -18,6 +18,8 @@ def show_search_page(request):
 
     context = {
         'books': books,
+        'name' : request.user.username,
+        'user' : request.user,
     }
 
     return render(request, "search.html", context)
@@ -38,6 +40,7 @@ def get_books_price_sorted_json(request):
             j = j - 1
 
         books[j + 1] = key
+
 
     return HttpResponse(serializers.serialize('json', books))
 
