@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+{% block meta %}
+    <title>Shopping Cart</title>
+{% endblock meta %}
+
+{% block content %}
+
+<style>
+    body {
+        background-color: #e8ddb5;
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .shop-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        max-width: 100%;
+        background-color: #e8ddb5;
+    }
+
+    .box {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 25px;
+    }
+
+    .custom-card-footer {
+        background-color: #333333;
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    h1 {
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <title>Shopping Cart</title>
+</head>
+
+<body> 
+    <br>
+    <br> 
+    <br>
+    <br> 
+    <br>
+    <div class="shop-box">
+        <div class="box">
+            <center>
+                <h1>Shopping Cart</h1>
+                <div class="card-container" id="bookcart-container"></div>
+                <h1>Total Price : {{ total }}</h1>
+                <button id="confirm-button" class="btn btn-primary">Proceed to Buy</button>
+            </center>
+        </div>
+    </div>
+
+    <script>
+        async function getWishlist() {
+            return fetch("{% url 'shoppingcart:show_json' %}").then((res) => res.json())
+        }
+
+        function removeItem(id) {
+            console.log(id)
+            fetch(`/shoppingcart/remove_bookcart/${id}/`, {
+                method: "DELETE",
+            }).then(refreshProducts);
+        }
+
+        async function removeAllItems() {
+            const products = await getWishlist();
+            const itemIds = products.map(item => item.pk);
+
+            if (itemIds.length > 0) {
+                var confirmation = confirm("Are you sure you want to remove all items from the cart?");
+                if (confirmation) {
+                    itemIds.forEach(id => removeItem(id));
+                }
+            }
+        }
+
+        async function refreshProducts() {
+            const products = await getWishlist();
+            const wishlistContainer = document.getElementById('bookcart-container');
+            wishlistContainer.innerHTML = '';
+
+            products.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.id = `bookcart-item-${item.pk}`;
+                card.innerHTML = `
+                    <img src="${item.book.thumbnail}" alt="${item.book.title}">
+                    <h2><b>${item.book.title}</b></h2>
+                    <p><b>Author(s): </b>${item.book.authors}</p>
+                    <p><b>Category: </b>${item.book.categories}</p>
+                    <p><b>Price: </b>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.book.price).replace('.', ',')}</p>
+                    <button onclick="removeItem(${item.pk})" style="background-color: red; color: white;">Delete From Shopping Cart</button>
+                `;
+                wishlistContainer.appendChild(card);
+            });
+        }
+
+        refreshProducts();
+
+        document.getElementById("confirm-button").addEventListener("click", function() {
+            removeAllItems();
+        });
+    </script>
+</body>
+
+{% endblock content %}

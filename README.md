@@ -39,8 +39,7 @@
      * Nama buku
      * Pengarang
      * Genre
-     * Description
-     * Alasan
+     * Tahun terbit
        
   6. Profil akun (**Topa**)
      * Biodata

@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+    <style>
+        /* Gaya untuk latar belakang HTML */
+        body {
+            background-color: #e8ddb5;
+        }
+
+        /* Gaya untuk kontainer utama */
+        .container {
+            margin: 20px;
+        }
+
+        /* Gaya untuk kartu (card) */
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: inline-block;
+            vertical-align: top;
+            background-color: #fff; /* Warna background putih */
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Gaya untuk informasi buku */
+        .book-info {
+            padding: 10px;
+        }
+
+        /* Gaya untuk tombol Wishlist dan Shopping Cart */
+        .long-circle-btn {
+            width: 150px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: #6E8C03;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px;
+            font-size: 14px;
+            border: 2px solid #6E8C03;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .long-circle-btn:hover {
+            background-color: #fff;
+            color: #6E8C03;
+        }
+
+        /* Gaya untuk tombol Hapus dari Wishlist */
+        .remove-btn {
+            background-color: red;
+            color: white;
+        }
+
+        /* Gaya untuk teks "Wishlist" */
+        h1 {
+            text-align: center; /* Mengatur teks agar berada di tengah horizontal */
+        }
+    </style>
+</head>
+<body>
+    <br>
+    <h1><b>Wishlist</b></h1>
+    <center>
+        <div class="container" id="wishlist-container"></div>
+    </center>
+
+    <script>
+        async function getWishlist() {
+            return fetch("{% url 'wishlist:show_json' %}").then((res) => res.json())
+        }
+        
+        function removeItem(id) {
+            console.log(id);
+            // Kirim permintaan untuk menghapus item dari Wishlist
+            fetch(`/wishlist/remove_wishlist/${id}/`, {
+                method: "DELETE",
+            }).then(refreshProducts);
+        }
+        
+        async function refreshProducts() {
+            const products = await getWishlist();
+            console.log(products);
+            const wishlistContainer = document.getElementById('wishlist-container');
+            wishlistContainer.innerHTML = ''; // Kosongkan kontainer wishlist
+            
+            products.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.id = `wishlist-item-${item.pk}`;
+                card.innerHTML = `
+                    <img src="${item.book.thumbnail}" alt="${item.book.title}">
+                    <div class="book-info">
+                        <h2><b>${item.book.title}</b></h2>
+                        <p><b>Author(s): </b>${item.book.authors}</p>
+                        <p><b>Category: </b>${item.book.categories}</p>
+                        <p><b>Price: </b>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.book.price).replace('.', ',')}</p>
+                    </div>
+                    <button class="long-circle-btn remove-btn" onclick="removeItemAndShowToast(${item.pk})">Hapus dari Wishlist</button>
+                `;
+
+                wishlistContainer.appendChild(card);
+            });
+        }
+        
+        refreshProducts();
+
+        function showToast() {
+            var deleteToast = new bootstrap.Toast(document.getElementById('deleteToast'));
+            deleteToast.show();
+        }
+        function removeItemAndShowToast(id) {
+            removeItem(id);
+            showToast(); // Show the "Barang sudah dihapus" toast
+        }
+    </script>
+</body>
+</html>
+<div class="position-fixed bottom-0 start-0 p-3" style="z-index: 11">
+    <div id="deleteToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Removed from Wishlist</strong>
+        <small>less than a minute ago</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Successfully removed from your wishlist!
+      </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% block meta %}
+    <title>Search Book</title>
+{% endblock meta %}
+{% block content %}
+
+<style>
+    body {
+        background: #e8ddb5;
+        height: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .flex-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 8vh;
+        margin-right: 4vw;
+        margin-left: 4vw;
+        border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-books {
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(4,1fr);
+        grid-template-rows: auto 8rem;
+        gap: 4rem;
+        width: 100%;
+        
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+        padding-right: 2rem;
+    }
+
+    .table-title {
+            font-size: 20px; 
+    }
+
+    .form-select{
+        font-size: 18px; 
+    }
+    
+    .book-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .book-category {
+        font-size: 18px;
+    }
+
+    .book-price {
+        font-size: 18px;
+    }
+</style>
+
+<div class="flex-container">
+    <div class="table-books" id="table-books">
+            <h2 style="grid-column: 1"> </h2>
+
+            <h2 class="table-title" style="grid-column: 2">Title</h2>
+            <div id="sort-categories">
+                <form id="sort-categories-form">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sort(this.value, document.getElementById('sort-price-select').value, '')">
+
+                    </select>
+                </form>
+            </div>
+            <div id="sort-price">
+                <form id="sort-price-form">
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sort(document.getElementById('sort-categories-select').value, this.value, '')">
+                        <option value='harga'>Price</option>
+                        <option value='harga-terendah'>Lowest Price</option>
+                        <option value='harga-tertinggi'>Highest Price</option>
+                    </select>
+                </form>
+            </div>
+    </div>
+</div>
+<script>
+    async function getBooks() {
+        return fetch("{% url 'search_page:get_books_json' %}").then((res) => res.json())
+    }
+    async function refreshCategories(choice) {
+        var select = document.getElementById("sort-categories-select")
+        const books = await getBooks()
+        
+        const categories = []
+
+        let htmlString = `<option value='Semua Kategori'>All Categories</option>`
+        books.forEach((book) => {
+            if (categories.includes(`${book.fields.categories}`) == false) {
+                htmlString += `
+                <option value='${book.fields.categories}'>${book.fields.categories}</option>
+            `
+                categories.push(`${book.fields.categories}`)
+            }
+        })
+
+        select.innerHTML=htmlString
+        if (choice != null){
+            select.value=choice
+        }
+        else {
+            select.value="Semua Kategori"
+        }
+    }
+    refreshCategories(null)
+    
+    async function formatSearchBar() {
+        var searchBar = document.getElementById("navbarSupportedContent")
+        let htmlString = `
+                 <div class="navbar-nav centered-text">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Book" id="search-bar">
+                    <button class="btn btn-outline-success" id="button-search" onclick="sort(document.getElementById('sort-categories-select').value, document.getElementById('sort-price-select').value, document.getElementById('search-bar').value)">
+                        <img src="https://cdn.icon-icons.com/icons2/2469/PNG/512/magnifier_magnifying_glass_icon_149435.png" alt="Bootstrap" width="25" height="25">
+                    </button>
+                  </div>
+        `
+        searchBar.innerHTML=htmlString
+    }
+    formatSearchBar()
+    async function sort(categories, price, search) {
+        var tableBooks = document.getElementById("table-books")
+        var books = await getBooks()
+        var pattern = new RegExp(search.toLowerCase())
+
+        let String = new Intl.NumberFormat("en-US");
+        let finalPrice = String.format();
+
+        if (price == 'harga-tertinggi') {
+            books = await getBooksPriceSorted()
+            books.reverse()
+        }
+        else if (price == 'harga-terendah') {
+            books = await getBooksPriceSorted()
+        }
+
+        let htmlString =`
+                        <h2 style="grid-column: 1"> </h2>
+                        <h2 class="table-title" style="grid-column: 2">Title</h2>
+                        <div id="sort-categories">
+                            <form id="sort-categories-form">
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sort(this.value, document.getElementById('sort-price-select').value, document.getElementById('search-bar').value)">
+
+                                </select>
+                            </form>
+                        </div>
+                        <div id="sort-price">
+                            <form id="sort-price-form">
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sort(document.getElementById('sort-categories-select').value, this.value, document.getElementById('search-bar').value)">
+                                    <option value='harga'>Price</option>
+                                    <option value='harga-terendah'>Lowest Price</option>
+                                    <option value='harga-tertinggi'>Highest Price</option>
+                                </select>
+                            </form>
+                        </div>`
+
+                        books.forEach((book) => {
+        if (pattern.test(book.fields.title.toLowerCase())) {
+            finalPrice = String.format(`${book.fields.price}`);
+            if (`${book.fields.categories}` == categories) {
+                htmlString += `
+                    <img class="table-img" src="${book.fields.thumbnail}"/>
+                    <h4 class="book-title">${book.fields.title}</h4>
+                    <h4 class="book-category">${book.fields.categories}</h4>
+                    <h4 class="book-price">Rp ${finalPrice}</h4>
+                `
+            } else if (categories == "Semua Kategori") {
+                htmlString += `
+                    <img class="table-img" src="${book.fields.thumbnail}"/>
+                    <h4 class="book-title">${book.fields.title}</h4>
+                    <h4 class="book-category">${book.fields.categories}</h4>
+                    <h4 class="book-price">Rp ${finalPrice}</h4>
+                `
+                }
+            }
+        })
+        tableBooks.innerHTML=htmlString
+        document.getElementById("sort-price-select").value=price
+        refreshCategories(categories)
+    }
+    sort("Semua Kategori", "harga", "a")
+
+    async function getBooksPriceSorted() {
+        return fetch("{% url 'search_page:get_books_price_sorted_json' %}").then((res) => res.json())
+    }
+
+</script>
+{% endblock content %}

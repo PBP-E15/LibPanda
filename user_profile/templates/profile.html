@@ -1,0 +1,406 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    body {
+        background: #e8ddb5;
+        height: 100%;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .flex-container {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 10vh;
+        margin-right: 15vw;
+        margin-left: 15vw;
+    }
+
+    .card-menu {
+        border-radius: 12px;
+        border-width: 0.2rem;
+        padding-left: 4vw;
+        padding-top: 2rem;
+        padding-right: 12vw;
+        padding-bottom: 2rem;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-contents {
+        box-shadow: 4px 2px 16px #f2f2f2;
+        border-radius: 12px;
+        border-width: 0.2rem;
+        padding-left: 3rem;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-right: 2rem;
+        width: 100vw;
+    }
+
+    .biodata {
+        display: grid;
+        grid-template-columns: auto 8vw;
+        background-color: #ffffff;
+        border-radius: 10px;
+        border-radius: 12px;
+        border-width: 0.2rem;
+        
+
+    }
+
+    #biodata {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+ 
+    }
+    
+    #edit {
+        grid-column: 2;
+        width: 100px;
+        justify-self: flex-end;
+    }
+
+    .biodata-contents {
+        grid-column: 1;
+        display: grid;
+        grid-row-gap: 1.2rem;
+    
+        
+    }
+
+    .biodata-contents-edit {
+        grid-column: 1;
+        display: none;
+        grid-row-gap: 1.6rem;
+    }
+
+    .menu {
+        display: grid;
+        row-gap: 1.5rem;
+
+    }
+
+    .exit {
+        padding-top: 1.5rem;
+    }
+    
+    #wallet {
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+</style>
+
+<div class="flex-container">
+    <div class="card-menu">
+        <div class="menu">
+            <h4>
+                <a id="selection-biodata" onclick="showBiodata()" style="color: #0d6efd">
+                    Profile
+                </a>
+            </h4>
+            <h4>
+                <a id="selection-wallet" onclick="showWallet()">
+                    Wallet
+                </a>
+            </h4>
+            <h4 class="exit">
+                <a href="{% url 'logout' %}">
+                    Logout
+                </a>
+            </h4>
+        </div>
+    </div>
+
+    <div class="card-contents" id="biodata">
+        <div class="biodata">
+            <button id="edit" class="btn btn-primary btn" onclick="switchModeBiodata()">
+                Edit
+            </button>
+            <div class="biodata-contents" id="biodata-contents">
+
+            </div>
+
+            <form id="form-edit-biodata">
+            <div class="biodata-contents-edit" id="biodata-contents-edit">
+
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card-contents" id="wallet" style="display: none">
+        
+    </div>
+</div>
+
+<div class="modal fade" id="topUpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Top Up Wallet</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form-topup" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="balance" class="col-form-label">Amount:</label>
+                        <input type="number" class="form-control" id="balance" name="balance"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="payment-method" class="col-form-label">Payment Method:</label>
+                        <select class="form-control" id="payment-method" name="payment-method">
+                            <option value="GoPay">GoPay</option>
+                            <option value="OVO">OVO</option>
+                            <option value="Dana">Dana</option>
+                            <option value="Pulsa">Pulsa</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Back</button>
+                <button type="button" class="btn btn-primary btn-sm" id="button_topup" onclick="topup('{{wallet.id}}')" data-bs-dismiss="modal">Top Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+<script>
+
+    async function getBiodata() {
+        return fetch("{% url 'user_profile:get_biodata_json' %}").then((res) => res.json())
+    }
+
+    async function getWallet() {
+        return fetch("{% url 'user_profile:get_wallet_json' %}").then((res) => res.json())
+    }
+
+    async function refreshBiodata() {
+        document.getElementById("biodata-contents").innerHTML = ""
+        const biodata = await getBiodata()
+        let htmlString = ''
+        let htmlStringEdit= ''
+
+        biodata.forEach((data) => {
+            htmlString += `
+            <div class="name">
+                <h5> Name </h5>
+                <p> ${data.fields.name} </p>
+            </div>
+            <div class="email">
+                <h5> Email </h5>
+                <p> ${data.fields.email} </p>
+            </div>
+            `
+
+            htmlStringEdit += `
+            <div class="name">
+                <h5> Name </h5>
+                <input type="text" id="input-name" name="name" value='${data.fields.name}'>
+            </div>
+            <div class="email">
+                <h5> Email </h5>
+                <input type="text" id="input-email"  name="email" value="${data.fields.email}">
+            </div>
+            `
+
+            if (`${data.fields.gender}` == `male`) {
+
+                htmlString += `<div class="gender">
+                                    <h5> Gender </h5>
+                                    <input type="radio" id="male" name="gender" value="male" checked="true">
+                                    <label for="male"> Male </label>
+                                    <input type="radio" id="female" name="gender" value="female" disabled="true">
+                                    <label for="female"> Female </label>
+                                </div>
+                            `
+
+                htmlStringEdit += `<div class="gender">
+                                        <h5> Gender </h5>
+                                        <input type="radio" id="male" name="gender" value="male" checked="true">
+                                        <label for="male"> Male </label>
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female"> Female </label>
+                                    </div>
+                            `
+            } else if (`${data.fields.gender}` == `female`) {
+
+                htmlString += `<div class="gender">
+                                    <h5> Gender </h5>
+                                    <input type="radio" id="male" name="gender" value="male" disabled="true">
+                                    <label for="male"> Male </label>
+                                    <input type="radio" id="female" name="gender" value="female" checked="true">
+                                    <label for="female"> Female </label>
+                                </div>
+                        `
+                htmlStringEdit += `<div class="gender">
+                                        <h5> Gender </h5>
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        <label for="male"> Male </label>
+                                        <input type="radio" id="female" name="gender" value="female" checked="true">
+                                        <label for="female"> Female </label>
+                                    </div>
+                        `
+            } else {
+
+                htmlString += `<div class="gender">
+                                    <h5> Gender </h5>
+                                    <input type="radio" id="male" name="gender" value="male" disabled="true">
+                                    <label for="male"> Male </label>
+                                    <input type="radio" id="female" name="gender" value="female" disabled="true">
+                                    <label for="female"> Female </label>
+                                </div>
+                        `
+                htmlStringEdit += `<div class="gender">
+                                        <h5> Gender </h5>
+                                        <input type="radio" id="male" name="gender" value="male">
+                                        <label for="male"> Male </label>
+                                        <input type="radio" id="female" name="gender" value="female">
+                                        <label for="female"> Female </label>
+                                    </div>
+                        `
+            }
+
+            htmlString += `
+            <div class="birthday">
+                <h5> Date of Birth </h5>
+                <input type="date" id="birthday" name="birthday" readOnly="readonly" value = "${data.fields.birthday}">
+            </div>
+            <div class="phone-number">
+                <h5> Phone Number </h5>
+                <p> ${data.fields.phone_number} </p>
+            </div>
+            `
+            
+            htmlStringEdit+=`
+            <div class="birthday">
+                <h5> Date of Birth </h5>
+                <input type="date" id="birthday-input" name="birthday" value="${data.fields.birthday}">
+            </div>
+            <div class="phone-number">
+                <h5> Phone Number </h5>
+                <input type="text" id="number-input" name="phone_number" value="${data.fields.phone_number}">
+            </div
+            <br>
+            <button class="btn btn-outline-primary" type="button" id="button-submit" onclick="editBiodata(${data.pk})"> Submit </button>
+            `
+        })
+        document.getElementById("biodata-contents").innerHTML = htmlString
+        document.getElementById("biodata-contents-edit").innerHTML = htmlStringEdit
+    }
+
+    refreshBiodata()
+    async function refreshWallet() {
+        document.getElementById("wallet").innerHTML = ""
+        const wallet = await getWallet()
+        let String = new Intl.NumberFormat("en-US");
+        let finalPrice = String.format();
+        let htmlString = ''
+        wallet.forEach((data) => {
+            finalPrice = String.format(`${data.fields.balance}`);
+            htmlString += `
+            <div class="wallet">
+                <h5>Your Balance:</h5>
+                <h2>Rp ${finalPrice}</h2>
+                <br>
+                <button id="button-topup" class="btn btn-primary btn" data-bs-toggle="modal" data-bs-target="#topUpModal">
+                    Add Balance
+                </button>
+            </div>
+        `
+        })
+        document.getElementById("wallet").innerHTML = htmlString
+    }
+    refreshWallet()
+
+    async function switchModeBiodata() {
+        var biodataEdit=document.getElementById("biodata-contents-edit")
+        var biodata=document.getElementById("biodata-contents")
+
+        if (biodataEdit.style.display == "grid") {
+            biodataEdit.style.display = "none"
+            biodata.style.display = "grid"
+
+        }
+        else {
+            biodataEdit.style.display = "grid"
+            biodata.style.display = "none"
+        }
+
+        refreshBiodata()
+    }
+
+    async function showWallet() {
+        var wallet=document.getElementById("wallet")
+        var biodata=document.getElementById("biodata")
+
+        wallet.style.display= "inline"
+        biodata.style.display= "none"
+
+        document.getElementById("selection-wallet").style.color= "#0d6efd"
+        document.getElementById("selection-biodata").style.color= "#000000"
+    }
+
+    async function showBiodata() {
+        var wallet=document.getElementById("wallet")
+        var biodata=document.getElementById("biodata")
+
+        wallet.style.display= "none"
+        biodata.style.display= "inline"
+
+        document.getElementById("selection-wallet").style.color= "#000000"
+        document.getElementById("selection-biodata").style.color= "#0d6efd"
+    }
+    
+
+    function editBiodata(pk) {
+        var form = new FormData(document.querySelector('#form-edit-biodata'))
+        for (const [key, value] of form) {
+            console.log(`${key} : ${value}`)
+        }
+
+        var action = confirm("Apakah informasi yang Anda masukkan sudah benar?")
+        if (action) {
+            fetch(`/edit-biodata/${pk}`, {
+                method: "POST",
+                body: new FormData(document.querySelector('#form-edit-biodata'))
+            }).then(refreshBiodata)
+            // document.getElementById("navbar-name").innerHTML=form.get("name")
+            document.getElementById("form-edit-biodata").reset()
+            switchModeBiodata()
+
+            return false
+        }
+    }
+
+    function topup(pk) {
+        var form = new FormData(document.querySelector('#form-topup'))
+        for (const [key, value] of form) {
+            console.log(`${key} : ${value}`)
+        }
+        
+        fetch(`/topup-wallet/${pk}`, {
+            method: "POST",
+            body: new FormData(document.querySelector('#form-topup'))
+        }).then(refreshWallet)
+
+        document.getElementById("form-topup").reset()
+        return false
+
+    }
+
+
+</script>
+{% endblock content %}
