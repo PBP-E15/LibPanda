@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -39,26 +40,101 @@
     </div>
 </nav>
 
-<div>
-    <head>
-        <h1>List Pesanan</h1>
-    </head>
+<head>
+    <title>List Pesanan</title>
+    <style>
+        body {
+            background-color: #e8ddb5; /* Supporting Color */
+        }
+        
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: inline-block;
+            vertical-align: top;
+        }
 
-    <body>
-        {% for item in books %}
-        <div class="card">
-            <img src="{{ item.thumbnail }}" alt="{{ item.title }}">
-            <h2>{{ item.title }}</h2>
-            <h2>{{ item.price }}</h2>
-            <a href="{% url 'delete_bookcart' item.id %}">Delete</a>
-        </div>
-        {% endfor %}
+        .custom-card-footer {
+            background-color: #333333; /* Accent Color */
+        }
 
-        <div>
-            <h1>Total Harga : {{ total }}</h1>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Lanjutkan Pembayaran</button>
-        </div>
-    </body>
-</div>
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>List Pesanan</h1>
+    <div class="card-container" id="bookcart-container"></div>
+    <h1>Total Harga : {{ total }}</h1>
+    <button id="confirm-button" class="btn btn-primary">Lanjutkan Pembayaran</button>
+
+    </center>
+
+    <script>
+        async function getWishlist() {
+            return fetch("{% url 'shoppingcart:show_json' %}").then((res) => res.json())
+        }
+
+        function removeItem(id) {
+            console.log(id)
+            // Kirim permintaan untuk menghapus item dari Shopping Cart
+            fetch(`/shoppingcart/remove_bookcart/${id}/`, {
+                method: "DELETE",
+            }).then(refreshProducts);
+        }
+
+        async function removeAllItems() {
+            const products = await getWishlist();
+            const itemIds = products.map(item => item.pk);
+
+            if (itemIds.length > 0) {
+                var confirmation = confirm("Are you sure you want to remove all items from the cart?");
+                if (confirmation) {
+                    // Lakukan tindakan penghapusan semua item.
+                    itemIds.forEach(id => removeItem(id));
+                }
+            }
+        }
+
+        async function refreshProducts() {
+            const products = await getWishlist();
+            const wishlistContainer = document.getElementById('bookcart-container');
+            wishlistContainer.innerHTML = '';
+
+            products.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.id = `bookcart-item-${item.pk}`;
+                card.innerHTML = `
+                    <img src="${item.book.thumbnail}" alt="${item.book.title}">
+                    <h2>${item.book.title}</h2>
+                    <p>Penulis: ${item.book.authors}</p>
+                    <p>Kategori: ${item.book.categories}</p>
+                    <p>Harga: ${item.book.price}</p>
+                    <button onclick="removeItem(${item.pk})" style="background-color: red; color: white;">Hapus dari Shopping Cart</button>
+                `;
+                wishlistContainer.appendChild(card);
+            });
+        }
+
+        refreshProducts();
+
+        document.getElementById("confirm-button").addEventListener("click", function() {
+            removeAllItems();
+        });
+    </script>
+</body>
 
 {% endblock content %}

@@ -1,16 +1,16 @@
+import json
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.shortcuts import render, redirect
 from shoppingcart.models import WalletUser, BookUser
 from book.models import Book
-from django.http import HttpResponseRedirect
-from django.http import HttpResponseNotFound
-from django.http import HttpResponse
-from django.urls import reverse
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
-import datetime
-import json
+from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound
+from django.urls import reverse
 
 @login_required(login_url='/login')
 def show_cart (request):
@@ -18,7 +18,7 @@ def show_cart (request):
     books = BookUser.objects.filter(user=request.user)
 
     for book in books:
-        totalHarga += book.price
+        totalHarga += book.book.price
 
     context = {
         'books' : books,
@@ -30,22 +30,28 @@ def show_cart (request):
     return render(request, "cart.html", context)
 
 @login_required(login_url='/login')
-def add_bookcart(request, id):
+def add_bookcart(request, book_id):
 
     user = request.user
-
-    book = Book.objects.get(pk=id)
+    book = Book.objects.get(pk=book_id)
 
     BookUser.objects.get_or_create(user=request.user, book=book)
 
     return HttpResponse(b"CREATED", status=201)
 
-def delete_bookcart(request, id):
-    BookUser.objects.get(pk=id).delete()
-    return HttpResponseRedirect(reverse('shoppingcart:cart'))
+@login_required(login_url='/login')
+@csrf_exempt
+def remove_bookcart(request, bookcart_id):
+
+    book = Book.objects.get(pk=bookcart_id)
+    books = BookUser.objects.get(pk=bookcart_id)
+
+    books.delete()
+
+    return HttpResponse(b"DELETED", status=201)
 
 @csrf_exempt
-def buy_book_ajax(request, id):
+def buy_book_ajax(request, book_cart_id):
     totalHarga = 0
     wallet = WalletUser.objects.filter(user=request.user)
     books = BookUser.objects.filter(user=request.user)
@@ -53,7 +59,7 @@ def buy_book_ajax(request, id):
     for book in books:
         totalHarga += book.price
 
-    buku = BookUser.objects.get(pk = id)
+    buku = BookUser.objects.get(pk = book_cart_id)
 
     if request.method == 'POST':
         buku.delete()
@@ -63,7 +69,7 @@ def buy_book_ajax(request, id):
     return HttpResponseNotFound()
 
 def show_json(request):
-    user = User.objects.get(user=request.user)
+    user = request.user
     items = BookUser.objects.filter(user = user)
     serialized_data = []
     for item in items:
