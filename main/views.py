@@ -4,11 +4,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages 
 import datetime
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect 
+from django.http import HttpResponse, HttpResponseRedirect 
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from book.models import Book
 from random import sample
+from django.core import serializers
+
 
 # Create your views here.
 def show_main(request):
@@ -71,3 +73,7 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse("main:show_main"))
     response.delete_cookie('last_login')
     return response
+
+def get_books_json(request):
+    books = Book.objects.all()
+    return HttpResponse(serializers.serialize('json', books))

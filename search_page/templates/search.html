@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
+{% block meta %}
+    <title>Search Book</title>
+{% endblock meta %}
 {% block content %}
 
 <style>
@@ -65,7 +68,7 @@
     <div class="table-books" id="table-books">
             <h2 style="grid-column: 1"> </h2>
 
-            <h2 class="table-title" style="grid-column: 2">Nama</h2>
+            <h2 class="table-title" style="grid-column: 2">Title</h2>
             <div id="sort-categories">
                 <form id="sort-categories-form">
                     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sort(this.value, document.getElementById('sort-price-select').value, '')">
@@ -76,9 +79,9 @@
             <div id="sort-price">
                 <form id="sort-price-form">
                     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sort(document.getElementById('sort-categories-select').value, this.value, '')">
-                        <option value='harga'>Harga</option>
-                        <option value='harga-terendah'>Harga Terendah</option>
-                        <option value='harga-tertinggi'>Harga Tertinggi</option>
+                        <option value='harga'>Price</option>
+                        <option value='harga-terendah'>Lowest Price</option>
+                        <option value='harga-tertinggi'>Highest Price</option>
                     </select>
                 </form>
             </div>
@@ -94,7 +97,7 @@
         
         const categories = []
 
-        let htmlString = `<option value='Semua Kategori'>Semua Kategori</option>`
+        let htmlString = `<option value='Semua Kategori'>All Categories</option>`
         books.forEach((book) => {
             if (categories.includes(`${book.fields.categories}`) == false) {
                 htmlString += `
@@ -145,7 +148,7 @@
 
         let htmlString =`
                         <h2 style="grid-column: 1"> </h2>
-                        <h2 class="table-title" style="grid-column: 2">Nama</h2>
+                        <h2 class="table-title" style="grid-column: 2">Title</h2>
                         <div id="sort-categories">
                             <form id="sort-categories-form">
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-categories-select" name="sort-categories" style="grid-column: 3" onchange="sort(this.value, document.getElementById('sort-price-select').value, document.getElementById('search-bar').value)">
@@ -156,9 +159,9 @@
                         <div id="sort-price">
                             <form id="sort-price-form">
                                 <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="sort-price-select" name="sort-price" style="grid-column: 4" onchange="sort(document.getElementById('sort-categories-select').value, this.value, document.getElementById('search-bar').value)">
-                                    <option value='harga'>Harga</option>
-                                    <option value='harga-terendah'>Harga Terendah</option>
-                                    <option value='harga-tertinggi'>Harga Tertinggi</option>
+                                    <option value='harga'>Price</option>
+                                    <option value='harga-terendah'>Lowest Price</option>
+                                    <option value='harga-tertinggi'>Highest Price</option>
                                 </select>
                             </form>
                         </div>`

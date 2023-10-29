@@ -99,7 +99,7 @@
             console.log(products);
             const wishlistContainer = document.getElementById('wishlist-container');
             wishlistContainer.innerHTML = ''; // Kosongkan kontainer wishlist
-
+            
             products.forEach(item => {
                 const card = document.createElement('div');
                 card.classList.add('card');
@@ -110,7 +110,7 @@
                         <h2><b>${item.book.title}</b></h2>
                         <p><b>Author(s): </b>${item.book.authors}</p>
                         <p><b>Category: </b>${item.book.categories}</p>
-                        <p><b>Price: </b>${item.book.price}</p>
+                        <p><b>Price: </b>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.book.price).replace('.', ',')}</p>
                     </div>
                     <button class="long-circle-btn remove-btn" onclick="removeItemAndShowToast(${item.pk})">Hapus dari Wishlist</button>
                 `;
