@@ -9,28 +9,27 @@
   5. Kevin Yehezkiel Manurung 			      - 2206826974
 
 ## Tentang Aplikasi
-  LibPanda adalah aplikasi pencarian dan pembelian buku yang memungkinkan pengguna untuk dengan cepat mencari, membandingkan, dan membeli buku favorit mereka. Aplikasi ini menawarkan akses ke katalog buku yang luas sehingga membuat proses mencari dan memilih buku menjadi lebih mudah dan efisien. Dengan fitur pencarian canggih dan kemudahan dalam bertransaksi, LibPanda adalah aplikasi yang sangat berguna bagi para pecinta buku.
+  LibPanda adalah aplikasi pencarian dan pembelian buku yang memungkinkan pengguna untuk dengan cepat mencari, membandingkan, dan membeli buku favorit mereka. Aplikasi ini menawarkan akses ke katalog buku yang luas sehingga membuat proses mencari dan memilih buku menjadi lebih mudah dan efisien. Dengan fitur pencarian canggih, LibPanda adalah aplikasi yang sangat berguna bagi para pecinta buku.
 
 ## Manfaat Aplikasi
   Aplikasi untuk mencari dan membeli buku dapat memberikan berbagai manfaat kepada pengguna, termasuk:
   
   * Kemudahan Pencarian: Aplikasi ini memungkinkan pengguna untuk dengan mudah mencari buku berdasarkan nama buku, kategori dan harga tertentu. Ini menghemat waktu dan upaya dalam mencari buku yang diinginkan.
   * Beragam Pilihan: Aplikasi ini seringkali memiliki berbagai pilihan buku berdasarkan setiap kategori yang tersedia.
-  * Keamanan dan Kemudahan Berbelanja: Aplikasi ini menyediakan sistem pembayaran yang aman dan pengiriman buku yang nyaman, sehingga pengguna dapat berbelanja buku tanpa khawatir.
   * Akses Kapan Saja, Di Mana Saja: Dengan aplikasi ini, pengguna dapat mencari dan membeli buku kapan saja dan di mana saja, bahkan saat bepergian.
 
 ## Modul
 
-  1. Login / Register
+  1. Login / Register (**Nyasia**)
   2. Landing Page
      * Navbar : Menu
-     * Card : Menampilkan buku berdasarkan trending
+     * Card : Menampilkan buku 
        
   3. Page untuk mencari buku (**Topa**)
      * Tombol sort (by categories, by harga)
 
-  4. Informasi Buku kalau bukunya dipencet (**Darryl**)
-     * Button favorite
+  4. Informasi Buku (**Darryl**)
+     * Button wishlist
      * Button beli
      * Sinopsis
      * Detail buku (pengarang, tahun terbit, jumlah halaman)
@@ -45,34 +44,27 @@
      * Biodata
      * Wallet
        
-  7. Untuk wishlist (**Kevin**)
+  7. Wishlist (**Kevin**)
      * List buku
      * cancel wishlist
        
-  8. Untuk shopping cart beli (**Michael**)
+  8.Shopping cart (**Michael**)
      * List pembelian (nama buku + harga)
-     * tambah/kurang amount
-     * Pencet beli (menuju receipt)
-       
-  9. Receipt (**Michael**)
-     * Menunjukkan detail buku dan harga
-     * Konfirmasi pembelian (mengurangi uang wallet)
+     * Pencet beli 
 
 ## Role
 
   1. Admin
-     * Untuk melakukan pengecekan pada pembeli buku
-     * Melakukan restock pada buku yang telah dibeli
      * Melakukan add buku untuk buku yang direquest oleh member
        
   2. Member
      * Untuk melakukan segala interaksi pada aplikasi web yang tersedia
      * Dapat melakukan pencarian, pembelian, wishlist dan request buku
-     * Bisa mengubah profil diri beserta walletnya
+     * Dapat mengubah profil diri beserta walletnya
        
   3. Guest
      * Untuk melakukan segala interaksi pada aplikasi web yang tersedia
-     * Hanya dapat melakukan pencarian dan melihat informasi buku
+     * Hanya dapat melakukan pencarian dan melihat buku yang tersedia
 
 ## Sumber dataset katalog
 https://www.kaggle.com/datasets/dylanjcastillo/7k-books-with-metadata
