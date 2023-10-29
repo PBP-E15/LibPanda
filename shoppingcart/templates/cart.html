@@ -2,6 +2,51 @@
 
 {% block content %}
 
+<style>
+    body {
+        background-color: #e8ddb5; /* Supporting Color */
+    }
+
+    .card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .shop-box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        max-width: 100%;
+    }
+
+    .box {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        padding: 25px;
+    }
+
+    .custom-card-footer {
+        background-color: #333333; /* Accent Color */
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    h1 {
+        padding: 10px;
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -41,46 +86,20 @@
 </nav>
 
 <head>
-    <title>List Pesanan</title>
-    <style>
-        body {
-            background-color: #e8ddb5; /* Supporting Color */
-        }
-        
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            margin: 10px;
-            width: 300px;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            transition: 0.3s;
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        .custom-card-footer {
-            background-color: #333333; /* Accent Color */
-        }
-
-        .card img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        h1 {
-            padding: 10px;
-        }
-    </style>
+    <title>Shopping Cart</title>
 </head>
-<body>
-    <center>
-    <h1>List Pesanan</h1>
-    <div class="card-container" id="bookcart-container"></div>
-    <h1>Total Harga : {{ total }}</h1>
-    <button id="confirm-button" class="btn btn-primary">Lanjutkan Pembayaran</button>
 
-    </center>
+<body>
+    <div class="shop-box">
+        <div class="box">
+            <center>
+                <h1>Shopping Cart</h1>
+                <div class="card-container" id="bookcart-container"></div>
+                <h1>Total Price : {{ total }}</h1>
+                <button id="confirm-button" class="btn btn-primary">Proceed to Buy</button>
+            </center>
+        </div>
+    </div>
 
     <script>
         async function getWishlist() {
@@ -123,7 +142,7 @@
                     <p>Penulis: ${item.book.authors}</p>
                     <p>Kategori: ${item.book.categories}</p>
                     <p>Harga: ${item.book.price}</p>
-                    <button onclick="removeItem(${item.pk})" style="background-color: red; color: white;">Hapus dari Shopping Cart</button>
+                    <button onclick="removeItem(${item.pk})" style="background-color: red; color: white;">Delete From Shopping Cart</button>
                 `;
                 wishlistContainer.appendChild(card);
             });
