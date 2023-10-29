@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Wishlist</title>
+    <style>
+        /* CSS untuk kartu (card) */
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wishlist</h1>
+    <div class="card-container" id="wishlist-container"></div>
+
+    <script>
+        async function getWishlist() {
+            return fetch("{% url 'wishlist:show_json' %}").then((res) => res.json())
+        }
+        function removeItem(id) {
+            console.log(id)
+            // Kirim permintaan untuk menghapus item dari Wishlist
+            fetch(`/wishlist/remove_wishlist/${id}/`, {
+                method: "DELETE",
+            }).then(refreshProducts);
+        }
+        async function refreshProducts() {
+            const products = await getWishlist();
+            console.log(products)
+            const wishlistContainer = document.getElementById('wishlist-container');
+            wishlistContainer.innerHTML = ''; // Kosongkan kontainer wishlist
+
+            products.forEach(item => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.id = `wishlist-item-${item.pk}`;
+                card.innerHTML = `
+                    <img src="${item.book.thumbnail}" alt="${item.book.title}">
+                    <h2>${item.book.title}</h2>
+                    <p>Penulis: ${item.book.authors}</p>
+                    <p>Kategori: ${item.book.categories}</p>
+                    <p>Harga: ${item.book.price}</p>
+                    <button onclick="removeItem(${item.pk})" style="background-color: red; color: white;">Hapus dari Wishlist</button>
+                `;
+
+                wishlistContainer.appendChild(card);
+            });
+        }
+        refreshProducts();
+    </script>
+</body>
+</html>

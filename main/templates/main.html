@@ -72,8 +72,8 @@
             </a>
             <!-- Wishlist and Shopping cart buttons on the right as circles -->
             <div class="d-flex">
-                <div class="mr-2">
-                    <button class="circular-btn">
+                <div class="mr-2" >
+                    <button class="circular-btn" onclick="addProduct({{ book.pk }})">
                         <span class="icon">&#10084;</span>
                     </button>
                 </div>
@@ -85,6 +85,19 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">Ditambahkan ke wishlist</strong>
+      <small>kurang dari 1 menit yang lalu</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      Buku berhasil ditambahkan ke wishlist
+    </div>
+  </div>
 </div>
 {% endfor %}
 
@@ -147,5 +160,19 @@
         box-shadow: 0 0 10px #1A2601
         }
 </style>
+
+<script>
+    function addProduct(id) {
+        fetch(`/wishlist/add_wishlist/${id}/`, {
+            method: "GET",
+        }).then(response =>
+        {
+            var myToast = new bootstrap.Toast(document.getElementById('liveToast'));
+            myToast.show();
+        })
+
+        return false
+    }
+</script>
 
 {% endblock content %}
