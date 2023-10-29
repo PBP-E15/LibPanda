@@ -11,6 +11,22 @@ from book.models import Book
 from random import sample
 
 # Create your views here.
+def show_main(request):
+    # Get all books
+    books = Book.objects.all()
+
+    # Randomly shuffle the books
+    shuffled_books = sample(list(books), len(books))
+
+    for book in shuffled_books:
+        book.formatted_price = "Rp {:,.0f}".format(book.price)
+
+    context = {
+        'books': shuffled_books
+    }
+
+    return render(request, "main.html", context)
+
 def register(request):
     form = UserCreationForm()
 
@@ -31,7 +47,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            response = HttpResponseRedirect(reverse("main:show_main"))
+            response = HttpResponseRedirect(reverse("show_main"))
             response.set_cookie('last_login', str(datetime.datetime.now()))
             return response
         else:
@@ -41,7 +57,7 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    response = HttpResponseRedirect(reverse("main:show_main"))
+    response = HttpResponseRedirect(reverse("show_main"))
     response.delete_cookie('last_login')
     return response
 

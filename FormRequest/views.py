@@ -3,7 +3,7 @@ from django.http import JsonResponse, HttpResponse
 from .forms import BookForm
 from django.contrib.auth.decorators import login_required
 
-@login_required
+
 def request_book(request):
     if request.method == 'POST':
         form = BookForm(request.POST)
