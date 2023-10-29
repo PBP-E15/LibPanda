@@ -1,62 +1,105 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Form Request Buku Baru</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h2>Form Request Buku Baru</h2>
+{% block meta %}
+    <title>Book Request</title>
+{% endblock meta %}
 
-<form id="bookForm">
-  Judul Buku:
-  <input type="text" id="title" name="title" required placeholder="Judul Buku">
-  <br><br>
-  Penulis:
-  <input type="text" id="author" name="author" required placeholder="Penulis Buku">
-  <br><br>
-  Kategori:
-  <select id="category" name="category" required>
-    <option value="">Pilih Kategori Buku</option>
-    <option value="Fiksi">Fiksi</option>
-    <option value="Sejarah">Sejarah</option>
-    <option value="Komik & Novel Grafis">Komik & Novel Grafis</option>
-    <option value="Makanan & Minuman">Makanan & Minuman</option>
-    <option value="Filosofi">Filosofi</option>
-  </select>
-  <br><br>
-  Tahun Terbit:
-  <input type="number" id="year" name="year" style="width:125px" required placeholder="Tahun Terbit Buku">
-  <br><br>
-  <input type="submit" value="Submit">
-</form> 
+{% block content %}
+<style>
+    body {
+        background: #e8ddb5;
+        height: 100%;
+    }
+    .background-container {
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+    }
+    .center-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+    .centered-text {
+        text-align: center;
+    }
+    .form-control {
+        width: 100%;
+    }
+    button {
+        margin-top: 15px;
+    }
+</style>
 
+<div class="container">
+    <div class="row justify-content-center align-items-top center-container">
+        <div class="col-md-6">
+            <div class="background-container">
+                <h2 class="centered-text mb-4">Book Request</h2>
+                <form method="post" id="book-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="mb-4 d-grid gap-2">
+                        <button class="btn btn-primary login_btn" type="button" id="submit-btn">Submit</button>
+                    </div>
+                </form>
+                <div id="message"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-document.getElementById("bookForm").addEventListener("submit", function(event){
-  event.preventDefault()
-  
-  var title = document.getElementById("title").value;
-  var author = document.getElementById("author").value;
-  var category = document.getElementById("category").value;
-  var year = document.getElementById("year").value;
-  
-  // Ambil data buku dari localStorage
-  var books = JSON.parse(localStorage.getItem("books")) || [];
-  
-  // Tambahkan buku baru ke array
-  books.push({
-    title: title,
-    author: author,
-    category: category,
-    year: year
-  });
-  
-  // Simpan array buku ke localStorage
-  localStorage.setItem("books", JSON.stringify(books));
-  
-  // Bersihkan form
-  document.getElementById("bookForm").reset();
-});
-</script>
+$(document).ready(function() {
+    $("#submit-btn").click(function() {
+        var title = $("#id_title").val();
+        var author = $("#id_author").val();
+        var category = $("#id_category").val();
+        var year = $("#id_year").val();
 
-</body>
-</html>
+        if (title && author && category && year) {
+            var csrfToken = $("input[name='csrfmiddlewaretoken']").val();
+            $.ajax({
+                type: "POST",
+                data: {
+                    csrfmiddlewaretoken: csrfToken,
+                    title: title,
+                    author: author,
+                    category: category,
+                    year: year
+                },
+                success: function(response) {
+                    showMessage("<p class='text-success'>The book has been successfully saved</p>", 3000);
+                    resetForm("book-form");
+                },
+                error: function() {
+                    showMessage("<p class='text-danger'>An error occurred</p>", 3000);
+                }
+            });
+        } else {
+            showMessage("<p class='text-danger'>Please fill out all required fields</p>", 3000);
+        }
+    });
+});
+
+
+function resetForm(formId) {
+    var form = document.getElementById(formId);
+    if (form) {
+        form.reset();
+    } else {
+        console.log("Form not found with id: " + formId);
+    }
+}
+
+function showMessage(message, duration) {
+    $("#message").html(message);
+    setTimeout(function() {
+        $("#message").empty();
+    }, duration);
+}
+</script>
+{% endblock content %}

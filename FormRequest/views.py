@@ -1,29 +1,29 @@
 from django.shortcuts import render
-from .models import Book
-from main.views import *
-#from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
+from django.http import JsonResponse, HttpResponse
+from .forms import BookForm
+from django.contrib.auth.decorators import login_required
 
-
-# Create your views here.
-#@login_required
-def form_request(request):
+@login_required
+def request_book(request):
     if request.method == 'POST':
-        title = request.POST.get('title')
-        author = request.POST.get('author')
-        category = request.POST.get('category')
-        synopsis = request.POST.get('synopsis')
-        year = request.POST.get('year')
-        new_request = Book(title=title, author=author, category=category, synopsis=synopsis, year=year)
-        new_request.save()
-        return render(request, 'success.html') #tbd
-    return render(request, 'form.html') #tbd
+        form = BookForm(request.POST)
+        if form.is_valid():
+            form.save()
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  # Periksa apakah ini adalah permintaan AJAX
+                response = JsonResponse({'success': True})
+            else:
+                response = HttpResponse()
+        else:
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({'success': False})
+    else:
+        form = BookForm()
 
-def data(request):
-    all_requests = Book.objects.all()
-    return render(request, 'data.html', {'requests': all_requests})
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  # Jika ini adalah permintaan AJAX, kirim respons kosong
+        response = HttpResponse()
+        response['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Menambahkan header Cache-Control
+        return response
 
-def delete(request, item_id):
-    book = get_object_or_404(Book, pk=item_id, user=request.user)
-    book.delete()
-    return render(request, 'data.html')
+    return render(request, 'form.html', {'form': form})
+
+

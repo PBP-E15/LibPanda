@@ -2,6 +2,10 @@
 {% block content %}
 
 <style>
+    body {
+        background: #e8ddb5;
+        height: 100%;
+    }
 
     a {
         text-decoration: none;
@@ -16,15 +20,16 @@
         margin-top: 8vh;
         margin-right: 4vw;
         margin-left: 4vw;
-        box-shadow: 4px 2px 16px #f2f2f2;
         border-radius: 8px;
+        background-color: #ffffff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     }
 
     .table-books {
         display: grid;
         place-items: center;
         grid-template-columns: repeat(4,1fr);
-        grid-template-row: auto 8rem;
+        grid-template-rows: auto 8rem;
         gap: 4rem;
         width: 100%;
         
@@ -33,7 +38,27 @@
         padding-top: 2rem;
         padding-right: 2rem;
     }
+
+    .table-title {
+            font-size: 20px; 
+    }
+
+    .form-select{
+        font-size: 18px; 
+    }
     
+    .book-title {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .book-category {
+        font-size: 18px;
+    }
+
+    .book-price {
+        font-size: 18px;
+    }
 </style>
 
 <div class="flex-container">
@@ -57,7 +82,6 @@
                     </select>
                 </form>
             </div>
-        
     </div>
 </div>
 <script>
@@ -139,23 +163,22 @@
                             </form>
                         </div>`
 
-        books.forEach((book) => {
-            if (pattern.test(book.fields.title.toLowerCase())) {
-                finalPrice = String.format(`${book.fields.price}`);
-                if (`${book.fields.categories}` == categories) {
-                    htmlString += `
+                        books.forEach((book) => {
+        if (pattern.test(book.fields.title.toLowerCase())) {
+            finalPrice = String.format(`${book.fields.price}`);
+            if (`${book.fields.categories}` == categories) {
+                htmlString += `
                     <img class="table-img" src="${book.fields.thumbnail}"/>
-                    <h4 class="table-contents">${book.fields.title}</h4>
-                    <h4 class="table-contents">${book.fields.categories}</h4>
-                    <h4 class="table-contents">Rp ${finalPrice}</h4>
+                    <h4 class="book-title">${book.fields.title}</h4>
+                    <h4 class="book-category">${book.fields.categories}</h4>
+                    <h4 class="book-price">Rp ${finalPrice}</h4>
                 `
-                }
-                else if (categories == "Semua Kategori") {
-                    htmlString += `
+            } else if (categories == "Semua Kategori") {
+                htmlString += `
                     <img class="table-img" src="${book.fields.thumbnail}"/>
-                    <h4 class="table-contents">${book.fields.title}</h4>
-                    <h4 class="table-contents">${book.fields.categories}</h4>
-                    <h4 class="table-contents">Rp ${finalPrice}</h4>
+                    <h4 class="book-title">${book.fields.title}</h4>
+                    <h4 class="book-category">${book.fields.categories}</h4>
+                    <h4 class="book-price">Rp ${finalPrice}</h4>
                 `
                 }
             }
