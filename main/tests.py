@@ -1,5 +1,3 @@
-
-# Create your tests here.
 from django.test import TestCase, Client
 
 class mainTest(TestCase):
