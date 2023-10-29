@@ -47,10 +47,10 @@
   7. Wishlist (**Kevin**)
      * List buku
      * cancel wishlist
-       
-  8.Shopping cart (**Michael**)
+
+  8. Shopping cart (**Michael**)
      * List pembelian (nama buku + harga)
-     * Pencet beli 
+     * Pencet beli
 
 ## Role
 
