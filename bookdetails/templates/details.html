@@ -21,7 +21,7 @@
             <p><strong><font size='5'>Price:</font></strong></p>
             <p><font size='10'><b>{{ book.formatted_price }}</b></font></p>
             
-            <button class="long-circle-btn wishlist-btn" id="wishlist-button">
+            <button class="long-circle-btn wishlist-btn" id="wishlist-button" data-book-id="{{ book.pk }}">
                 <span class="icon">&#10084;</span><b>Add to Wishlist</b>
             </button>
             <button class="long-circle-btn shopping-cart-btn" id="cart-button">
@@ -130,6 +130,11 @@
         border-color: black;
         color: black;
     }
+    
+    .added-to-wishlist {
+        background-color: red; /* Change to your desired red color */
+        color: white; /* Text color for the red button */
+    }
 
     .fixed-footer {
         bottom: 0;
@@ -179,66 +184,53 @@
 <script>
     $(document).ready(function () {
         var wishlistState = false;
-        var cartState = false;
 
-        // Add a click event handler to the wishlist button
+        // Function to check if a book is in the wishlist
+        function checkWishlist(bookId) {
+            // Make an AJAX request to the server to check if the book is in the wishlist
+            $.ajax({
+                url: `/wishlist/check_wishlist/${bookId}/`,
+                method: 'GET',
+                success: function (data) {
+                    if (data.inWishlist) {
+                        wishlistState = true;
+                        $('#wishlist-button').addClass('active'); // Add a class to style the button
+                    }
+                },
+                error: function () {
+                    console.log('Error checking wishlist');
+                }
+            });
+        }
+
+        // Attach a click event handler to the wishlist button
         $('#wishlist-button').click(function () {
-            // Reverse the button effects if it is pressed again
+            var bookId = $(this).data('book-id');
+
             if (wishlistState) {
-                // Change the button back to its original state
-                $(this).css('background-color', '');
-                $(this).css('border-color', '');
-                $(this).css('color', '');
-                $(this).html('<span class="icon">&#10084;</span><b>Add to Wishlist</b>');
-                
-                
-                showPopup("Removed from Wishlist!");
-            } 
-            else {
-                // Change the button to the pressed state
-                $(this).css('background-color', '#FF0000');
-                $(this).css('border-color', '#FF0000');
-                $(this).css('color', 'white');
-                $(this).html('<span class="icon white-heart-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"><path class="white-heart" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><b>Added to Wishlist</b>');
-                
-                
-                showPopup("Added to Wishlist!");
+                showPopup("This item is already in your wishlist.");
+                return;
             }
 
-            // Toggle the state
-            wishlistState = !wishlistState;
-
-            // You can also send an AJAX request to a server to handle the wishlist action here
+            $.ajax({
+                url: `/wishlist/add_wishlist/${bookId}/`,
+                method: 'GET',
+                success: function (data) {
+                    wishlistState = true;
+                    $('#wishlist-button').addClass('active');
+                    $('#wishlist-button').html('<span class="icon white-heart-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"><path class="white-heart" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><b>Added to Wishlist</b>');
+                    showPopup("Added to Wishlist!");
+                },
+                error: function () {
+                    console.log('Error adding to wishlist');
+                }
+            });
         });
 
-        // Add a click event handler to the shopping cart button
-        $('#cart-button').click(function () {
-            // Reverse the button effects if it is pressed again
-            if (cartState) {
-                // Change the button back to its original state
-                $(this).css('background-color', '');
-                $(this).css('border-color', '');
-                $(this).css('color', '');
-                $(this).html('<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path fill="#000000" d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg></span><b>Add to Shopping Cart</b>');
-            
-                showPopup("Removed from Shopping Cart!");
-            } 
-            else {
-                // Change the button to the pressed state
-                $(this).css('background-color', '#000000');
-                $(this).css('border-color', '#000000');
-                $(this).css('color', 'white');
-                $(this).html('<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path fill="#ffffff" d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg></span><b>Added to Shopping Cart</b>');
-                showPopup("Added to Shopping Cart!");
-            }
-
-            // Toggle the state
-            cartState = !cartState;
-
-            // You can also send an AJAX request to a server to handle the shopping cart action here
-        });
+        // Check if the book is in the wishlist when the page loads
+        var bookId = $('#wishlist-button').data('book-id');
+        checkWishlist(bookId);
     });
-
 
 
     function showPopup(message) {

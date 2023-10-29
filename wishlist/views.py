@@ -15,7 +15,9 @@ def show_wishlist(request):
     wishlist_items = WishlistItem.objects.filter(user=request.user)
     #wishlist_items = WishlistItem.objects.all
     context = {
-        'wishlist_items': wishlist_items
+        'wishlist_items': wishlist_items,
+        'name' : request.user.username,
+        'user' : request.user,
     }
 
     return render(request, 'wishlist.html', context)
@@ -50,6 +52,7 @@ def show_json(request):
     items = WishlistItem.objects.filter(user = user)
     serialized_data = []
     for item in items:
+        in_wishlist = True
 
         model_data = {
             "pk" : item.pk,
@@ -59,10 +62,22 @@ def show_json(request):
                 "authors" : item.book.authors,
                 "average_rating" : item.book.average_rating,
                 "price" : item.book.price,
-                "categories" : item.book.categories
+                "categories" : item.book.categories,
+                "in_wishlist": in_wishlist,
             }
         }
         serialized_data.append(model_data)
 
     json_data = json.dumps(serialized_data)
     return HttpResponse(json_data, content_type="application/json")
+
+def check_wishlist(request, book_id):
+    user = request.user  # Assuming the user is authenticated
+    try:
+        wishlist_item = WishlistItem.objects.get(user=user, book__pk=book_id)
+        in_wishlist = True
+    except WishlistItem.DoesNotExist:
+        in_wishlist = False
+
+    response_data = {'inWishlist': in_wishlist}
+    return HttpResponse(json.dumps(response_data), content_type='application/json')

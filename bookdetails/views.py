@@ -9,7 +9,9 @@ def book_details(request, book_id):
     book.formatted_price = "Rp {:,.0f}".format(book.price)
 
     context = {
-        'book': book
+        'book': book,
+        'name' : request.user.username,
+        'user' : request.user,
     }
 
     return render(request, 'details.html', context)
