@@ -25,8 +25,5 @@ urlpatterns = [
     path("api/books", include("book.urls")),
     path('', include("user_profile.urls")),
     path('', include("search_page.urls")),
-    path ('', include("FormRequest.urls")),
-    path('register/', register, name='register'), 
-    path('login/', login_user, name='login'),
-    path('logout/', logout_user, name='logout'),  
+    path ('', include("FormRequest.urls")),  
 ]
