@@ -38,7 +38,8 @@
         </div>
     </div>
 </nav>
-
+<br>
+<br>
 <div class="row">
 <!-- Book cards -->
 {% for book in books %}
@@ -55,7 +56,7 @@
                     <h5 class="card-text"><strong>Genre:</strong>
                         <span class="stock-genre">{{ book.categories }}</span>
                     </h5>
-                    <h5 class="card-text"><strong>Stock:</strong>
+                    <h5 class="card-text"><strong>Author(s):</strong>
                         <span class="stock-amount">{{ book.authors }}</span>
                     </h5>
                     <h5 class="card-text"><b>Price:</b>
@@ -66,7 +67,9 @@
         </div>
         <div class="card-footer d-flex justify-content-between custom-card-footer">
             <!-- Button for "View Details" on the left with the specified color -->
-            <button class="detail-btn">View Details</button>
+            <a href="{% url 'bookdetails:book_details' book.id %}" class="detail-btn" style="text-decoration: none; color: white; margin-top: 10px;">
+                View Details
+            </a>
             <!-- Wishlist and Shopping cart buttons on the right as circles -->
             <div class="d-flex">
                 <div class="mr-2">

@@ -1,0 +1,292 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://i.ibb.co/brcxb2J/1698425247234.png" alt="Bootstrap" width="90" height="90">
+        </a>
+        <a class="navbar-brand mb-0 h1"><b>LibPanda</b></a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-nav centered-text">
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search Book">
+                    <button class="btn btn-outline-success" type="submit">
+                        <img src="https://cdn.icon-icons.com/icons2/2469/PNG/512/magnifier_magnifying_glass_icon_149435.png"
+                             alt="Bootstrap" width="25" height="25">
+                    </button>
+                </form>
+            </div>
+            <div class="navbar-nav ml-auto col d-flex justify-content-end custom-padding">
+                <a class="nav-link active" aria-current="page" href="#">Request</a>
+                <a class="nav-link active" href="#">Wishlist</a>
+                <a class="nav-link active" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><style>svg{fill:#000000}</style><path
+                            d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                </a>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hi, {{ name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                    </ul>
+                </li>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 left-column">
+            <img src="{{ book.thumbnail }}" alt="{{ book.title }} Thumbnail" class="img-fluid">
+        </div>
+        <div class="col-md-5 middle-column">
+            <h1><b>{{ book.title }}</b></h1>
+            <br>
+            <p style="font-size: 20px;"><strong>Author(s):</strong><font size=''></font> {{ book.authors }}</p>
+            <p style="font-size: 20px;"><strong>Category:</strong> {{ book.categories }}</p>
+            <p style="font-size: 20px;"><strong>Synopsis:</strong> {{ book.description }}</p>
+            <p style="font-size: 20px;"><strong>Publish Year:</strong> {{ book.published_year }}</p>
+            <p style="font-size: 20px;"><strong>Number of Pages:</strong> {{ book.num_pages }}</p>
+            <p style="font-size: 20px;"><strong>Rating: </strong><span class="yellow-star">&#9733;</span> {{ book.average_rating }}</p>
+        </div>
+        <div class="col-md-3 right-column">
+            <p><strong><font size='5'>Price:</font></strong></p>
+            <p><font size='10'><b>{{ book.formatted_price }}</b></font></p>
+            
+            <button class="long-circle-btn wishlist-btn" id="wishlist-button">
+                <span class="icon">&#10084;</span><b>Add to Wishlist</b>
+            </button>
+            <button class="long-circle-btn shopping-cart-btn" id="cart-button">
+                <span class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><style>svg{fill:#000000}</style><path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg>
+                </span>
+                <b>Add to Shopping Cart</b>
+            </button>
+        </div>
+    </div>
+</div>
+<br><br>
+<footer class="fixed-footer">
+    <img src="https://i.ibb.co/3T8pq0G/Lib-Panda-transformed.png" alt="Footer Image">
+</footer>
+
+<div id="popup" class="popup">
+    <div class="popup-content">
+        <!-- Content of the popup, e.g., "Added to Wishlist" or "Added to Shopping Cart" -->
+    </div>
+</div>
+
+<style>
+  
+    .container {
+        margin-top: 20px;
+    }
+
+    .img-fluid {
+        width: 250px;
+        height: auto;
+    }
+
+    .left-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 15px;
+        background-color: whitesmoke;
+        margin: 5px 10px; /* Increase the margin to provide more space between columns */
+        padding: 20px; /* Add padding to create space between images and edges */
+
+    }
+
+    .middle-column {
+        padding: 20px;
+        border-radius: 15px;
+        margin: 5px 10px; /* Increase the margin to provide more space between columns */
+    }
+
+    .right-column {
+        padding: 10px;
+        text-align: center;
+        border-radius: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 5px solid #6E8C03;
+        margin: 5px 10px; /* Increase the margin to provide more space between columns */
+    }
+
+    .wishlist-btn {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .wishlist-btn .icon {
+        margin-right: 5px;
+    }
+
+    .shopping-cart-btn .icon {
+        margin-right: 15px;
+    }
+
+    .long-circle-btn {
+        width: 250px;
+        height: 50px;
+        border-radius: 25px;
+        background-color: #6E8C03;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10px;
+        font-size: 16px;
+        border: 2px solid #6E8C03;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .long-circle-btn:hover {
+        background-color: #fff;
+        color: #6E8C03;
+    }
+
+    .wishlist-btn:hover {
+        border-color: #FF0000;
+        color: #FF0000;
+    }
+
+    .shopping-cart-btn:hover {
+        border-color: black;
+        color: black;
+    }
+
+    .fixed-footer {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .yellow-star {
+        color: rgb(245, 231, 38);
+    }
+
+    .wishlist-btn.active {
+        background-color: red;
+        border-color: red;
+        color: white;
+    }
+
+    .white-heart {
+        fill: white !important;
+    }
+
+    .popup {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+        display: none;
+    }
+
+    .popup-content {
+        background-color: #222;
+        font-size: 20px;
+        padding: 20px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var wishlistState = false;
+        var cartState = false;
+
+        // Add a click event handler to the wishlist button
+        $('#wishlist-button').click(function () {
+            // Reverse the button effects if it is pressed again
+            if (wishlistState) {
+                // Change the button back to its original state
+                $(this).css('background-color', '');
+                $(this).css('border-color', '');
+                $(this).css('color', '');
+                $(this).html('<span class="icon">&#10084;</span><b>Add to Wishlist</b>');
+                
+                
+                showPopup("Removed from Wishlist!");
+            } 
+            else {
+                // Change the button to the pressed state
+                $(this).css('background-color', '#FF0000');
+                $(this).css('border-color', '#FF0000');
+                $(this).css('color', 'white');
+                $(this).html('<span class="icon white-heart-icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 24 24"><path class="white-heart" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span><b>Added to Wishlist</b>');
+                
+                
+                showPopup("Added to Wishlist!");
+            }
+
+            // Toggle the state
+            wishlistState = !wishlistState;
+
+            // You can also send an AJAX request to a server to handle the wishlist action here
+        });
+
+        // Add a click event handler to the shopping cart button
+        $('#cart-button').click(function () {
+            // Reverse the button effects if it is pressed again
+            if (cartState) {
+                // Change the button back to its original state
+                $(this).css('background-color', '');
+                $(this).css('border-color', '');
+                $(this).css('color', '');
+                $(this).html('<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path fill="#000000" d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg></span><b>Add to Shopping Cart</b>');
+            
+                showPopup("Removed from Shopping Cart!");
+            } 
+            else {
+                // Change the button to the pressed state
+                $(this).css('background-color', '#000000');
+                $(this).css('border-color', '#000000');
+                $(this).css('color', 'white');
+                $(this).html('<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512"><path fill="#ffffff" d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"/></svg></span><b>Added to Shopping Cart</b>');
+                showPopup("Added to Shopping Cart!");
+            }
+
+            // Toggle the state
+            cartState = !cartState;
+
+            // You can also send an AJAX request to a server to handle the shopping cart action here
+        });
+    });
+
+
+
+    function showPopup(message) {
+        $('#popup .popup-content').html(message);
+        $('#popup').fadeIn().delay(2000).fadeOut(); // Show for 2 seconds
+    }
+
+    function hidePopup() {
+        $('#popup').hide();
+    }
+</script>
+
+{% endblock content %}
