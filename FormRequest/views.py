@@ -6,7 +6,7 @@ from main.models import User
 from django.contrib.auth.forms import UserCreationForm
 
 
-
+@login_required
 def request_book(request):
     context = {
         'name' : request.user.username,
