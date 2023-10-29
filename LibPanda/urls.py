@@ -18,8 +18,11 @@ from django.contrib import admin
 from django.urls import include, path
 from FormRequest.views import request_book
 from main.views import login_user, logout_user, register, show_main
+from FormRequest.views import request_book
+from main.views import login_user, logout_user, register, show_main
 
 urlpatterns = [
+    path('', include("main.urls")),
     path('', include("main.urls")),
     path('admin/', admin.site.urls),
     path("api/books", include("book.urls")),
