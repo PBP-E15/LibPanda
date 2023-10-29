@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main',
     'book',
+    'shoppingcart',
     'user_profile',
     'FormRequest',
     'search_page',

@@ -71,3 +71,7 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse("main:show_main"))
     response.delete_cookie('last_login')
     return response
+
+def get_books_json(request):
+    books = Book.objects.all()
+    return HttpResponse(serializers.serialize('json', books))
