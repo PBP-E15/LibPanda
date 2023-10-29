@@ -27,9 +27,9 @@ def request_book(request):
     else:
         form = BookForm()
 
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  # Jika ini adalah permintaan AJAX, kirim respons kosong
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':  
         response = HttpResponse()
-        response['Cache-Control'] = 'no-cache, no-store, must-revalidate'  # Menambahkan header Cache-Control
+        response['Cache-Control'] = 'no-cache, no-store, must-revalidate'  
         return response
 
     return render(request, 'form.html', {'form': form, **context}) 

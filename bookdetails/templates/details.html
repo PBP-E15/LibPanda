@@ -65,14 +65,14 @@
         text-align: center;
         border-radius: 15px;
         background-color: #e8ddb5;
-        margin: 5px 10px; /* Increase the margin to provide more space between columns */
-        padding: 20px; /* Add padding to create space between images and edges */
+        margin: 5px 10px;
+        padding: 20px; 
     }
 
     .middle-column {
         padding: 20px;
         border-radius: 15px;
-        margin: 5px 10px; /* Increase the margin to provide more space between columns */
+        margin: 5px 10px;
     }
 
     .right-column {
@@ -84,7 +84,7 @@
         justify-content: center;
         align-items: center;
         border: 5px solid #6E8C03;
-        margin: 5px 10px; /* Increase the margin to provide more space between columns */
+        margin: 5px 10px; 
     }
 
     .wishlist-btn {
@@ -133,8 +133,8 @@
     }
     
     .added-to-wishlist {
-        background-color: red; /* Change to your desired red color */
-        color: white; /* Text color for the red button */
+        background-color: red;
+        color: white;
     }
 
     .fixed-footer {
@@ -183,11 +183,43 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {    
+    $(document).ready(function () {
+        
         var wishlistState = false;
         var cartState = false;
 
-        // Attach a click event handler to the wishlist button
+        function checkWishlist(bookId) {
+            $.ajax({
+                url: `/wishlist/check_wishlist/${bookId}/`,
+                method: 'GET',
+                success: function (data) {
+                    if (data.inWishlist) {
+                        wishlistState = true;
+                        $('#wishlist-button').addClass('active');
+                    }
+                },
+                error: function () {
+                    console.log('Error checking wishlist');
+                }
+            });
+        }
+
+        function checkCart(bookId) {
+            $.ajax({
+                url: `/shoppingcart/check_cart/${bookId}/`,
+                method: 'GET',
+                success: function (data) {
+                    if (data.inCart) {
+                        cartState = true;
+                        $('#cart-button').addClass('active');
+                    }
+                },
+                error: function () {
+                    console.log('Error checking shopping cart');
+                }
+            });
+        }
+
         $('#wishlist-button').click(function () {
             var bookId = $(this).data('book-id');
 
@@ -211,12 +243,9 @@
             });
         });
 
-        // Check if the book is in the wishlist when the page loads
         var bookId = $('#wishlist-button').data('book-id');
         checkWishlist(bookId);
 
-        
-        // Attach a click event handler to the shopping cart button
         $('#cart-button').click(function () {
             var bookId = $(this).data('book-id');
 
@@ -242,7 +271,6 @@
             });
         });
 
-        // Check if the book is in the shopping cart when the page loads
         var bookId = $('#cart-button').data('book-id');
         checkCart(bookId);
     });
@@ -250,7 +278,7 @@
 
     function showPopup(message) {
         $('#popup .popup-content').html(message);
-        $('#popup').fadeIn().delay(2000).fadeOut(); // Show for 2 seconds
+        $('#popup').fadeIn().delay(2000).fadeOut();
     }
 
     function hidePopup() {

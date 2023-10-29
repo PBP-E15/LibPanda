@@ -62,15 +62,13 @@
             color: #6E8C03;
         }
 
-        /* Gaya untuk tombol Hapus dari Wishlist */
         .remove-btn {
             background-color: red;
             color: white;
         }
 
-        /* Gaya untuk teks "Wishlist" */
         h1 {
-            text-align: center; /* Mengatur teks agar berada di tengah horizontal */
+            text-align: center; 
         }
     </style>
 </head>
@@ -88,7 +86,6 @@
         
         function removeItem(id) {
             console.log(id);
-            // Kirim permintaan untuk menghapus item dari Wishlist
             fetch(`/wishlist/remove_wishlist/${id}/`, {
                 method: "DELETE",
             }).then(refreshProducts);
@@ -98,7 +95,7 @@
             const products = await getWishlist();
             console.log(products);
             const wishlistContainer = document.getElementById('wishlist-container');
-            wishlistContainer.innerHTML = ''; // Kosongkan kontainer wishlist
+            wishlistContainer.innerHTML = ''; 
             
             products.forEach(item => {
                 const card = document.createElement('div');
@@ -112,7 +109,7 @@
                         <p><b>Category: </b>${item.book.categories}</p>
                         <p><b>Price: </b>${new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(item.book.price).replace('.', ',')}</p>
                     </div>
-                    <button class="long-circle-btn remove-btn" onclick="removeItemAndShowToast(${item.pk})">Hapus dari Wishlist</button>
+                    <button class="long-circle-btn remove-btn" onclick="removeItemAndShowToast(${item.pk})">Remove from Wishlist</button>
                 `;
 
                 wishlistContainer.appendChild(card);
@@ -127,7 +124,7 @@
         }
         function removeItemAndShowToast(id) {
             removeItem(id);
-            showToast(); // Show the "Barang sudah dihapus" toast
+            showToast(); 
         }
     </script>
 </body>

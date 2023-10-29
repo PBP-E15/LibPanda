@@ -8,22 +8,20 @@
 <div class="text-center mt-5">
     <div class="row justify-content-center">
         <div class="col-md-1 text-right">
-            <img src="https://i.ibb.co/brcxb2J/1698425247234.png" alt="Bootstrap" width="200">
+            <img src="https://i.ibb.co/brcxb2J/1698425247234.png" alt="Bootstrap" width="190">
         </div>
         <div class="col-md-5">
-            <h1 style="font-size: 90px; text-align: center;"><strong>Welcome to LibPanda!</strong></h1>
+            <h1 style="font-size: 65px; text-align: center;"><strong>Welcome to LibPanda!</strong></h1>
         </div>
     </div>
 </div>
 
 <br><br>
 <div class="row" id="contents">
-    <!-- Book cards -->
     {% for book in books %}
     <div class="col-md-4 mb-4">
         <div class="card book-card">
             <div class="card-body">
-                <!-- Book details -->
                 <div class="d-flex">
                     <div class="mr-3 mx-3">
                         <img src="{{ book.thumbnail }}" alt="Book Thumbnail" class="book-thumbnail">
@@ -43,7 +41,6 @@
                 </div>
             </div>
             <div class="card-footer d-flex justify-content-between custom-card-footer">
-                <!-- Button for "View Details" on the left with the specified color -->
                 <a href="{% url 'bookdetails:book_details' book.id %}" class="detail-btn" style="text-decoration: none; margin-top: 10px;">
                     View Details
                 </a>
@@ -94,11 +91,11 @@
 
 <style>
     .card {
-        background-color: #FFFFFF; /* Primary Background Color */
+        background-color: #FFFFFF; 
     }
 
     .custom-card-footer {
-        background-color: #333333; /* Accent Color */
+        background-color: #333333; 
     }
 
     .book-card {
@@ -108,14 +105,14 @@
 
     .card-title {
         font-size: 30px;
-        color: #333333; /* Primary Color */
+        color: #333333; 
     }
 
     .stock-genre,
     .stock-amount,
     .card-text {
         font-size: 18px;
-        color: #666666; /* Secondary Color */
+        color: #666666; 
     }
 
     .book-thumbnail {
@@ -123,15 +120,15 @@
     }
 
     body {
-        background-color: #e8ddb5; /* Supporting Color */
+        background-color: #e8ddb5;
     }
 
     .circular-btn {
         width: 45px;
         height: 45px;
         border-radius: 50%;
-        background-color: #FFFFFF; /* Primary Background Color */
-        color: #FFFFFF; /* Primary Background Color */
+        background-color: #FFFFFF; 
+        color: #FFFFFF; 
         display: flex;
         justify-content: center;
         align-items: center;
@@ -144,7 +141,7 @@
     }
 
     .circular-btn:hover {
-        background-color: #cacaca; /* Accent Color */
+        background-color: #cacaca; 
     }
 
     .icon {
@@ -152,7 +149,7 @@
     }
 
     .detail-btn {
-        background-color: #FFFFFF; /* Primary Background Color */
+        background-color: #FFFFFF; 
         color: #333333; /* Primary Color */
         padding: 5px 5px;
         margin-top: auto;
