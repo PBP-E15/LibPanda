@@ -183,44 +183,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function () {    
         var wishlistState = false;
         var cartState = false;
-
-        // Function to check if a book is in the wishlist
-        function checkWishlist(bookId) {
-            // Make an AJAX request to the server to check if the book is in the wishlist
-            $.ajax({
-                url: `/wishlist/check_wishlist/${bookId}/`,
-                method: 'GET',
-                success: function (data) {
-                    if (data.inWishlist) {
-                        wishlistState = true;
-                        $('#wishlist-button').addClass('active'); // Add a class to style the button
-                    }
-                },
-                error: function () {
-                    console.log('Error checking wishlist');
-                }
-            });
-        }
-
-        function checkCart(bookId) {
-            $.ajax({
-                url: `/cart/check_cart/${bookId}/`,
-                method: 'GET',
-                success: function (data) {
-                    if (data.inCart) {
-                        cartState = true;
-                        $('#cart-button').addClass('active');
-                    }
-                },
-                error: function () {
-                    console.log('Error checking shopping cart');
-                }
-            });
-        }
-
 
         // Attach a click event handler to the wishlist button
         $('#wishlist-button').click(function () {
