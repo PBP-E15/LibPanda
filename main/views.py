@@ -48,10 +48,8 @@ def logout_user(request):
 # Create your views here.
 @login_required(login_url='/login')
 def show_main(request):
-    # Get all books
     books = Book.objects.all()
-    
-    # Randomly shuffle the books
+
     shuffled_books = sample(list(books), len(books))
 
     for book in shuffled_books:

@@ -4,7 +4,7 @@
 
 <style>
     body {
-        background-color: #e8ddb5; /* Supporting Color */
+        background-color: #e8ddb5;
     }
 
     .card {
@@ -34,7 +34,7 @@
     }
 
     .custom-card-footer {
-        background-color: #333333; /* Accent Color */
+        background-color: #333333;
     }
 
     .card img {
@@ -108,7 +108,6 @@
 
         function removeItem(id) {
             console.log(id)
-            // Kirim permintaan untuk menghapus item dari Shopping Cart
             fetch(`/shoppingcart/remove_bookcart/${id}/`, {
                 method: "DELETE",
             }).then(refreshProducts);
@@ -121,7 +120,6 @@
             if (itemIds.length > 0) {
                 var confirmation = confirm("Are you sure you want to remove all items from the cart?");
                 if (confirmation) {
-                    // Lakukan tindakan penghapusan semua item.
                     itemIds.forEach(id => removeItem(id));
                 }
             }

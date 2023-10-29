@@ -42,12 +42,10 @@
 </header>
 
 <div class="row">
-<!-- Book cards -->
 {% for book in books %}
 <div class="col-md-4 mb-4">
     <div class="card book-card">
         <div class="card-body">
-            <!-- Book details -->
             <div class="d-flex">
                 <div class="mr-3 mx-3">
                     <img src="{{ book.thumbnail }}" alt="Book Thumbnail" class="book-thumbnail">
@@ -67,9 +65,7 @@
             </div>
         </div>
         <div class="card-footer d-flex justify-content-between custom-card-footer">
-            <!-- Button for "View Details" on the left with the specified color -->
             <button class="detail-btn">View Details</button>
-            <!-- Wishlist and Shopping cart buttons on the right as circles -->
             <div class="d-flex">
                 <div class="mr-2">
                     <button class="circular-btn">
@@ -104,14 +100,12 @@
     .custom-card-footer {
         background-color: #0D0D0D;
     }
-    /* Add margin to the book cards */
     .book-card {
-        margin: 10px; /* Adjust the value as needed */
+        margin: 10px;
     }
 
-    /* Style for the book thumbnail image */
     .book-thumbnail {
-        max-width: 100px; /* Adjust the maximum width of the image as needed */
+        max-width: 100px;
     }
 
     body {
