@@ -4,18 +4,17 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages 
 import datetime
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect 
+from django.http import HttpResponse, HttpResponseRedirect 
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from book.models import Book
 from random import sample
+from django.core import serializers
 
-# Create your views here.
+
 def show_main(request):
-    # Get all books
     books = Book.objects.all()
     
-    # Randomly shuffle the books
     shuffled_books = sample(list(books), len(books))
 
     for book in shuffled_books:

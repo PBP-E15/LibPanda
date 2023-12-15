@@ -9,11 +9,9 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 
-# Create your views here.
 @login_required(login_url='/login')
 def show_wishlist(request):
     wishlist_items = WishlistItem.objects.filter(user=request.user)
-    #wishlist_items = WishlistItem.objects.all
     context = {
         'wishlist_items': wishlist_items,
         'name' : request.user.username,
@@ -24,11 +22,8 @@ def show_wishlist(request):
 
 @login_required(login_url='/login')
 def add_wishlist(request, book_id):
-    #user = User.objects.get(pk=1)
     user = request.user
     book = Book.objects.get(pk=book_id)
-    # Membuat catatan dalam WishlistItem
-    #WishlistItem.objects.get_or_create(user=user, book=book)
     WishlistItem.objects.get_or_create(user=request.user, book=book)
 
     return HttpResponse(b"CREATED", status=201)
@@ -36,18 +31,14 @@ def add_wishlist(request, book_id):
 @login_required(login_url='/login')
 @csrf_exempt
 def remove_wishlist(request, wishlist_item_id):
-    #user = User.objects.get(pk=1)
-    #user = request.user
     book = Book.objects.get(pk=wishlist_item_id)
     wishlist_item = WishlistItem.objects.get(pk=wishlist_item_id)
 
-    #if wishlist_item.user == request.user:
     wishlist_item.delete()
 
     return HttpResponse(b"DELETED", status=201)
 
 def show_json(request):
-    #user = User.objects.get(pk = 1) # Nanti ganti jadi request.user
     user = request.user
     items = WishlistItem.objects.filter(user = user)
     serialized_data = []
@@ -72,7 +63,7 @@ def show_json(request):
     return HttpResponse(json_data, content_type="application/json")
 
 def check_wishlist(request, book_id):
-    user = request.user  # Assuming the user is authenticated
+    user = request.user 
     try:
         wishlist_item = WishlistItem.objects.get(user=user, book__pk=book_id)
         in_wishlist = True
