@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'bookdetails',
     'wishlist',
     'corsheaders',
+    'authentication',
 ]
 
 MIDDLEWARE = [

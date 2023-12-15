@@ -27,11 +27,11 @@ def show_profile(request):
     except:
         user = request.user
 
-        name = request.user.username
-        email = ""
+        name = "fulan"
+        email = "example@gmail.com"
         gender = ""
         birthday = "2004-05-04"
-        phone_number = ""
+        phone_number = "040504"
 
         new_biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number)
         new_biodata.save()
@@ -81,6 +81,14 @@ def get_biodata_json(request):
 
 def get_wallet_json(request):
     wallet_item = Wallet.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', wallet_item))
+
+def get_biodata_flutter(request, id):
+    biodata_item = Biodata.objects.filter(pk=id)
+    return HttpResponse(serializers.serialize('json', biodata_item))
+
+def get_wallet_flutter(request, id):
+    wallet_item = Wallet.objects.filter(pk=id)
     return HttpResponse(serializers.serialize('json', wallet_item))
 
 # Create your views here.
