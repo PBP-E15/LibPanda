@@ -20,11 +20,11 @@ def login(request):
         gender = ""
         birthday = "2004-05-04"
         phone_number = "040504"
-        biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number)
+        biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number, id=user.id)
         biodata.save()
         
         balance = 0
-        wallet = Wallet(user=user, balance=balance)
+        wallet = Wallet(user=user, balance=balance, id=user.id)
         wallet.save()
         
     if user is not None:
