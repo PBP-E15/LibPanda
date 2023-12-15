@@ -15,16 +15,16 @@ def login(request):
         wallet = Wallet.objects.get(user=request.user)
     
     except:
-        name = "fulan"
+        name = user.username
         email = "example@gmail.com"
         gender = ""
         birthday = "2004-05-04"
         phone_number = "040504"
-        biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number, id=user.id)
+        biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number)
         biodata.save()
         
         balance = 0
-        wallet = Wallet(user=user, balance=balance, id=user.id)
+        wallet = Wallet(user=user, balance=balance)
         wallet.save()
         
     if user is not None:

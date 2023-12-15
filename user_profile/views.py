@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 import datetime
+from django.http import JsonResponse
+import json
 from user_profile.models import Biodata, Wallet
 
 @login_required(login_url='/login')
@@ -27,7 +29,7 @@ def show_profile(request):
     except:
         user = request.user
 
-        name = "fulan"
+        name = user.username
         email = "example@gmail.com"
         gender = ""
         birthday = "2004-05-04"
@@ -83,12 +85,44 @@ def get_wallet_json(request):
     wallet_item = Wallet.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize('json', wallet_item))
 
+@csrf_exempt
 def get_biodata_flutter(request, id):
     biodata_item = Biodata.objects.filter(pk=id)
     return HttpResponse(serializers.serialize('json', biodata_item))
 
+@csrf_exempt
 def get_wallet_flutter(request, id):
     wallet_item = Wallet.objects.filter(pk=id)
     return HttpResponse(serializers.serialize('json', wallet_item))
 
-# Create your views here.
+@csrf_exempt
+def edit_biodata_flutter(request, id):
+    if request.method == 'POST':
+
+        biodata=Biodata.objects.get(pk=id)
+        data = json.loads(request.body)
+
+        biodata.name = data["name"]
+        biodata.email = data["email"]
+        biodata.gender = data["gender"]
+        biodata.birthday = data["birthday"]
+        biodata.phone_number = data["phone_number"]
+        biodata.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)
+
+@csrf_exempt
+def topup_wallet_flutter(request, id):
+    if request.method == 'POST':
+
+        wallet=Wallet.objects.get(pk=id)
+        data = json.loads(request.body)
+
+        wallet.balance += int(data["balance"])
+        wallet.save()
+
+        return JsonResponse({"status": "success"}, status=200)
+    else:
+        return JsonResponse({"status": "error"}, status=401)# Create your views here.
