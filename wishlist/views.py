@@ -1,5 +1,5 @@
 import json
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.shortcuts import render, redirect
 from wishlist.models import WishlistItem
@@ -48,10 +48,14 @@ def show_json(request):
         model_data = {
             "pk" : item.pk,
             "book": {
+                "pk" : item.book.id,
+                "numPages" : item.book.num_pages,
+                "description" : item.book.description,
+                "publishedYear" : item.book.published_year,
                 "thumbnail" : item.book.thumbnail,
                 "title" : item.book.title,
                 "authors" : item.book.authors,
-                "average_rating" : item.book.average_rating,
+                "averageRating" : item.book.average_rating,
                 "price" : item.book.price,
                 "categories" : item.book.categories,
                 "in_wishlist": in_wishlist,
@@ -72,3 +76,40 @@ def check_wishlist(request, book_id):
 
     response_data = {'inWishlist': in_wishlist}
     return HttpResponse(json.dumps(response_data), content_type='application/json')
+
+@login_required(login_url='/login')
+@csrf_exempt
+def add_wishlist_flutter(request):
+    try:
+        user = request.user
+        data = json.loads(request.body)
+        book_id = data.get('book_id')
+        book = Book.objects.get(pk=book_id)
+
+        # Check if the book is already in the wishlist
+        if WishlistItem.objects.filter(user=user, book=book).exists():
+            return JsonResponse({'status': 'Book is already in the wishlist'}, status=400)
+
+        # Add the book to the wishlist
+        WishlistItem.objects.create(user=user, book=book)
+
+        return JsonResponse({'status': 'Book added to wishlist successfully'}, status=201)
+
+    except Exception as e:
+        return JsonResponse({'status': 'Error adding book to wishlist', 'error': str(e)}, status=500)
+
+@login_required(login_url='/login')
+@csrf_exempt
+def removed_wishlist_flutter(request):
+    try:
+        user = request.user
+        data = json.loads(request.body)
+        wishlist_id = data.get('wishlist_id')
+        wishlist_item = WishlistItem.objects.get(user=user, id=wishlist_id)
+        # Add the book to the wishlist
+        wishlist_item.delete()
+
+        return JsonResponse({'status': 'Book removed from wishlist successfully'}, status=201)
+
+    except Exception as e:
+        return JsonResponse({'status': 'Error adding book to wishlist', 'error': str(e)}, status=500)

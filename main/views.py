@@ -10,7 +10,8 @@ from django.urls import reverse
 from book.models import Book
 from random import sample
 from django.core import serializers
-
+from django.views.decorators.csrf import csrf_exempt
+from django.core import serializers
 
 def show_main(request):
     books = Book.objects.all()
@@ -28,7 +29,7 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
-
+@csrf_exempt
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
