@@ -17,8 +17,10 @@ from user_profile.models import Biodata, Wallet
 @login_required(login_url='/login')
 def show_profile(request):
     try:
-        biodata = Biodata.objects.get(user=request.user)
-        wallet = Wallet.objects.get(user=request.user)
+        user = request.user
+        
+        biodata = user.biodata
+        wallet = user.wallet
 
         context = {
             'name': request.user.username,
@@ -30,7 +32,7 @@ def show_profile(request):
         user = request.user
 
         name = user.username
-        email = "example@gmail.com"
+        email = "no_email@email.com"
         gender = ""
         birthday = "2004-05-04"
         phone_number = "040504"

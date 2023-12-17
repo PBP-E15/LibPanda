@@ -10,6 +10,7 @@ from django.urls import reverse
 from book.models import Book
 from random import sample
 from django.core import serializers
+from user_profile.models import Biodata, Wallet
 
 
 def show_main(request):
@@ -41,6 +42,19 @@ def register(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+
+            name = user.username
+            email = "no_email@email.com"
+            gender = ""
+            birthday = "2004-05-04"
+            phone_number = "040504"
+
+            new_biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number)
+            new_biodata.save()
+
+            balance = 0
+            new_wallet = Wallet(user=user, balance=balance)
+            new_wallet.save()
 
             messages.success(request, 'Your account has been successfully created!')
             return redirect('main:show_main')
