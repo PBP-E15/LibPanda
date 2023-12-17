@@ -17,8 +17,8 @@ def login(request):
             return JsonResponse({
                 "username": user.username,
                 "password": request.POST['password'],
-                "wallet_pk": user.biodata.id,
-                "biodata_pk": user.wallet.id,
+                "wallet_pk": user.wallet.id,
+                "biodata_pk": user.biodata.id,
                 "status": True,
                 "message": "Login sukses!"
                 # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
