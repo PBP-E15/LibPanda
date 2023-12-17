@@ -9,24 +9,7 @@ def login(request):
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
-    
-    try:
-        biodata = Biodata.objects.get(user=request.user)
-        wallet = Wallet.objects.get(user=request.user)
-    
-    except:
-        name = user.username
-        email = "example@gmail.com"
-        gender = ""
-        birthday = "2004-05-04"
-        phone_number = "040504"
-        biodata = Biodata(user=user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number)
-        biodata.save()
-        
-        balance = 0
-        wallet = Wallet(user=user, balance=balance)
-        wallet.save()
-        
+
     if user is not None:
         if user.is_active:
             auth_login(request, user)
@@ -34,8 +17,8 @@ def login(request):
             return JsonResponse({
                 "username": user.username,
                 "password": request.POST['password'],
-                "wallet_pk": biodata.id,
-                "biodata_pk": wallet.id,
+                "wallet_pk": user.biodata.id,
+                "biodata_pk": user.wallet.id,
                 "status": True,
                 "message": "Login sukses!"
                 # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
