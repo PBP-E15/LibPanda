@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from user_profile.models import Biodata, Wallet
+from django.contrib.auth.models import User
+from django.contrib.auth import logout as auth_logout
 
 @csrf_exempt
 def login(request):
@@ -34,3 +36,39 @@ def login(request):
             "status": False,
             "message": "Login gagal, periksa kembali email atau kata sandi."
         }, status=401)
+
+@csrf_exempt
+def logout(request):
+    username = request.user.username
+
+    try:
+        auth_logout(request)
+        return JsonResponse({
+            "username": username,
+            "status": True,
+            "message": "Logout berhasil!"
+        }, status=200)
+    except:
+        return JsonResponse({
+        "status": False,
+        "message": "Logout gagal."
+        }, status=401)
+    
+@csrf_exempt
+def register(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        new_user = User.objects.create_user(username=username, password=password)
+            
+        return JsonResponse({
+            "status": True,
+            "message": "Account created successfully!",
+            "user_id": new_user.id,
+        }, status=200)
+    
+    return JsonResponse({
+        "status": False,
+        "message": "Invalid request method."
+    }, status=405)
