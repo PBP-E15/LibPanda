@@ -11,7 +11,7 @@ from book.models import Book
 from random import sample
 from django.core import serializers
 from user_profile.models import Biodata, Wallet
-
+from django.views.decorators.csrf import csrf_exempt
 
 def show_main(request):
     books = Book.objects.all()
@@ -29,7 +29,7 @@ def show_main(request):
 
     return render(request, "main.html", context)
 
-
+@csrf_exempt
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)

@@ -1,6 +1,5 @@
 import json
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 from shoppingcart.models import WalletUser, BookUser
 from book.models import Book
@@ -11,6 +10,7 @@ from django.core import serializers
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseNotFound
 from django.urls import reverse
+
 
 @login_required(login_url='/login')
 def show_cart (request):
@@ -89,3 +89,37 @@ def show_json(request):
 
     json_data = json.dumps(serialized_data)
     return HttpResponse(json_data, content_type="application/json")
+
+@login_required(login_url='/login')
+@csrf_exempt
+def add_cart_flutter(request):
+    try:
+        user = request.user
+        data = json.loads(request.body)
+        book_id = data.get('book_id')
+        book = Book.objects.get(pk=book_id)
+
+        if BookUser.objects.filter(user=user, book=book).exists():
+            return JsonResponse({'status': 'Book is already in the shopping cart'}, status=400)
+
+        BookUser.objects.create(user=user, book=book)
+
+        return JsonResponse({'status': 'Book added to shopping cart successfully'}, status=201)
+
+    except Exception as e:
+        return JsonResponse({'status': 'Error adding book to shopping cart', 'error': str(e)}, status=500)
+
+@login_required(login_url='/login')
+@csrf_exempt
+def remove_cart_flutter(request):
+    try:
+        user = request.user
+        data = json.loads(request.body)
+        book_id = data.get('book_id')
+        book_item = BookUser.objects.get(user=user, id=book_id)
+        book_item.delete()
+
+        return JsonResponse({'status': 'Book removed from shopping cart successfully'}, status=201)
+
+    except Exception as e:
+        return JsonResponse({'status': 'Error adding book to shopping cart', 'error': str(e)}, status=500)
