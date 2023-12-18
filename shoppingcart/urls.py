@@ -1,5 +1,5 @@
 from django.urls import path
-from shoppingcart.views import show_cart, add_bookcart, remove_bookcart, buy_book_ajax, show_json, add_cart_flutter, remove_cart_flutter
+from shoppingcart.views import show_cart, add_bookcart, remove_bookcart, buy_book_ajax, show_json, add_cart_flutter, remove_cart_flutter, buy_cart_flutter
 
 app_name = 'shoppingcart'
 
@@ -11,4 +11,5 @@ urlpatterns = [
     path('json/', show_json, name='show_json'),
     path('add_cart_flutter/', add_cart_flutter, name='add_cart_flutter'),
     path('remove_cart_flutter/', remove_cart_flutter, name='remove_cart_flutter'),
+    path('buy_cart_flutter/', buy_cart_flutter, name='buy_cart_flutter'),
 ]

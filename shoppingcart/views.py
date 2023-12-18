@@ -73,6 +73,7 @@ def show_json(request):
     items = BookUser.objects.filter(user = user)
     serialized_data = []
     for item in items:
+        in_cart = True
 
         model_data = {
             "pk" : item.pk,
@@ -82,7 +83,8 @@ def show_json(request):
                 "authors" : item.book.authors,
                 "average_rating" : item.book.average_rating,
                 "price" : item.book.price,
-                "categories" : item.book.categories
+                "categories" : item.book.categories,
+                "in_cart": in_cart,
             }
         }
         serialized_data.append(model_data)
@@ -98,9 +100,6 @@ def add_cart_flutter(request):
         data = json.loads(request.body)
         book_id = data.get('book_id')
         book = Book.objects.get(pk=book_id)
-
-        if BookUser.objects.filter(user=user, book=book).exists():
-            return JsonResponse({'status': 'Book is already in the shopping cart'}, status=400)
 
         BookUser.objects.create(user=user, book=book)
 
@@ -122,4 +121,21 @@ def remove_cart_flutter(request):
         return JsonResponse({'status': 'Book removed from shopping cart successfully'}, status=201)
 
     except Exception as e:
-        return JsonResponse({'status': 'Error adding book to shopping cart', 'error': str(e)}, status=500)
+        return JsonResponse({'status': 'Error remove book to shopping cart', 'error': str(e)}, status=500)
+    
+@login_required(login_url='/login')
+@csrf_exempt
+def buy_cart_flutter(request):
+    try:
+        user = request.user
+        data = json.loads(request.body)
+        book_id = data.get('book_id')
+        book_cart = BookUser.objects.filter(user=user)
+
+        for book in book_cart:
+            book.delete()
+        
+        return JsonResponse({'status': 'Berhasil membeli semua buku'}, status=201)
+
+    except Exception as e:
+        return JsonResponse({'status': 'Error buyinh book to shopping cart', 'error': str(e)}, status=500)
