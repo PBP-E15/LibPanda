@@ -15,26 +15,24 @@ def login(request):
     if user is not None:
         if user.is_active:
             auth_login(request, user)
-            # Status login sukses.
             return JsonResponse({
                 "username": user.username,
                 "password": request.POST['password'],
                 "wallet_pk": user.wallet.id,
                 "biodata_pk": user.biodata.id,
                 "status": True,
-                "message": "Login sukses!"
-                # Tambahkan data lainnya jika ingin mengirim data ke Flutter.
+                "message": "Login success!"
             }, status=200)
         else:
             return JsonResponse({
                 "status": False,
-                "message": "Login gagal, akun dinonaktifkan."
+                "message": "Login failed, account disabled."
             }, status=401)
 
     else:
         return JsonResponse({
             "status": False,
-            "message": "Login gagal, periksa kembali email atau kata sandi."
+            "message": "Login failed, please check your username or password."
         }, status=401)
 
 @csrf_exempt
@@ -46,12 +44,12 @@ def logout(request):
         return JsonResponse({
             "username": username,
             "status": True,
-            "message": "Logout berhasil!"
+            "message": "Logout success!"
         }, status=200)
     except:
         return JsonResponse({
         "status": False,
-        "message": "Logout gagal."
+        "message": "Logout failed."
         }, status=401)
     
 @csrf_exempt
@@ -75,12 +73,11 @@ def register(request):
         new_wallet = Wallet(user=new_user, balance=balance)
         new_wallet.save()
 
-
-    return JsonResponse({
-            "status": True,
-            "message": "Account created successfully!",
-            "user_id": new_user.id,
-        }, status=200)
+        return JsonResponse({
+                "status": True,
+                "message": "Account created successfully!",
+                "user_id": new_user.id,
+            }, status=200)
     
     return JsonResponse({
         "status": False,
