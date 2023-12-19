@@ -61,8 +61,22 @@ def register(request):
         password = request.POST.get('password')
 
         new_user = User.objects.create_user(username=username, password=password)
-            
-        return JsonResponse({
+
+        name = new_user.username
+        email = "no_email@email.com"
+        gender = ""
+        birthday = "2004-05-04"
+        phone_number = "040504"
+
+        new_biodata = Biodata(user=new_user, name=name, email=email, gender=gender, birthday=birthday, phone_number=phone_number)
+        new_biodata.save()
+
+        balance = 0
+        new_wallet = Wallet(user=new_user, balance=balance)
+        new_wallet.save()
+
+
+    return JsonResponse({
             "status": True,
             "message": "Account created successfully!",
             "user_id": new_user.id,
